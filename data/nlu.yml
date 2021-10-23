@@ -1,0 +1,177 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - buenas
+    - hello
+    - hi
+    - hola
+    - holis
+    - buen dia
+    - qué tal?
+    - buenos días
+    - buenos dias
+    - buenas tardes
+    - buenas noches
+
+- intent: goodbye
+  examples: |
+    - adiós
+    - hasta luego
+    - nos vemos luego
+    - hasta pronto
+    - nos vemos más tarde
+    - chau
+    - hasta la próxima
+    - bye
+    - gracias por el tour
+    - gracias adios
+    - gracias
+
+- intent: affirm
+  examples: |
+    - sí
+    - si
+    - dale
+    - por supuesto
+    - suena bien
+    - correcto
+    - está bien
+    - entendido
+    - enterado
+    - continua
+    - avanza hacia el siguiente tema
+    - ya llegue
+    - llegue
+    - estoy aca
+    - ok
+    - si entendi
+    - si me parece bien
+    - avanza
+    - continua con la explicación
+    - avanza con lo que sigue
+    - sigamos el recorrido
+    - segui
+
+- intent: deny
+  examples: |
+    - no
+    - jamás
+    - no lo creo
+    - no creo
+    - no me gusta eso
+    - no me convence
+    - no creo que sea correcto
+    - nada
+
+# ---------------->>>>>>>>>>>>>>>> INTENTS RELATED TO PSYBOT <<<<<<<<<<<<<<<<----------------
+- intent: psybot_want_interview
+  examples: |
+    - Haceme la entrevista
+    - Vengo a realizar la entrevista
+    - Estoy listo para realizar la entrevista
+    - Me llamaron para realizarme una entrevista
+    - Estoy aqui para llevar a cabo la entrevista
+
+- intent: psybot_answer_yes
+  examples: |
+    - si
+    - sip
+    - sisi
+    - si si
+    - asi es
+    - siempre
+    - correcto
+    - afirmativo
+    - si, soy asi
+    - casi siempre
+    - todo el rato
+    - si, tenes razon
+
+- intent: psybot_answer_maybe_yes
+  examples: |
+    - supongo
+    - creo que si
+    - diria que si
+    - ponele que si
+    - supongo que si
+    - yo creo que si
+    - me parece que si
+    - yo creeria que si
+
+- intent: psybot_answer_undecided
+  examples: |
+    - no se
+    - capaz
+    - a veces
+    - a lo mejor
+    - mas o menos
+    - no te sabria decir
+    - no tengo idea
+    - no tengo ni idea
+    - no se que responderte
+
+- intent: psybot_answer_maybe_no
+  examples: |
+    - creo que no
+    - diria que no
+    - ponele que no
+    - yo creo que no
+    - me parece que no
+    - yo creeria que no
+
+- intent: psybot_answer_no
+  examples: |
+    - no
+    - nop
+    - nono
+    - jamás
+    - nunca
+    - no no
+    - negativo
+    - para nada
+    - no es asi
+    - casi nunca
+    - muy pocas veces
+
+# ---------------->>>>>>>>>>>>>>>> INTENTS RELATED TO SCRUM ASSISTANT <<<<<<<<<<<<<<<<----------------
+- intent: scrum_assistant_not_understand
+  examples: |
+    - no entendi
+    - no entiendo que es el [proceso scrum](topic)
+    - me podes explicar devuelta
+    - no entiendo
+    - repeti el tema
+    - repetime que era [user story](topic)
+    - no comprendo
+    - explicame eso devuelta
+    - me podes explicar eso devuelta
+    - me volves a explicar?
+    - me podes volver a explicar que es [product backlog](topic)
+    - no entendi ese tema
+    - no entiendo lo que acabas de explicar
+    - necesito que me vuelvas a explicar eso
+    - por favor me das mas detalles de eso
+    - no entiendo que hace el equipo de desarrollo
+    - no entiendo que hay en el tablero
+    - quiero saber mas
+    - me podrias dar mas información sobre el [scrum master](topic)?
+
+- intent: scrum_assistant_explain_me_topic
+  examples: |
+    - como funciona el [proceso](topic)?
+    - como funciona [product backlog](topic)?
+    - que hace el [product owner](topic)?
+    - que son las [epicas](topic)?
+    - cual es la utilidad del [sprint backlog](topic)?
+
+- intent: scrum_assistant_need_example
+  examples: |
+    - quiero un ejemplo
+    - dame un ejemplo de este tema
+    - me podrias dar un ejemplo
+    - necesito un ejemplo para entenderlo
+    - me darias un ejemplo de [epica](topic)
+    - dame un ejemplo de [tarea](topic)
+    - quisiera un ejemplo del tema [user story](topic)
