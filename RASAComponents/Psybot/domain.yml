@@ -1,0 +1,37 @@
+version: '2.0'
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+  # Basics.
+  - greet
+  - goodbye
+
+  # Interview related
+  - want_interview
+  - answer_yes
+  - answer_maybe_yes
+  - answer_undecided
+  - answer_maybe_no
+  - answer_no
+
+slots:
+  question_to_ask:
+    type: text
+    initial_value: None
+
+responses:
+  utter_presentation:
+    - text: "Hola, yo soy PsyBot, el encargado de analizar el comportamiento de
+    los TeamMembers dentro de ScrumTalk."
+  utter_interview_finished:
+    - text: "Ya no tengo mas preguntas para hacerte. Gracias por tu tiempo."
+  utter_interview_not_started:
+    - text: "No podes responder a preguntas si todavia no empezo la entrevista."
+
+actions:
+  - action_ask_again
+  - action_ask_question
+  - action_interview_not_started

@@ -1,0 +1,950 @@
+[
+  {
+    "id": 1,
+    "text": "Te preocupas mucho por el futuro o por cosas que puedan salir mal?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 2
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 5
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 2
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 4
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 2
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "text": "Que tipo de cosas te preocupan?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "all": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 3
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "text": "Que proporcion del tiempo?",
+    "in_starting_set": false,
+    "valid_answers": {
+    }
+  },
+  {
+    "id": 4,
+    "text": "Es inusual que tengas sentimientos de ira o amargura?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 5
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 1
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 5
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 2
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 4
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 5
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "text": "Te resulta dificil enfadarse incluso cuando es apropiado?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 1
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 2
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 4
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Neuroticism",
+            "value": 5
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "text": "Te describirias a ti mismo como un lider?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 7
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 5
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 7
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 4
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 2
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "text": "Por favor, dame algunos ejemplos de ti como lider.",
+    "in_starting_set": false,
+    "valid_answers": {
+      "all": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 8
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "text": "Los demas te consideran mandon o dominante?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "answer_yes": [],
+      "answer_maybe_yes": [],
+      "answer_undecided": [],
+      "answer_maybe_no": [],
+      "answer_no": []
+    }
+  },
+  {
+    "id": 9,
+    "text": "Eres mas distante o reservado que la mayoria de las personas que conoces?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 10
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 1
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 10
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 2
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 4
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Extraversion",
+            "value": 5
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "text": "Ha afectado esto la cantidad de amigos que tienes?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 11
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 11
+          }
+        }
+      ],
+      "answer_undecided": [
+      ],
+      "answer_maybe_no": [
+      ],
+      "answer_no": [
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "text": "Como?",
+    "in_starting_set": false,
+    "valid_answers": {
+    }
+  },
+  {
+    "id": 12,
+    "text": "Es tu imaginacion tan vivida que a veces confundes cosas imaginadas con cosas reales?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 13
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 5
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 13
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 4
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 2
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "text": "Alguna vez te hizo sentir incomodo o te causo algun problema?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 14
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 14
+          }
+        }
+      ],
+      "answer_undecided": [
+      ],
+      "answer_maybe_no": [
+      ],
+      "answer_no": [
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "text": "Dame algunos ejemplos",
+    "in_starting_set": false,
+    "valid_answers": {
+    }
+  },
+  {
+    "id": 15,
+    "text": "En general, no eres consciente de como te sientes?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 16
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 1
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 16
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 2
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 4
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Openness",
+            "value": 5
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "text": "Podrias decir que a veces eres ajeno a los sentimientos propios y de otras personas?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "answer_yes": [
+      ],
+      "answer_maybe_yes": [
+      ],
+      "answer_undecided": [
+      ],
+      "answer_maybe_no": [
+      ],
+      "answer_no": [
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "text": "Sueles salir de tu camino para ayudar a otros que lo necesitan?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 18
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 5
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 18
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 4
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 2
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "text": "Haces esto sacrificando tus intereses?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 19
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 5
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 19
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 4
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 2
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "text": "Dame algunos ejemplos",
+    "in_starting_set": false,
+    "valid_answers": {
+    }
+  },
+  {
+    "id": 20,
+    "text": "Te describirias como astuto?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 21
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 1
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 21
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 2
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 4
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Agreeableness",
+            "value": 5
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "text": "Alguna vez te has metido en problemas por esto?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 22
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 22
+          }
+        }
+      ],
+      "answer_undecided": [
+      ],
+      "answer_maybe_no": [
+      ],
+      "answer_no": [
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "text": "Dame algunos ejemplos",
+    "in_starting_set": false,
+    "valid_answers": {
+    }
+  },
+  {
+    "id": 23,
+    "text": "Sos el tipo de persona que prefiere planificar con anticipacion?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 24
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Conscientiousness",
+            "value": 5
+          }
+        }
+      ],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 24
+          }
+        },
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Conscientiousness",
+            "value": 4
+          }
+        }
+      ],
+      "answer_undecided": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Conscientiousness",
+            "value": 3
+          }
+        }
+      ],
+      "answer_maybe_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Conscientiousness",
+            "value": 2
+          }
+        }
+      ],
+      "answer_no": [
+        {
+          "func": "update_dimension",
+          "args": {
+            "dimension": "Conscientiousness",
+            "value": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 24,
+    "text": "A menudo reflexionas o te preocupas por todas las posibles consecuencias o problemas que podrian ocurrir?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "answer_yes": [
+      ],
+      "answer_maybe_yes": [
+      ],
+      "answer_undecided": [
+      ],
+      "answer_maybe_no": [
+      ],
+      "answer_no": [
+      ]
+    }
+  },
+  {
+    "id": 25,
+    "text": "Eres una persona desorganizada?",
+    "in_starting_set": true,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 26
+          }
+        }],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 26
+          }
+        }],
+      "answer_undecided": [],
+      "answer_maybe_no": [],
+      "answer_no": []
+    }
+  },
+  {
+    "id": 26,
+    "text": "Tienes tantos problemas para mantener las cosas en orden que a menudo te sientes confundido, abrumado o angustiado?",
+    "in_starting_set": false,
+    "valid_answers": {
+      "answer_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 27
+          }
+        }],
+      "answer_maybe_yes": [
+        {
+          "func": "queue_question",
+          "args": {
+            "question_id": 28
+          }
+        }],
+      "answer_undecided": [],
+      "answer_maybe_no": [],
+      "answer_no": []
+    }
+  },
+  {
+    "id": 27,
+    "text": "Dame algunos ejemplos",
+    "in_starting_set": false,
+    "valid_answers": {
+    }
+  }
+]
+
+
+

@@ -1,6 +1,9 @@
-
+from pathlib import Path
 from typing import Optional, Any, Dict, List, Text
 
+from rasa.core import registry
+from rasa.core.policies.ensemble import InvalidPolicyConfig
+from rasa.shared.utils.io import read_yaml_file
 from rasa.shared.core.domain import Domain
 from rasa.core.featurizers.tracker_featurizers import (
     TrackerFeaturizer,
@@ -11,16 +14,13 @@ from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.core.generator import TrackerWithCachedStates
 from rasa.core.constants import MEMOIZATION_POLICY_PRIORITY
 
-# imports others policies
-from customs.psybot_interview.policy import InterviewPolicy
-from customs.scrum_assistant_tour.policy import AssistantPolicy
-
 
 # imports propios
 from .custom_tracker import CustomTracker
 
 
 class DecidePolicy(Policy):
+    DIR_POLICIES_OF_RASA_COMPONENTS: Path = Path(Path(__file__).parent.parent / "RASAComponents/Policies.yml")
 
     def __init__(
             self,
@@ -31,11 +31,29 @@ class DecidePolicy(Policy):
     ) -> None:
         super().__init__(featurizer, priority, **kwargs)
         self.answered = False
-        self.differents_policies = {
-            "psybot": InterviewPolicy(),
-            "scrum_assistant": AssistantPolicy()
-        }
+        self.differents_policies:Dict = self.load_policies()
         self.scrum_assistant = False
+
+    def load_policies(self) -> Dict:
+        policies_read = read_yaml_file(DecidePolicy.DIR_POLICIES_OF_RASA_COMPONENTS)
+        policies = policies_read['policies']
+        parsed_policies = {}
+        for policy in policies:
+            policy_name = policy.pop('name')
+            try:
+                constr_func = registry.policy_from_module_path(policy_name)
+                try:
+                    policy_object = constr_func(**policy)
+                except TypeError as e:
+                    raise Exception(f"Could not initialize{policy_name}. {e}. In decide_policy.load_policies()")
+                parsed_policies[policy_name.split(".")[0]] = policy_object
+            except (ImportError, AttributeError):
+                raise InvalidPolicyConfig(
+                    f"Module for policy '{policy_name}' could not "
+                    f"be loaded. Please make sure the "
+                    f"name is a valid policy. In decide_policy.load_policies()"
+                )
+        return parsed_policies
 
     def train(
             self,
@@ -104,17 +122,14 @@ class DecidePolicy(Policy):
             tracker.latest_message.intent["confidence"] = max_value
 
             #result = confidence_scores_for(final_intent, 1.0, domain)
-            if "scrum_assistant" == type:
-                self.scrum_assistant = True
+
             self.answered = True
-            print("EL INTENT SELECCIONADO ES ---->>>> " + str(final_intent))
+            print("EL TIPO QUE RECONOCIO: " + str(type))
+            print("EL INTENT SELECCIONADO ES ---->>>> " + str(final_intent.replace(str(type)+"_","")))
+            print("Esta es la politica seleccionada:" + str(self.differents_policies[str(type)]))
             return self.differents_policies[str(type)].predict_action_probabilities(tracker, domain, interpreter)
         else:
-            if self.scrum_assistant:
-                return self.differents_policies["scrum_assistant"].predict_action_probabilities(tracker, domain, interpreter)
-            else:
-                self.answered = False
-                return self._prediction(confidence_scores_for('action_listen', 1.0, domain))
+            return self._prediction(confidence_scores_for('action_listen', 1.0, domain))
 
 
 

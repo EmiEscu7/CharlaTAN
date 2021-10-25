@@ -9,7 +9,13 @@ def send_mesagge(msg, sender, port, meta):
     url = 'http://localhost:'+str(port)+'/webhooks/rest_custom/webhook'
 
     #objeto json que se enviara al servidor de rasa
-    data = {"sender": sender, "message": msg, "metadata": { "type": meta }}
+    personality = {"Neuroticism": 0.1,
+                   "Extraversion": 0.9,
+                   "Openness": 0.9,
+                   "Agreeableness": 0.9,
+                   "Conscientiousness": 0.9}
+
+    data = {"sender": sender, "message": msg, "metadata": { "type": meta , "personality":personality }}
 
     #envio mediante post el objeto json al servidor de rasa
     x = requests.post(url, json=data) 
@@ -20,7 +26,10 @@ def send_mesagge(msg, sender, port, meta):
     if x.status_code == 200: 
         #si el status es 200, entonces contesto bien
         #retorno el texto de la respuesta
-        return rta.pop(0)['text'] 
+        if rta:
+            return rta.pop(0)['text']
+        else:
+            return ""
     else: 
         #si el status no es 200 hubo un error
         #imprimo el error por pantalla
@@ -32,30 +41,19 @@ def send_mesagge(msg, sender, port, meta):
 """
     INSTANCIO EL BOT 1
 """
-#puerto del bot 1
 p = 5005
-#nombre que le voy a dar al bot 1
-s1 = "Psybot"
-md_s1 = "psybot"
-
+md_s1 = "Psybot"
 
 """
     INSTANCIO EL BOT 2
 """
-#puerto del bot 2
-#creo que juan va a hacer de bot1 para el model de rasa
-p2 = 5005 
-#nombre que le voy a dar al bot 2
-s2 = "Scrum Assistant"
-md_s2 = "scrum_assistant"
+md_s2 = "Customizer"
+
 
 rta = send_mesagge("Haceme la entrevista", "Emiliano", p, md_s1)
-print(s1 + ': ' + rta)
-
-
-
-rta = send_mesagge("no entiendo que es el proceso scrum", "Emiliano", p, md_s2)
-print(s2 + ': ' + rta)
+print(md_s1 + ': ' + rta)
+rta = send_mesagge("He estado trabajando con la tarea {0} ", "Emiliano", p, md_s2)
+print(md_s2 + ': ' + rta)
 
 
 

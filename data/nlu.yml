@@ -65,8 +65,50 @@ nlu:
     - no creo que sea correcto
     - nada
 
-# ---------------->>>>>>>>>>>>>>>> INTENTS RELATED TO PSYBOT <<<<<<<<<<<<<<<<----------------
-- intent: psybot_want_interview
+# ---------------->>>>>>>>>>>>>>>> INTENTS RELATED TO CUSTOMIZER <<<<<<<<<<<<<<<<----------------
+
+- intent: Customizer_what_i_do_task
+  examples: |
+    - He estado trabajando con la tarea {0} 
+    - Estuve trabajando con la tarea {0}
+    - Hice la task {0}
+    - Trabaje sobre la tarea {0}
+    - Comence con la task {0}
+    
+
+- intent: Customizer_what_i_do_meet
+  examples: |
+    - Fui a las reuniones {0} 
+    - Estuve yendo a las reuniones {0}
+    - Estuve asistiendo en las reuniones {0}
+    - Asisti a las reuniones {0}
+    - Tuve el placer de asistir al a reunion {0}
+    
+- intent: Customizer_what_i_do_both
+  examples: |
+    - He estado trabajando con las tareas {0} y fui a las reuniones {1} 
+    - Fui a las reuniones {1} e hice las task {0} 
+    - Estuve yendo a las reuniones {1} y trabajando con la task {0}
+    - Trabaje con la task {0} y estuve yendo a las reuniones {0}
+    - Estuve haciendo las task {0} y asistiendo a las reuniones {0}
+
+- intent: Customizer_greet_meeting
+  examples: |
+    - Hola, empezamos con la daily meeting
+    - Buenas, emepcemos con la daily
+    - Buen dia a todos, podemos empezar con la daily meeting
+    - Hola a todos, empecemos con la daily meeting
+    - Buenas, podemos empezar con la daily de hoy
+
+- intent: Customizer_goodbye_meeting
+  examples: |
+    - Gracias por asistir a la runion, pueden continuar con su trabajo
+    - Muy bien, gracias por venir. Continuen con lo que estaban haciendo
+    - Bien, y podemos dar por terminada la daily. Sigan con su trabajo
+    - Genial, sigan con su trabajo. Gracias por venir
+    - Perfecto, continuen con su trabajo. Gracias por venir a la reunion de hoy
+# ---------------->>>>>>>>>>>>>>>> INTENTS RELATED TO Psybot <<<<<<<<<<<<<<<<----------------
+- intent: Psybot_want_interview
   examples: |
     - Haceme la entrevista
     - Vengo a realizar la entrevista
@@ -74,7 +116,7 @@ nlu:
     - Me llamaron para realizarme una entrevista
     - Estoy aqui para llevar a cabo la entrevista
 
-- intent: psybot_answer_yes
+- intent: Psybot_answer_yes
   examples: |
     - si
     - sip
@@ -89,7 +131,7 @@ nlu:
     - todo el rato
     - si, tenes razon
 
-- intent: psybot_answer_maybe_yes
+- intent: Psybot_answer_maybe_yes
   examples: |
     - supongo
     - creo que si
@@ -100,7 +142,7 @@ nlu:
     - me parece que si
     - yo creeria que si
 
-- intent: psybot_answer_undecided
+- intent: Psybot_answer_undecided
   examples: |
     - no se
     - capaz
@@ -112,7 +154,7 @@ nlu:
     - no tengo ni idea
     - no se que responderte
 
-- intent: psybot_answer_maybe_no
+- intent: Psybot_answer_maybe_no
   examples: |
     - creo que no
     - diria que no
@@ -121,7 +163,7 @@ nlu:
     - me parece que no
     - yo creeria que no
 
-- intent: psybot_answer_no
+- intent: Psybot_answer_no
   examples: |
     - no
     - nop
@@ -136,7 +178,7 @@ nlu:
     - muy pocas veces
 
 # ---------------->>>>>>>>>>>>>>>> INTENTS RELATED TO SCRUM ASSISTANT <<<<<<<<<<<<<<<<----------------
-- intent: scrum_assistant_not_understand
+- intent: Scrum_Assistant_not_understand
   examples: |
     - no entendi
     - no entiendo que es el [proceso scrum](topic)
@@ -158,7 +200,7 @@ nlu:
     - quiero saber mas
     - me podrias dar mas información sobre el [scrum master](topic)?
 
-- intent: scrum_assistant_explain_me_topic
+- intent: Scrum_Assistant_explain_me_topic
   examples: |
     - como funciona el [proceso](topic)?
     - como funciona [product backlog](topic)?
@@ -166,7 +208,7 @@ nlu:
     - que son las [epicas](topic)?
     - cual es la utilidad del [sprint backlog](topic)?
 
-- intent: scrum_assistant_need_example
+- intent: Scrum_Assistant_need_example
   examples: |
     - quiero un ejemplo
     - dame un ejemplo de este tema
