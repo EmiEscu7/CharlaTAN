@@ -6,7 +6,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.events import UserUtteranceReverted
 from rasa_sdk.executor import CollectingDispatcher
 
-from customs.scrum_assistant_tour import event_handling
+#from customs.scrum_assistant_tour import event_handling
 
 
 """

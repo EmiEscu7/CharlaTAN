@@ -31,10 +31,10 @@ class DecidePolicy(Policy):
     ) -> None:
         super().__init__(featurizer, priority, **kwargs)
         self.answered = False
-        self.differents_policies:Dict = self.load_policies()
+        self.differents_policies:Dict = self.get_policies()
         self.scrum_assistant = False
 
-    def load_policies(self) -> Dict:
+    def get_policies(self) -> Dict:
         policies_read = read_yaml_file(DecidePolicy.DIR_POLICIES_OF_RASA_COMPONENTS)
         policies = policies_read['policies']
         parsed_policies = {}
@@ -46,7 +46,7 @@ class DecidePolicy(Policy):
                     policy_object = constr_func(**policy)
                 except TypeError as e:
                     raise Exception(f"Could not initialize{policy_name}. {e}. In decide_policy.load_policies()")
-                parsed_policies[policy_name.split(".")[0]] = policy_object
+                parsed_policies[policy_name.split(".")[1]] = policy_object
             except (ImportError, AttributeError):
                 raise InvalidPolicyConfig(
                     f"Module for policy '{policy_name}' could not "
@@ -79,58 +79,51 @@ class DecidePolicy(Policy):
             **kwargs: Any,
     ) -> PolicyPrediction:
 
-        if not self.answered:
+        # get id to the person that sent the message
+        sender_id = tracker.current_state()['sender_id']
 
-            # get id to the person that sent the message
-            sender_id = tracker.current_state()['sender_id']
+        # get a updated custom tracker to the conversation
+        custom_tracker = self.obtener_tracker(sender_id, tracker)
 
-            # get a updated custom tracker to the conversation
-            custom_tracker = self.obtener_tracker(sender_id, tracker)
+        intents = tracker._latest_message_data()["intent_ranking"]
 
-            intents = tracker._latest_message_data()["intent_ranking"]
+        # get type of bot
+        type = custom_tracker.get_latest_event().metadata["type"]
 
-            # get type of bot
-            type = custom_tracker.get_latest_event().metadata["type"]
+        print("ESTOS SON LOS INTENTS RECONOZIDOS CON SUS PROB AL INICIO -------->>>>>")
+        for intent in intents:
+            print(intent["name"] + ":    " + str(intent["confidence"]))
 
-            print("ESTOS SON LOS INTENTS RECONOZIDOS CON SUS PROB AL INICIO -------->>>>>")
-            for intent in intents:
-                print(intent["name"] + ":    " + str(intent["confidence"]))
+        """
+            if intent not is of interest to the bot, him confidence will be 0
+        """
+        for intent in intents:
+            if type not in intent["name"]:
+                intent["confidence"] = 0
 
-            """
-                if intent not is of interest to the bot, him confidence will be 0
-            """
-            for intent in intents:
-                if type not in intent["name"]:
-                    intent["confidence"] = 0
+        print("ESTOS SON LOS INTENTS RECONOZIDOS CON SUS PROB DSP DEL CALCULO -------->>>>>")
+        for intent in intents:
+            print(intent["name"] + ":    " + str(intent["confidence"]))
 
-            print("ESTOS SON LOS INTENTS RECONOZIDOS CON SUS PROB DSP DEL CALCULO -------->>>>>")
-            for intent in intents:
-                print(intent["name"] + ":    " + str(intent["confidence"]))
+        final_intent = ""
+        max_value = 0
 
-            final_intent = ""
-            max_value = 0
+        """
+            get the intent that have max value of confidence
+        """
+        for intent in intents:
+            if intent["confidence"] > max_value:
+                max_value = intent["confidence"]
+                final_intent = intent["name"]
 
-            """
-                get the intent that have max value of confidence
-            """
-            for intent in intents:
-                if intent["confidence"] > max_value:
-                    max_value = intent["confidence"]
-                    final_intent = intent["name"]
+        tracker.latest_message.intent["name"] = final_intent
+        tracker.latest_message.intent["confidence"] = max_value
 
-            tracker.latest_message.intent["name"] = final_intent
-            tracker.latest_message.intent["confidence"] = max_value
 
-            #result = confidence_scores_for(final_intent, 1.0, domain)
-
-            self.answered = True
-            print("EL TIPO QUE RECONOCIO: " + str(type))
-            print("EL INTENT SELECCIONADO ES ---->>>> " + str(final_intent.replace(str(type)+"_","")))
-            print("Esta es la politica seleccionada:" + str(self.differents_policies[str(type)]))
-            return self.differents_policies[str(type)].predict_action_probabilities(tracker, domain, interpreter)
-        else:
-            return self._prediction(confidence_scores_for('action_listen', 1.0, domain))
-
+        print("EL TIPO QUE RECONOCIO: " + str(type))
+        print("EL INTENT SELECCIONADO ES ---->>>> " + str(final_intent.replace(str(type)+"_","")))
+        print("Esta es la politica seleccionada:" + str(self.differents_policies[str(type)]))
+        return self.differents_policies[str(type)].predict_action_probabilities(tracker, domain, interpreter)
 
 
     def _metadata(self) -> Dict[Text, Any]:

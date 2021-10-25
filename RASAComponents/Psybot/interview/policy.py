@@ -10,8 +10,10 @@ from rasa.shared.core.events import SlotSet
 from rasa.shared.core.generator import TrackerWithCachedStates
 from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.nlu.interpreter import NaturalLanguageInterpreter
-from Psybot.interview.elements import Question, Interview
-from Psybot.interview import question_analysis
+from .elements import Question, Interview
+#from Psybot.interview.elements import Question, Interview
+from . import   question_analysis
+#from Psybot.interview import question_analysis
 
 def _load_questions(path: str) -> List[Question]:
     """Loads questions from a json file.
