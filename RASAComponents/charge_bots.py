@@ -9,7 +9,7 @@ from pathlib import Path
 """
 
 
-def generate_nlu(folders):
+def generate_nlu(folders): #obsoleto pero por si las dudas lo dejamos
     new_intents = []
     for folder in folders:
         path = folder + "/data/nlu.yml"
@@ -89,13 +89,6 @@ def generate_domain(folders):
                       'actions': actions}
     with open("../domain.yml", "w") as f:
         yaml.dump(general_domain, f, sort_keys=False)
-
-def generate_nlu_v2(folders):
-    for folder in folders:
-        path = folder + "/domain.yml"
-        print(path)
-        nlu_actual = yaml.full_load(open(path, encoding="utf8"))['nlu']
-
 
 def concatenateNLU(folders):
     dumper = yaml.YAML()
