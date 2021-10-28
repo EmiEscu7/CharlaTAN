@@ -13,7 +13,7 @@ class TopicVisitor(Visitor):
         if it.is_older_topic(Topic(self._topic, [])):
             if it.jump is None:
                 it.current_topic = self._topic
-                return "utter_cross_examine_jump_sequential"
+                return "utter_wizzardprofessor_cross_examine_jump_sequential"
             else:
                 return self.get_topic(it)
         else:
@@ -26,7 +26,7 @@ class TopicVisitor(Visitor):
         ):
             if it.jump is None:
                 it.current_topic = self._topic
-                return "utter_cross_examine_jump_global"
+                return "utter_wizzardprofessor_cross_examine_jump_global"
             else:
                 return self.get_topic(it, it.jump)
         else:
@@ -39,7 +39,7 @@ class TopicVisitor(Visitor):
         if it.is_older_topic(Topic(self._topic, [])):
             if self._example is None:
                 it.current_topic = self._topic
-                return "utter_cross_examine_example"
+                return "utter_wizzardprofessor_cross_examine_example"
         if self._topic not in it.all_topics:
             return "action_topic_not_recognized"
         if jump:

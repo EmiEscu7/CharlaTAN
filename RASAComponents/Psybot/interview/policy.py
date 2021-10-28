@@ -136,6 +136,7 @@ class InterviewPolicy(Policy):
         prefix
             Text to put before the question to ask.
         """
+        print("------ TAMO AQUI PERRO ANTES DE ACTUALIZAR EL TRACKER EN EL PSYBOT_ASK_QUESTION----------")
         tracker.update(SlotSet("question_to_ask",
                                prefix + self._interview.next_question()))
         print("------ TAMO AQUI PERRO ANTES DE PREDECIR EL ACTION_PSYBOT_ASK_QUESTION----------")
@@ -198,7 +199,9 @@ class InterviewPolicy(Policy):
         """
         # If the last answer is valid for the question, then process it
         # and check if there are more questions to add.
+
         if self._interview.last_asked.valid_answer(intent_name):
+
             self.process_answer(message, intent_name)
 
             if not self._interview.no_more_questions():
@@ -208,7 +211,7 @@ class InterviewPolicy(Policy):
                             tracker.sender_id)
             self._interview.restart()
             return self._prediction(
-                confidence_scores_for("utter_interview_finished", 1.0, domain))
+                confidence_scores_for("utter_psybot_interview_finished", 1.0, domain))
 
         # If the answer for the last question asked isn't valid, then
         # ask the question again.
@@ -227,19 +230,19 @@ class InterviewPolicy(Policy):
 
         Author: Bruno.
         """
-
+        print("ENTRA AL POLICY DE PSYBOT")
         # If the last thing rasa did was listen to user input, then we need to
         # analyze the intent so we can decide the next action to execute.
+        print("LO QUE USA DE COND DEL IF ES ------->>>> " + str(tracker.latest_action_name))
         if tracker.latest_action_name == "action_listen":
+            print("ENTRA AL IF POLICY DE PSYBOT")
             intent_name = tracker.latest_message.intent["name"]
-
-            print("----------------------- ENTRAMOS A LA POLITICA BREO -----------------")
-            print(intent_name)
             # User wants an interview
-            if (intent_name == "Psybot_want_interview"
+            if (intent_name == "psybot_want_interview"
                     and not self._interview.in_progress):
                 # The interview must start.
                 self._interview.in_progress = True
+                print("LLAMANDO A LA FUNACION ASK_NEXT_QUESTION")
                 return self._ask_next_question(
                     tracker, domain,
                     prefix="Okay, empecemos con la entrevista.\n"
@@ -252,13 +255,14 @@ class InterviewPolicy(Policy):
 
         # If the last thing rasa did was ask a question, then the next thing to
         # do is listen for a new user input.
-        if tracker.latest_action_name == "utter_question_template":
+        if tracker.latest_action_name == "utter_psybot_question_template":
             return self._prediction(confidence_scores_for(
                 "action_listen", 1.0, domain
             ))
 
         # If there is no match in the conditions stated above, let the other
         # policies predict.
+        print("EL DEFAULT PREDICTIONS ES ---------------->>>>>>>>> " + str(self._default_predictions(domain)))
         return self._prediction(self._default_predictions(domain))
 
     def _metadata(self) -> Dict[Text, Any]:

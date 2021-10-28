@@ -63,7 +63,7 @@ class AssistantPolicy(Policy):
 
         # Iterator.
         conversation_flows = util.create_conversation_flows(
-            "info" + os.path.sep + "flow.json")
+            "RASAComponents" + os.path.sep + "WizzardProfessor" + os.path.sep + "info" + os.path.sep + "flow.json")
         self._current_flow = conversation_flows[
             AssistantPolicy.DEFAULT_DIMENSION_LEVEL]
 

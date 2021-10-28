@@ -49,7 +49,7 @@ class DecidePolicy(Policy):
                     policy_object = constr_func(**policy)
                 except TypeError as e:
                     raise Exception(f"Could not initialize{policy_name}. {e}. In decide_policy.load_policies()")
-                parsed_policies[policy_name.split(".")[2]] = policy_object
+                parsed_policies[str(policy_name.split(".")[1]).lower()] = policy_object
             except (ImportError, AttributeError):
                 raise InvalidPolicyConfig(
                     f"Module for policy '{policy_name}' could not "
@@ -92,7 +92,14 @@ class DecidePolicy(Policy):
         intents = tracker._latest_message_data()["intent_ranking"]
 
         # get type of bot
-        type = str(custom_tracker.get_latest_event().metadata["type"]).lower()
+        #type = str(custom_tracker.get_latest_event().metadata["type"]).lower()
+
+
+
+        var = tracker.current_state()["latest_message"]
+        metadata = var["metadata"]
+        type = str(metadata["type"]).lower()
+
         print("ESTOS SON LOS INTENTS RECONOZIDOS CON SUS PROB AL INICIO -------->>>>>")
         for intent in intents:
             print(intent["name"] + ":    " + str(intent["confidence"]))

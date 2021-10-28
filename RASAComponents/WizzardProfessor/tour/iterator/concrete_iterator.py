@@ -18,7 +18,7 @@ class SequentialIterator(Iterator):
                 self._to_explain.append(next_to_explain)
 
         if len(self._to_explain) == 0:
-            return "utter_ask"
+            return "utter_wizzardprofessor_ask"
 
         return self._to_explain[-1].get_explanation()
 
@@ -45,7 +45,7 @@ class GlobalIterator(Iterator):
         if self._to_explain[-1].is_explained:
             self._to_explain.pop()
         if len(self._to_explain) == 0:
-            return "utter_ask"
+            return "utter_wizzardprofessor_ask"
 
         return self._to_explain[-1].get_explanation()
 
@@ -80,7 +80,7 @@ class NeutralIterator(Iterator):
                 self._to_explain.pop()
 
         if len(self._to_explain) == 0:
-            return "utter_ask"
+            return "utter_wizzardprofessor_ask"
 
         return self._to_explain[-1].get_explanation()
 

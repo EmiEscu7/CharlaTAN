@@ -59,11 +59,11 @@ def chain_builder(last_node: DefaultNode) -> Node:
         chain,
         AndCriterion(
             AndCriterion(
-                NotCriterion(EqualPenultimateEvent("utter_cross_examine")),
+                NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")),
                 EqualAction("action_listen")
             ),
             AndCriterion(
-                EqualIntent("explain_me_topic"), NotCriterion(EqualEntity(None))
+                EqualIntent("wizzardprofessor_explain_me_topic"), NotCriterion(EqualEntity(None))
             )
         )
     )
@@ -72,24 +72,24 @@ def chain_builder(last_node: DefaultNode) -> Node:
         chain,
         AndCriterion(
             AndCriterion(
-                NotCriterion(EqualPenultimateEvent("utter_cross_examine")),
+                NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")),
                 EqualAction("action_listen")
             ),
             AndCriterion(
-                EqualIntent("no_entiendo"), NotCriterion(EqualEntity(None))
+                EqualIntent("wizzardprofessor_no_entiendo"), NotCriterion(EqualEntity(None))
             )
         )
     )
     chain = NodeRepeat(
         chain,
         OrCriterion(
-            EqualAction("utter_ask_bad"),
+            EqualAction("utter_wizzardprofessor_ask_bad"),
             AndCriterion(
                 AndCriterion(
-                    NotCriterion(EqualPenultimateEvent("utter_cross_examine")),
+                    NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")),
                     EqualAction("action_listen")
                 ),
-                AndCriterion(EqualIntent("no_entiendo"), EqualEntity(None))
+                AndCriterion(EqualIntent("wizzardprofessor_no_entiendo"), EqualEntity(None))
             )
         )
     )
@@ -97,48 +97,48 @@ def chain_builder(last_node: DefaultNode) -> Node:
         chain,
         AndCriterion(
             AndCriterion(
-                NotCriterion(EqualPenultimateEvent("utter_cross_examine")),
+                NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")),
                 EqualAction("action_listen")
             ),
-            EqualIntent("need_example")
+            EqualIntent("wizzardprofessor_need_example")
         )
     )
     chain = NodeGet(
         chain,
         AndCriterion(
             AndCriterion(
-                EqualPenultimateEvent("utter_cross_examine"),
-                EqualPenultimateEvent("utter_cross_examine_example")
+                EqualPenultimateEvent("utter_wizzardprofessor_cross_examine"),
+                EqualPenultimateEvent("utter_wizzardprofessor_cross_examine_example")
             ),
-            EqualIntent("need_example")
+            EqualIntent("wizzardprofessor_need_example")
         ), example=True
     )
     chain = NodeGet(
         chain,
         AndCriterion(
             AndCriterion(
-                EqualPenultimateEvent("utter_cross_examine"),
-                EqualPenultimateEvent("utter_cross_examine_example")
+                EqualPenultimateEvent("utter_wizzardprofessor_cross_examine"),
+                EqualPenultimateEvent("utter_cwizzardprofessor_ross_examine_example")
             ),
-            NotCriterion(EqualIntent("need_example"))
+            NotCriterion(EqualIntent("wizzardprofessor_need_example"))
         ), example=False)
     chain = NodeGet(
         chain,
         AndCriterion(
             AndCriterion(
-                EqualPenultimateEvent("utter_cross_examine"),
-                EqualPenultimateEvent("utter_cross_examine_jump")
+                EqualPenultimateEvent("utter_wizzardprofessor_cross_examine"),
+                EqualPenultimateEvent("utter_wizzardprofessor_cross_examine_jump")
             ),
-            EqualIntent("change_current_flow")
+            EqualIntent("wizzardprofessor_change_current_flow")
         ), jump=True
     )
     chain = NodeGet(
         chain,
         AndCriterion(
             AndCriterion(
-                EqualPenultimateEvent("utter_cross_examine"),
-                EqualPenultimateEvent("utter_cross_examine_jump")
+                EqualPenultimateEvent("utter_wizzardprofessor_cross_examine"),
+                EqualPenultimateEvent("utter_wizzardprofessor_cross_examine_jump")
             ),
-            NotCriterion(EqualIntent("change_current_flow"))
+            NotCriterion(EqualIntent("wizzardprofessor_change_current_flow"))
         ), jump=False)
     return chain

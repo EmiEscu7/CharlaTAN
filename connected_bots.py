@@ -66,8 +66,8 @@ print(md_s2 + ': ' + rta)
 print()
 input()
 time.sleep(2)
-print("Emiliano: " + "Tenés idea de atributo de calidad")
-rta = send_mesagge("Tenés idea de atributo de calidad", "Emiliano", p, md_s3)
+print("Emiliano: " + "como funciona el proceso?")
+rta = send_mesagge("como funciona el proceso?", "Emiliano", p, md_s3)
 print(md_s3 + ': ' + rta)
 
 

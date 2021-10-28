@@ -43,14 +43,14 @@ def count_intents_from_stories(s, story_intents):
 
 def move_to_a_location(response):
     locations = {
-        "utter_start_tour": "tour_scrum_assistant_p1",
-        "utter_product_backlog": "tour_scrum_assistant_p2",
-        "utter_sprint_backlog": "tour_scrum_assistant_p2",
-        "utter_scrum_master": "tour_scrum_assistant_p3",
-        "utter_scrum_board": "tour_scrum_assistant_p4",
-        "utter_development_team": "tour_scrum_assistant_p5",
-        "utter_daily_meeting": "tour_scrum_assistant_p6",
-        "utter_sprint_review": "tour_scrum_assistant_p6"
+        "utter_wizzardprofessor_start_tour": "tour_scrum_assistant_p1",
+        "utter_wizzardprofessor_product_backlog": "tour_scrum_assistant_p2",
+        "utter_wizzardprofessor_sprint_backlog": "tour_scrum_assistant_p2",
+        "utter_wizzardprofessor_scrum_master": "tour_scrum_assistant_p3",
+        "utter_wizzardprofessor_scrum_board": "tour_scrum_assistant_p4",
+        "utter_wizzardprofessor_development_team": "tour_scrum_assistant_p5",
+        "utter_wizzardprofessor_daily_meeting": "tour_scrum_assistant_p6",
+        "utter_wizzardprofessor_sprint_review": "tour_scrum_assistant_p6"
     }
     # if locations.get(response) is not None:
     #     publisher.publish("movement",
@@ -75,37 +75,37 @@ def create_iterator(
 
 def functions_builder() -> Node:
     node1 = DefaultNode(None)
-    node1 = NodeActionListen(node1, AndCriterion(NotCriterion(EqualPenultimateEvent("utter_cross_examine")),
+    node1 = NodeActionListen(node1, AndCriterion(NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")),
                                                  NotCriterion(EqualAction("action_listen"))))
     node1 = NodeNext(node1, AndCriterion(
-        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_cross_examine")), EqualAction("action_listen")),
-        EqualIntent("affirm")))
+        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")), EqualAction("action_listen")),
+        EqualIntent("wizzardprofessor_affirm")))
     node1 = NodeGet(node1, AndCriterion(
-        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_cross_examine")), EqualAction("action_listen")),
-        AndCriterion(EqualIntent("explicame_tema"),NotCriterion(EqualEntity(None)))))
+        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")), EqualAction("action_listen")),
+        AndCriterion(EqualIntent("wizzardprofessor_explicame_tema"),NotCriterion(EqualEntity(None)))))
     node1 = NodeGet(node1, AndCriterion(
-        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_cross_examine")), EqualAction("action_listen")),
-        AndCriterion(EqualIntent("no_entiendo"),NotCriterion(EqualEntity(None)))))
-    node1 = NodeRepeat(node1, OrCriterion(EqualAction("utter_ask_bad"),AndCriterion(
-        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_cross_examine")), EqualAction("action_listen")),
+        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")), EqualAction("action_listen")),
+        AndCriterion(EqualIntent("wizzardprofessor_no_entiendo"),NotCriterion(EqualEntity(None)))))
+    node1 = NodeRepeat(node1, OrCriterion(EqualAction("utter_wizzardprofessor_ask_bad"),AndCriterion(
+        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")), EqualAction("action_listen")),
         OrCriterion(AndCriterion(EqualIntent("no_entiendo"),EqualEntity(None)),EqualIntent("deny")))))
     node1 = NodeExample(node1, AndCriterion(
-        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_cross_examine")), EqualAction("action_listen")),
-        EqualIntent("dame_ejemplo")))
+        AndCriterion(NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")), EqualAction("action_listen")),
+        EqualIntent("wizzardprofessor_dame_ejemplo")))
     node1 = NodeGet(node1, AndCriterion(
-        AndCriterion(EqualPenultimateEvent("utter_cross_examine"), EqualPenultimateEvent("utter_cross_examine_example")),
-        EqualIntent("dame_ejemplo")),example=True)
+        AndCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine"), EqualPenultimateEvent("utter_wizzardprofessor_cross_examine_example")),
+        EqualIntent("wizzardprofessor_dame_ejemplo")),example=True)
     node1 = NodeGet(node1, AndCriterion(
-        AndCriterion(EqualPenultimateEvent("utter_cross_examine"), EqualPenultimateEvent("utter_cross_examine_example")),
-        NotCriterion(EqualIntent("dame_ejemplo"))),example=False)
+        AndCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine"), EqualPenultimateEvent("utter_wizzardprofessor_cross_examine_example")),
+        NotCriterion(EqualIntent("wizzardprofessor_dame_ejemplo"))),example=False)
     node1 = NodeGet(node1, AndCriterion(
-        AndCriterion(EqualPenultimateEvent("utter_cross_examine"), EqualPenultimateEvent("utter_cross_examine_jump")),
-        EqualIntent("change_current_flow")),jump=True)
+        AndCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine"), EqualPenultimateEvent("utter_wizzardprofessor_cross_examine_jump")),
+        EqualIntent("wizzardprofessor_change_current_flow")),jump=True)
     node1 = NodeGet(node1, AndCriterion(
-        AndCriterion(EqualPenultimateEvent("utter_cross_examine"), EqualPenultimateEvent("utter_cross_examine_jump")),
-        NotCriterion(EqualIntent("change_current_flow"))),jump=False)
-    node1 = NodeAsk(node1, OrCriterion(EqualAction("utter_ask"),EqualAction("utter_ask_good")))
-    node1 = NodeResponse(node1 , EqualPenultimateEvent("utter_cross_examine_tema"))
+        AndCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine"), EqualPenultimateEvent("utter_wizzardprofessor_cross_examine_jump")),
+        NotCriterion(EqualIntent("wizzardprofessor_change_current_flow"))),jump=False)
+    node1 = NodeAsk(node1, OrCriterion(EqualAction("utter_wizzardprofessor_ask"),EqualAction("utter_wizzardprofessor_ask_good")))
+    node1 = NodeResponse(node1 , EqualPenultimateEvent("utter_wizzardprofessor_cross_examine_tema"))
     return node1
 
 
@@ -128,12 +128,12 @@ class LearningStylePolicy(Policy):
         self.story_profiles = story_profiles if story_profiles is not None else {}
         self.usertype = usertype if usertype is not None else {}
         self.learning_style = learning_style if learning_style is not None else DEFAULT_LEARNING_STYLE
-        self.learning_style_iterators["sequential"] = create_iterator(r"info/flow.json", r"info/intents_to_topics.json",
+        self.learning_style_iterators["sequential"] = create_iterator(r"RASAComponents/WizzardProfessor/info/flow.json", r"RASAComponents/WizzardProfessor/info/intents_to_topics.json",
                                                                       "sequential")
-        self.learning_style_iterators["global"] = create_iterator(r"info/flow.json", r"info/intents_to_topics.json",
+        self.learning_style_iterators["global"] = create_iterator(r"RASAComponents/WizzardProfessor/info/flow.json", r"RASAComponents/WizzardProfessor/info/intents_to_topics.json",
                                                                   "global")
-        self._it = create_iterator(r"info/flow.json", r"info/intents_to_topics.json", "neutral")
-        self._criterion_learning = AndCriterion(NotCriterion(EqualPenultimateEvent("utter_cross_examine")),
+        self._it = create_iterator(r"RASAComponents/WizzardProfessor/info/flow.json", r"RASAComponents/WizzardProfessor/info/intents_to_topics.json", "neutral")
+        self._criterion_learning = AndCriterion(NotCriterion(EqualPenultimateEvent("utter_wizzardprofessor_cross_examine")),
                                                 EqualAction("action_listen"))
         # to do script
         self._functions = functions_builder()

@@ -13,12 +13,12 @@ class AskVisitor(Visitor):
         return self.search_question(it)
 
     def visit_global(self, it: ConversationFlow) -> str:
-        respond = "utter_sin_question"
+        respond = "utter_wizzardprofessor_sin_question"
         it.restart()
         question = 0
         keys = list(it.all_topics.keys())
         while (
-                respond == "utter_sin_question"
+                respond == "utter_wizzardprofessor_sin_question"
                 and Topic(keys[question], []) in it.to_explain_stack
         ):
             question = randint(0, len(it.all_topics) - 1)
@@ -30,10 +30,10 @@ class AskVisitor(Visitor):
         return self.search_question(it)
 
     def search_question(self, it: ConversationFlow) -> str:
-        respond = "utter_sin_question"
+        respond = "utter_wizzardprofessor_sin_question"
         it.restart()
         keys = list(it.all_topics.keys())
-        while respond == "utter_sin_question":
+        while respond == "utter_wizzardprofessor_sin_question":
             question = randint(0, len(it.all_topics) - 1)
             respond = it.all_topics[keys[question]].get_question()
         it.jump_to_topic(Topic(keys[question], []))

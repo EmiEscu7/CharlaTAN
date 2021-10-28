@@ -13,11 +13,11 @@ class Ask(Visitor):
         return self.search_question(it)
 
     def visit_global(self, it: Iterator) -> str:
-        respond = "utter_sin_question"
+        respond = "utter_wizzardprofessor_sin_question"
         it.restart()
         question = 0
         keys = list(it.get_intents_to_topic().keys())
-        while respond == "utter_sin_question" and Topic(keys[question],[]) in it.get_to_explain():
+        while respond == "utter_wizzardprofessor_sin_question" and Topic(keys[question],[]) in it.get_to_explain():
             question = randint(0, len(it.get_intents_to_topic()) - 1)
             respond = it.get_intents_to_topic()[keys[question]].get_question()
         it.jump_to_topic(Topic(keys[question],[]))
@@ -27,10 +27,10 @@ class Ask(Visitor):
         return self.search_question(it)
 
     def search_question(self, it: Iterator) -> str:
-        respond = "utter_sin_question"
+        respond = "utter_wizzardprofessor_sin_question"
         it.restart()
         keys = list(it.get_intents_to_topic().keys())
-        while respond == "utter_sin_question":
+        while respond == "utter_wizzardprofessor_sin_question":
             question = randint(0, len(it.get_intents_to_topic()) - 1)
             respond = it.get_intents_to_topic()[keys[question]].get_question()
         it.jump_to_topic(Topic(keys[question],[]))
