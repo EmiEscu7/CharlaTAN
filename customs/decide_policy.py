@@ -16,8 +16,8 @@ from rasa.core.constants import MEMOIZATION_POLICY_PRIORITY
 
 
 # imports propios
-from RASAComponents.Psybot.interview.policy import InterviewPolicy
-from RASAComponents.WizzardProfessor.tour.policy import AssistantPolicy
+from Psybot.interview.policy import InterviewPolicy
+from WizzardProfessor.tour.policy import AssistantPolicy
 from .custom_tracker import CustomTracker
 
 

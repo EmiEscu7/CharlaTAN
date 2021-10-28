@@ -1,7 +1,9 @@
 from os import walk
 import yaml
+from rasa.shared.utils.io import read_yaml_file
+from ruamel import yaml as yaml
 from itertools import chain
-
+from pathlib import Path
 """
     falta agregar comentarios en los yml generados, para que qeuden mas claros a la hora de saber cuando empiezan las base de conocimiento de cada bot
 """
@@ -88,11 +90,50 @@ def generate_domain(folders):
     with open("../domain.yml", "w") as f:
         yaml.dump(general_domain, f, sort_keys=False)
 
+def generate_nlu_v2(folders):
+    for folder in folders:
+        path = folder + "/domain.yml"
+        print(path)
+        nlu_actual = yaml.full_load(open(path, encoding="utf8"))['nlu']
+
+
+def concatenateNLU(folders):
+    dumper = yaml.YAML()
+    dumper.width = 4096
+    dumper.representer.add_representer(
+        type(None),
+        lambda self, _: self.represent_scalar("tag:yaml.org,2002:null", "null"),
+    )
+    yaml_parser = yaml.YAML(typ="safe")
+    yaml_parser.version = (1,2)
+    yaml_parser.preserve_quotes = True
+
+    nlu_new={'version': '2.0','nlu':[]}
+
+    for folder in folders:
+        path = folder + "/data/nlu.yml"
+        nlu_reading = read_yaml_file(path)
+        for line in nlu_reading['nlu']:
+            if 'intent' in line:
+                line['intent'] = 'customizer_' + line['intent']
+            if 'regex' in line:
+                line['regex'] = 'customizer_' + line['regex']
+            if 'synonym' in line:
+                line['synonym'] = 'customizer_' + line['synonym']
+            nlu_new['nlu'].append(line)
+    #cambiar el path de este open por donde se va a guardar el nuevo nlu generado
+    with open("d:/Universidad/CharlaTAN/RASAComponents/nluTesting.yml","w", encoding="utf-8") as outfile:
+        dumper.dump(nlu_new, outfile)
+
+
 
 folders = []
 for (dirpath, dirnames, filenames) in walk('.'):
+    print(dirnames)
     folders.extend(dirnames)
     break
-generate_nlu(folders)
+
+concatenateNLU(folders)
+#generate_nlu(folders)
 generate_stories(folders)
 generate_domain(folders)
