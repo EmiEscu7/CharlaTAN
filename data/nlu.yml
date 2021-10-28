@@ -1,74 +1,90 @@
 version: '2.0'
 nlu:
-- intent: what_i_do_task
+- intent: customizer_what_i_do_task
   examples: "- He estado trabajando con la tarea {0} \n- Estuve trabajando con la tarea {0}\n- Hice la task {0}\n- Trabaje sobre la tarea {0}\n- Comence con la task {0}\n"
-- intent: what_i_do_meet
+- intent: customizer_what_i_do_meet
   examples: "- Fui a las reuniones {0} \n- Estuve yendo a las reuniones {0}\n- Estuve asistiendo en las reuniones {0}\n- Asisti a las reuniones {0}\n- Tuve el placer de asistir al a reunion {0}\n"
-- intent: what_i_do_both
+- intent: customizer_what_i_do_both
   examples: "- He estado trabajando con las tareas {0} y fui a las reuniones {1} \n- Fui a las reuniones {1} e hice las task {0} \n- Estuve yendo a las reuniones {1} y trabajando con la task {0}\n- Trabaje con la task {0} y estuve yendo a las reuniones {0}\n- Estuve haciendo las task {0} y asistiendo a las reuniones {0}\n"
-- intent: greet_meeting
+- intent: customizer_greet_meeting
   examples: "- Hola, empezamos con la daily meeting\n- Buenas, emepcemos con la daily\n- Buen dia a todos, podemos empezar con la daily meeting\n- Hola a todos, empecemos con la daily meeting\n- Buenas, podemos empezar con la daily de hoy\n"
-- intent: goodbye_meeting
+- intent: customizer_goodbye_meeting
   examples: "- Gracias por asistir a la runion, pueden continuar con su trabajo\n- Muy bien, gracias por venir. Continuen con lo que estaban haciendo\n- Bien, y podemos dar por terminada la daily. Sigan con su trabajo\n- Genial, sigan con su trabajo. Gracias por venir\n- Perfecto, continuen con su trabajo. Gracias por venir a la reunion de hoy\n"
-- regex: topic
+- intent: psybot_greet
+  examples: "- hey\n- hola\n- buenas\n- buen dia\n- buenas tardes\n- buenas noches\n"
+- intent: psybot_goodbye
+  examples: "- chau\n- adios\n- nos vemos\n- hasta luego\n- hasta pronto\n"
+- intent: psybot_want_interview
+  examples: "- Haceme la entrevista\n- Vengo a realizar la entrevista\n- Estoy listo para realizar la entrevista\n- Me llamaron para realizarme una entrevista\n- Estoy aqui para llevar a cabo la entrevista\n"
+- intent: psybot_answer_yes
+  examples: "- si\n- sip\n- sisi\n- si si\n- asi es\n- siempre\n- correcto\n- afirmativo\n- si, soy asi\n- casi siempre\n- todo el rato\n- si, tenes razon\n"
+- intent: psybot_answer_maybe_yes
+  examples: "- supongo\n- creo que si\n- diria que si\n- ponele que si\n- supongo que si\n- yo creo que si\n- me parece que si\n- yo creeria que si\n"
+- intent: psybot_answer_undecided
+  examples: "- no se\n- capaz\n- a veces\n- a lo mejor\n- mas o menos\n- no te sabria decir\n- no tengo idea\n- no tengo ni idea\n- no se que responderte\n"
+- intent: psybot_answer_maybe_no
+  examples: "- creo que no\n- diria que no\n- ponele que no\n- yo creo que no\n- me parece que no\n- yo creeria que no\n"
+- intent: psybot_answer_no
+  examples: "- no\n- nop\n- nono\n- jamás\n- nunca\n- no no\n- negativo\n- para nada\n- no es asi\n- casi nunca\n- muy pocas veces"
+- regex: wizzardprofessor_topic
   examples: "- (^[a-zA-Z ]*$){1,25}\n"
-- intent: explain_me_topic
+- intent: wizzardprofessor_explain_me_topic
   examples: "- como funciona el [proceso](topic)?\n- como funciona [product backlog](topic)?\n- que hace el [product owner](topic)?\n- que son las [epicas](topic)?\n- cual es la utilidad del [sprint backlog](topic)?\n"
-- intent: need_example
+- intent: wizzardprofessor_need_example
   examples: "- quiero un ejemplo\n- dame un ejemplo de este tema\n- me podrias dar un ejemplo\n- necesito un ejemplo para entenderlo\n"
-- intent: affirm
+- intent: wizzardprofessor_affirm
   examples: "- sí\n- si\n- dale\n- por supuesto\n- suena bien\n- correcto\n- está bien\n- entendido\n- enterado\n- continua\n- avanza hacia el siguiente tema\n- ok\n- si entendi\n- si me parece bien\n- avanza\n- continua con la explicación\n- avanza con lo que sigue\n- sigamos el recorrido\n- segui\n- si es eso\n"
-- intent: deny
+- intent: wizzardprofessor_deny
   examples: "- no\n- jamás\n- no lo creo\n- no creo\n- no me gusta eso\n- no me convence\n- no creo que sea correcto\n- nada\n- no es eso\n"
-- intent: no_entiendo
+- intent: wizzardprofessor_no_entiendo
   examples: "- no entendi\n- no te entendi\n- repeti el tema\n- no comprendo\n- explicame eso devuelta\n- me podes explicar eso devuelta\n- me volves a explicar?\n"
-- intent: change_current_flow
+- intent: wizzardprofessor_change_current_flow
   examples: "- mejor explicame desde ese tema\n- me podes explicar desde ese tema\n- pasa directamente a ese tema\n"
-- intent: greet
+- intent: wizzardprofessor_greet
   examples: "- buenas\n- hello\n- hi\n- hola\n- holis\n- buen dia\n- qué tal?\n- buenos días\n- buenos dias\n- buenas tardes\n- buenas noches\n"
-- intent: goodbye
+- intent: wizzardprofessor_goodbye
   examples: "- adiós\n- hasta luego\n- nos vemos luego\n- hasta pronto\n- nos vemos más tarde\n- chau\n- hasta la próxima\n- bye\n- gracias por el tour\n- gracias adios\n- gracias\n"
-- intent: pregunta_concepto/patron
+- intent: wizzardprofessor_pregunta_concepto/patron
   examples: "- Qué es un [patron de diseño arquitectonico]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}?\n- Definime [patrones de arquitectura]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}\n- No sé qué es un [patron]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}\n- Me decís qué son los [patrones arquitectonico]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}?\n- Che estoy re perdido con esto de los [patrones de arquitectura de software]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}?\n- Estoy complicado con los [patrones de diseño]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}\n- Necesito ayuda con los [patrones de diseño]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}\n- No entiendo que son los [patrones]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}\n- Me pinta aprender qué es un [patron]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"} viste\n"
-- intent: pregunta_concepto/patrones_listado
+- intent: wizzardprofessor_pregunta_concepto/patrones_listado
   examples: "- Qué tipos de [patrones]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"} existen?\n- Hay alguna clasificación para los [design patterns]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}?\n- Cómo se agrupan los [patrones de diseño]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}?\n- Que [patrones de diseño]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"} hay?\n- Cuáles son los [patrones de diseño]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}?\n- Cuales son los distintos [design patterns]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"} que hay?\n- Che, me listas los [patrones de diseño]{\"entity\": \"concepto\", \"value\": \"patron_arquitectonico\"}?\n"
-- intent: pregunta_concepto/scrum
+- intent: wizzardprofessor_pregunta_concepto/scrum
   examples: "- Quiero saber qué es [scrum](concepto)\n- Que es la [metodología Scrum]{\"entity\": \"concepto\", \"value\": \"scrum\"}?\n- No entiendo qué es [Scrum]{\"entity\": \"concepto\", \"value\": \"scrum\"}\n- Necesito ayuda con [Scrum]{\"entity\": \"concepto\", \"value\": \"scrum\"}\n- Me explicas qué es [scrum]{\"entity\": \"concepto\", \"value\": \"scrum\"}?\n"
-- intent: pregunta_concepto/agil
+- intent: wizzardprofessor_pregunta_concepto/agil
   examples: "- No tengo ni idea de qué es un [metodo agil]{\"entity\": \"concepto\", \"value\": \"agil\"}\n- Sabés qué son las [metodologías ágiles]{\"entity\": \"concepto\", \"value\": \"agil\"}?\n- Que onda los [metodos agiles]{\"entity\": \"concepto\", \"value\": \"agil\"}?\n- Estoy confundido con [Scrum]{\"entity\": \"concepto\", \"value\": \"scrum\"} y los [métodos ágiles]{\"entity\": \"concepto\", \"value\": \"agil\"}\n"
-- intent: pregunta_concepto/fdd
+- intent: wizzardprofessor_pregunta_concepto/fdd
   examples: "- Qué onda con [FDD](concepto)?\n- Necesito saber de [Feature-Driven Development]{\"entity\": \"concepto\", \"value\": \"fdd\"}\n- Estoy perdido con lo de [fdd](concepto)\n- Qué es [feature driven design]{\"entity\": \"concepto\", \"value\": \"fdd\"}?\n"
-- intent: pregunta_concepto/atr_calidad
+- intent: wizzardprofessor_pregunta_concepto/atr_calidad
   examples: "- Tenés idea de [atributo de calidad](concepto)\n- Tirame el concepto de [atributos de calidad]{\"entity\": \"concepto\", \"value\": \"atributo de calidad\"}\n- Tirame data de los [QA]{\"entity\": \"concepto\", \"value\": \"atributo de calidad\"}\n- Qué son los [quality attributes]{\"entity\": \"concepto\", \"value\": \"atributo de calidad\"}\n"
-- intent: pregunta_concepto/hook
+- intent: wizzardprofessor_pregunta_concepto/hook
   examples: "- Che ni idea de [hooks]{\"entity\": \"concepto\", \"value\": \"hook\"}\n- Pregunta, qué es [hook](concepto)\n- Qué es un [hook](concepto)\n"
-- intent: pregunta_concepto/req_func
+- intent: wizzardprofessor_pregunta_concepto/req_func
   examples: "- Ni idea de [requerimiento funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"}, me ayudas?\n- Decime qué son los [requerimiento funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"}\n- Y qué es un [requerimiento funcional](concepto)\n"
-- intent: pregunta_concepto/req_no_func
+- intent: wizzardprofessor_pregunta_concepto/req_no_func
   examples: "- Che no sé nada de [requerimientos no funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento no funcional\"}\n- Sabés qué es un [requerimiento no funcional](concepto)?\n- Qué son los [requerimientos no funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento no funcional\"}\n"
-- intent: pregunta_concepto/req_no_func_ejemplo
+- intent: wizzardprofessor_pregunta_concepto/req_no_func_ejemplo
   examples: "- Dame ejemplo de [requerimientos no funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento no funcional\"}\n- Che, me decir ejemplos de [requerimiento no funcional](concepto)\n- Ejemplificame los [requerimiento no funcional](concepto)\n"
-- intent: pregunta_concepto/req_func_ejemplo
+- intent: wizzardprofessor_pregunta_concepto/req_func_ejemplo
   examples: "- Quiero ejemplo de [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"}\n- Che, que ejemplos hay de [requerimiento funcional](concepto)\n- Capaz entiendo mejor si me decis ejemplos de un [requerimiento funcional](concepto)\n"
-- intent: pregunta_concepto/diferencia_req_func_no_func
+- intent: wizzardprofessor_pregunta_concepto/diferencia_req_func_no_func
   examples: "- Que diferencia hay entre [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)?\n- Comparame por favor [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)\n- No entiendo la diferencia entre [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)\n- Cuál es la diferencia entre [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)?\n- No distingo entre [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)\n"
-- intent: pregunta_concepto/diseño
+- intent: wizzardprofessor_pregunta_concepto/diseño
   examples: "- Que es el [diseño de sistemas de software] {\"entity\": \"concepto\", \"value\": \"diseño\"}?\n- Que onda, contame de [Diseño]{\"entity\": \"concepto\", \"value\": \"diseño\"}\n- Che, sabes que es [diseño de sofware]{\"entity\": \"concepto\", \"value\": \"diseño\"}?\n- Me explicas que es el [design]{\"entity\": \"concepto\", \"value\": \"diseño\"}? \n- Quiero entender el concepto de [diseño]{\"entity\": \"concepto\", \"value\": \"diseño\"}?\n"
-- synonym: patron_arquitectonico
+- synonym: wizzardprofessor_patron_arquitectonico
   examples: "- patron de diseño arquitectónico\n- patrón de diseño arquitectónico\n- patrones de diseño de arquitectura\n- patrones\n- patrón\n- patron de arquitectura de software\n- patrón de arquitectura de software\n- patrones de arquitectura de software\n- patrones de arquitectura\n- patron de arquitectura\n- patrón de arquitectura\n"
-- synonym: scrum
+- synonym: wizzardprofessor_scrum
   examples: "- metodología Scrum\n- Scrum\n- metodologia Scrum\n"
-- synonym: agil
+- synonym: wizzardprofessor_agil
   examples: "- metodo agil\n- metodologías ágiles\n- metodos agiles\n- método ágil\n- métodos ágiles\n- metodologia agil\n- metodología ágil\n- metodologias agiles\n"
-- synonym: fdd
+- synonym: wizzardprofessor_fdd
   examples: "- Feature-Driven Development\n- FDD\n- Feature-driven development\n- feature drive design\n- Feature Driven Design\n- feature-driven-desing\n"
-- synonym: atributo de calidad
+- synonym: wizzardprofessor_atributo de calidad
   examples: "- atributos de calidad\n- QA\n- Quality Attributes\n- Quality atributtes\n- quality attributes\n"
-- synonym: hook
+- synonym: wizzardprofessor_hook
   examples: "- hooks\n- Hook\n"
-- synonym: requerimiento funcional
+- synonym: wizzardprofessor_requerimiento funcional
   examples: "- requerimiento funcionales\n- requerimientos funcionales\n"
-- synonym: requerimiento no funcional
+- synonym: wizzardprofessor_requerimiento no funcional
   examples: "- requerimientos no funcionales\n"
-- synonym: diseño
+- synonym: wizzardprofessor_diseño
   examples: "- Diseño\n- diseño de sistemas de software\n- diseño de sofware\n"

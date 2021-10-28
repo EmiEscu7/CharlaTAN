@@ -1,4 +1,5 @@
 from os import walk
+import os
 import yaml
 from rasa.shared.utils.io import read_yaml_file
 from ruamel import yaml as yaml
@@ -7,36 +8,21 @@ from pathlib import Path
 """
     falta agregar comentarios en los yml generados, para que qeuden mas claros a la hora de saber cuando empiezan las base de conocimiento de cada bot
 """
-
-
-def generate_nlu(folders): #obsoleto pero por si las dudas lo dejamos
-    new_intents = []
-    for folder in folders:
-        path = folder + "/data/nlu.yml"
-        nlu_specific = yaml.full_load(open(path))['nlu']
-        for intent in nlu_specific:
-            examp = str(intent["examples"]).split('\n')
-            examples = []
-            for e in examp:
-                if e != '':
-                    examples.append(e.strip('- '))
-            if('intent' in intent.keys()):
-                new_intent = {"intent": str(folder).lower() + "_" + intent['intent'], "examples": examples}
-            elif ('regex' in intent.keys()):
-                new_intent = {"regex": intent['regex'], 'examples': examples}
-            elif ('synonym') in intent.keys():
-                new_intent = {"synonym": intent['synonym'], 'examples': examples}
-            new_intents.append(new_intent)
-    general_nlu = {"version": "2.0", "nlu": new_intents}
-    with open("../data/nlu.yml", "w") as f:
-        file = yaml.dump(general_nlu, f, sort_keys=False, allow_unicode=True)
-
+dumper = yaml.YAML()
+dumper.width = 4096
+dumper.representer.add_representer(
+    type(None),
+    lambda self, _: self.represent_scalar("tag:yaml.org,2002:null", "null"),
+)
+yaml_parser = yaml.YAML(typ="safe")
+yaml_parser.version = (1,2)
+yaml_parser.preserve_quotes = True
 
 def generate_stories(folders):
     new_stories = []
     for folder in folders:
-        path = folder + "/data/stories.yml"
-        story_specific = yaml.full_load(open(path))['stories']
+        path = "RASAComponents/" + folder + "/data/stories.yml"
+        story_specific = read_yaml_file(path)['stories']
         for story in story_specific:
             name_story = story['story']
             steps = []
@@ -49,10 +35,8 @@ def generate_stories(folders):
                 steps.append(new_step)
             new_stories.append({"story": name_story, "steps": steps})
     general_stories = {"version": "2.0", "stories": new_stories}
-    with open("../data/stories.yml", "w") as f:
-        yaml.dump(general_stories, f, sort_keys=False)
-
-
+    with open("data/stories.yml", "w", encoding="utf-8") as outfile:
+        dumper.dump(general_stories, outfile)    
 
 def generate_domain(folders):
     new_intents = []
@@ -64,9 +48,8 @@ def generate_domain(folders):
     actions = []
     first = True
     for folder in folders:
-        path = folder + "/domain.yml"
-        print(path)
-        domain_specific = yaml.full_load(open(path, encoding="utf8"))
+        path = "RASAComponents/" + folder + "/domain.yml"
+        domain_specific = read_yaml_file(path)
         if first:
             version = domain_specific['version']
             session_config = domain_specific['session_config']
@@ -87,46 +70,34 @@ def generate_domain(folders):
     general_domain = {"version": version, "session_config": session_config,
                       'intents': new_intents, 'slots': slots, 'responses': responses,
                       'actions': actions}
-    with open("../domain.yml", "w") as f:
-        yaml.dump(general_domain, f, sort_keys=False)
+    with open("domain.yml", "w", encoding="utf-8") as outfile:
+        dumper.dump(general_domain, outfile) 
 
-def concatenateNLU(folders):
-    dumper = yaml.YAML()
-    dumper.width = 4096
-    dumper.representer.add_representer(
-        type(None),
-        lambda self, _: self.represent_scalar("tag:yaml.org,2002:null", "null"),
-    )
-    yaml_parser = yaml.YAML(typ="safe")
-    yaml_parser.version = (1,2)
-    yaml_parser.preserve_quotes = True
-
+def generate_nlu(folders: Path):
     nlu_new={'version': '2.0','nlu':[]}
 
     for folder in folders:
-        path = folder + "/data/nlu.yml"
+        path = "RASAComponents/"+folder + "/data/nlu.yml"
         nlu_reading = read_yaml_file(path)
         for line in nlu_reading['nlu']:
             if 'intent' in line:
-                line['intent'] = 'customizer_' + line['intent']
+                line['intent'] = str(folder).lower()+"_" + line['intent']
             if 'regex' in line:
-                line['regex'] = 'customizer_' + line['regex']
+                line['regex'] = str(folder).lower()+"_" + line['regex']
             if 'synonym' in line:
-                line['synonym'] = 'customizer_' + line['synonym']
+                line['synonym'] = str(folder).lower() + "_" + line['synonym']
             nlu_new['nlu'].append(line)
-    #cambiar el path de este open por donde se va a guardar el nuevo nlu generado
-    with open("d:/Universidad/CharlaTAN/RASAComponents/nluTesting.yml","w", encoding="utf-8") as outfile:
+    with open("data/nlu.yml","w", encoding="utf-8") as outfile:
         dumper.dump(nlu_new, outfile)
 
 
 
 folders = []
-for (dirpath, dirnames, filenames) in walk('.'):
-    print(dirnames)
+for (dirpath, dirnames, filenames) in walk('./RASAComponents'):
     folders.extend(dirnames)
     break
 
-concatenateNLU(folders)
-#generate_nlu(folders)
+generate_nlu(folders)
 generate_stories(folders)
 generate_domain(folders)
+print("Generado : NLU - STORIES - DOMAIN")

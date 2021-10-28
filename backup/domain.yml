@@ -1,0 +1,582 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- customizer_what_i_do_task
+- customizer_what_i_do_meet
+- customizer_what_i_do_both
+- customizer_greet_meeting
+- customizer_goodbye_meeting
+- psybot_greet
+- psybot_goodbye
+- psybot_want_interview
+- psybot_answer_yes
+- psybot_answer_maybe_yes
+- psybot_answer_undecided
+- psybot_answer_maybe_no
+- psybot_answer_no
+- wizzardprofessor_pregunta_concepto:
+    use_entities: true
+- wizzardprofessor_pregunta_atributos:
+    use_entities: true
+- wizzardprofessor_pregunta_patrones:
+    use_entities: true
+- wizzardprofessor_pregunta_patrones_poo:
+    use_entities: true
+- wizzardprofessor_affirm
+- wizzardprofessor_deny
+- wizzardprofessor_goodbye
+- wizzardprofessor_greet
+- wizzardprofessor_explicame_tema
+- wizzardprofessor_need_example
+- wizzardprofessor_change_current_flow
+- wizzardprofessor_no_entiendo
+slots:
+  task:
+    type: bool
+    auto_fill: false
+    influence_conversation: false
+  meet:
+    type: bool
+    auto_fill: false
+    influence_conversation: false
+  what_i_do:
+    type: text
+    auto_fill: true
+    influence_conversation: false
+  question_to_ask:
+    type: text
+    initial_value: None
+  concepto:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  patron:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  atr_calidad:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_what_i_do_both_informal:
+  - text: gato fui a la reunion {{1}} e hice la task {{0}}
+  - text: 'maquina fui a la reunion {{1}} e hice la task {{0}} '
+  - text: pa estuve con la task {{0}} y en la reunion {{1}}
+  utter_what_i_do_task_informal:
+  - text: Que onda gato, estuve trabajando con la task {{0}} bro
+  - text: 'Broo que ondaa, anduve a full con la task {{0}} '
+  - text: 'Labure a pleno con la task {{0}} '
+  utter_what_i_do_meet_informal:
+  - text: 'Gato, fui a la reunion {{0}} '
+  - text: 'Broo, estuve en la reunion {{0}} '
+  - text: 'Que onda man, anduve por la reunion {{0}} '
+  utter_what_i_do_both_formal:
+  - text: Logre asistir a la reunion {{1}} y realizar la task {{0}}
+  - text: Pude asistir a la reunion {{1}} y centre mi trabajo en la task {{0}}
+  - text: Centre mi tiempo en realizar task {{0}} y asistir a la reunion {{1}}
+  utter_what_i_do_task_formal:
+  - text: Mi trabajo estuvo centrado en la task {{0}}
+  - text: Estuve trabajando con la tarea {{0}}
+  - text: Me centre en la tarea {{0}}
+  utter_what_i_do_meet_formal:
+  - text: Decidi asistir a la reunion {{0}}
+  - text: Logre asistir a la reunion {{0}}
+  - text: He ido a la reunion {{0}}
+  utter_what_i_do_both_comun:
+  - text: Fui a la reunion {{1}} e hice la task {{0}}
+  - text: Asisti a la reunion {{1}} y trabaje con la task {{0}}
+  - text: Anduve haciendo la task {{0}} y fui a la reunion {{1}}
+  utter_what_i_do_task_comun:
+  - text: Me puse a hacer la task {{0}}
+  - text: Anduve laburando con la task {{0}}
+  - text: Estuve trabajando con la task{{0}}
+  utter_what_i_do_meet_comun:
+  - text: Fui a las reunion {{0}}
+  - text: Estuve yendo a las reunion {{0}}
+  - text: Pude ir a las reunion {{0}}
+  utter_greet_meeting_formal:
+  - text: Bueno. Comencemos con la daily meeting
+  - text: Hola, empezamos con la daily meeting
+  - text: Empezamos con la daily meeting
+  utter_greet_meeting_comun:
+  - text: Bien chicos, me alegra verlos. Empecemos con la daily meeting
+  - text: Estamos todos? Empezemos con la daily meeting
+  - text: Hola devs. Ya empezamos con la daily
+  utter_greet_meeting_informal:
+  - text: Que onda boys?? Empezamos ya mismo
+  - text: Holanda muchachos. Espero que se encuentren joya. Empecemos con la daily
+  - text: Ya estamos todos los boludos?? Empezemos!!
+  utter_goodbye_meeting_formal:
+  - text: Gracias por asistir a la runion. Pueden continuar con su trabajo
+  - text: Muy bien, gracias por venir. Continuen con lo que estaban haciendo
+  - text: Genial, sigan con su trabajo. Gracias por venir
+  utter_goodbye_meeting_comun:
+  - text: Bien chicos, ya pueden continuar con lo que venian haciendo
+  - text: Perfecto muchachos. Sigan asi. Vienen bien. Continuen con lo que estaban
+      haciendo
+  - text: Continuen con su trabajo. Gracias por venir a la meeting
+  utter_goodbye_meeting_informal:
+  - text: Bien boys, gracias por venir. Sigan haciendo su trabajo que por algo les
+      pago
+  - text: Vamos devs a trabajar. Termino la reunion por hoy
+  - text: A trabajaarrr, se termino lo lindo por hoy
+  utter_presentation:
+  - text: Hola, yo soy PsyBot, el encargado de analizar el comportamiento de los TeamMembers
+      dentro de ScrumTalk.
+  utter_interview_finished:
+  - text: Ya no tengo mas preguntas para hacerte. Gracias por tu tiempo.
+  utter_interview_not_started:
+  - text: No podes responder a preguntas si todavia no empezo la entrevista.
+  utter_greet:
+  - text: "Hola, soy el Wizard y estoy para guiarte en el camino del dise\xF1o arquitect\xF3\
+      nico\n\xBFQuer\xE9s iniciar la prueba?, Quiz\xE1 no sepas nada..."
+  utter_goodbye:
+  - text: Nos vemos pa
+  utter_sin_ejemplos:
+  - text: No hay mas ejemplos sobre este tema
+  utter_sin_question:
+  - text: No hay mas preguntas sobre este tema
+  utter_ask_good:
+  - text: Correcto ahi te va otra
+  utter_ask_bad:
+  - text: Nono le errraste, es esto en realidad es
+  utter_default:
+  - text: default
+  utter_fin_test:
+  - text: "Terminaste el recorrido intelectual... Creo que ya est\xE1s apto para que\
+      \ hablemos de lo que sea."
+  utter_pregunta_concepto/patron:
+  - text: "Los patrones arquitect\xF3nicos dan una descripci\xF3n de los elementos\
+      \ y el tipo de relaci\xF3n que tienen juntocon un conjunto de restricciones\
+      \ sobre c\xF3mo pueden ser usados.\nUn patr\xF3n arquitect\xF3nico expresa un\
+      \ esquema de organizaci\xF3n estructural esencial para un sistema de software,\
+      \ que consta de subsistemas, sus responsabilidades e interrelaciones.\nEn comparaci\xF3\
+      n con los patrones de dise\xF1o, los patrones arquitect\xF3nicos tienen un nivel\
+      \ de abstracci\xF3n mayor."
+  utter_pregunta_concepto/patron_clarificacion:
+  - text: "Mir\xE1, pensalos c\xF3mo las estructuras m\xE1s utilizadas para resolver\
+      \ problemas muy comunes a la hora de dise\xF1ar la arquitectura de tu soluci\xF3\
+      n."
+  utter_pregunta_concepto/patrones_listado:
+  - text: "Los patrones m\xE1s comunes son:\nCapas (Layered), cliente_servidor (Client-server),\
+      \ maestro_esclavo (Master-slave), pipe_filter, Broker, peer_to_peer (P2P), event_bus,\
+      \ MVC, Blackboard, Interpreter"
+  utter_pregunta_concepto/scrum:
+  - text: "La metodolog\xEDa Scrum es un framework que se utiliza dentro de equipos\
+      \ que manejan proyectos complejos.\n Es decir, se trata de una metodolog\xED\
+      a de trabajo \xE1gil que tiene como finalidad la entrega de valor en per\xED\
+      odos cortos de tiempo y para ello se basa en tres pilares: la transparencia,\
+      \ inspecci\xF3n y adaptaci\xF3n."
+  utter_pregunta_concepto/scrum_clarificacion:
+  - text: "Pensalo como un conjunto de reglas y pr\xE1cticas para poder organizar\
+      \ el trabajo de mucha gente.\n Cada persona tiene un rol, con distintas personalidades\
+      \ y hay eventos importantes que agrupan distintos roles."
+  utter_pregunta_concepto/agil:
+  - text: "Las metodolog\xEDas \xE1giles son un conjunto de m\xE9todos que permiten\
+      \ adaptar el modo de trabajo a las condiciones del proyecto, aportando flexibilidad,\
+      \ eficiencia y, por lo tanto, logrando un mejor producto a menor coste."
+  utter_pregunta_concepto/agil_clarificacion:
+  - text: "Pensalos c\xF3mo la manera de combinar la velocidad y creatividad con las\
+      \ estructuras tradicionales de las empresas grandes."
+  utter_pregunta_concepto/fdd:
+  - text: "Feature-driven development (FDD) es un proceso para desarrollo de software\
+      \ de forma iterativa e incremental\n El proceso comienza por los requerimientos\
+      \ y el modelado, siguiendo por el dise\xF1o y construcci\xF3n en base a incrementos"
+  utter_pregunta_concepto/atr_calidad:
+  - text: "Los atributos de calidad (tambi\xE9n cualidades del software) son caracter\xED\
+      sticas no funcionales que se consideran deseables en un sistema de software."
+  - text: "Un atributo de calidad es una propiedad medible de un sistema, que indica\
+      \ qu\xE9 tan bien el sistema satisface las necesidades de las partes interesadas."
+  utter_pregunta_concepto/hook:
+  - text: "Hooking es un concepto que permite modificar el comportamiento de un programa.\n\
+      \ Es la posibilidad que proporciona el c\xF3digo de cambiar comportamiento original\
+      \ sin modificar c\xF3digo de la clase correspondiente.\n Esto se realiza sobreescribiendo\
+      \ los m\xE9todos hook."
+  utter_pregunta_concepto/req_func:
+  - text: "Los requerimientos funcionales de un sistema son aquellos que describen\
+      \ cualquier actividad/servicio que \xE9ste deba realizar."
+  utter_pregunta_concepto/req_func_ejemplo:
+  - text: "Un ejemplo de requerimiento funcional, ser\xEDa:\n El sistema permitir\xE1\
+      \ a los usuarios autorizados ingresar planes y cronogramas de proyecto"
+  - text: "Por ejemplo,\n El sistema permitir\xE1 el env\xEDo automatizado de cartas\
+      \ de entrega de \xF3rdenes directamente al almac\xE9n."
+  utter_pregunta_concepto/req_no_func:
+  - text: "Los requerimientos no funcionales representan caracter\xEDsticas generales\
+      \ y restricciones de la aplicaci\xF3n o sistema que se est\xE9 desarrollando."
+  - text: "Se trata de requisitos que no se refieren directamente a las funciones\
+      \ espec\xEDficas suministradas por el sistema (caracter\xEDsticas de usuario),\
+      \ sino a las propiedades del sistema:\n rendimiento, seguridad, disponibilidad."
+  utter_pregunta_concepto/req_no_func_ejemplo:
+  - text: "Por ejemplo,\n Todas las comunicaciones externas entre los servidores de\
+      \ datos, la aplicaci\xF3n y el cliente del sistema  deben estar cifradas utilizando\
+      \ el algoritmo RSA.\n Es un ejemplo de RNF que puede encasillarse en el atributo\
+      \ de calidad de Seguridad."
+  utter_pregunta_concepto/diferencia_req_func_no_func:
+  - text: "Un requisito funcional describe lo que debe hacer un sistema, mientras\
+      \ que los requisitos no funcionales imponen restricciones sobre c\xF3mo lo har\xE1\
+      \ el sistema."
+  utter_pregunta_patrones/capas:
+  - image: https://miro.medium.com/max/376/1*jMWk_JqqyyloVPhTs_Zd1A.png
+    text: "Este patr\xF3n se puede utilizar para estructurar programas que se pueden\
+      \ descomponer en grupos de subtareas, cada una de las cuales se encuentra en\
+      \ un nivel particular de abstracci\xF3n.\n Cada capa proporciona servicios a\
+      \ la siguiente capa superior.\n\n Las 4 capas m\xE1s com\xFAnmente encontradas\
+      \ de un sistema de informaci\xF3n general son las siguientes:\n Capa de presentaci\xF3\
+      n, Capa de aplicaci\xF3n, Capa de l\xF3gica de negocios, Capa de acceso a datos."
+  utter_pregunta_patrones/cliente_servidor:
+  - image: https://miro.medium.com/max/568/1*4xX_WQQuD2u0PMK5bcWFkQ.png
+    text: "Este patr\xF3n consiste en dos partes; un servidor y m\xFAltiples clientes.\n\
+      \ El componente del servidor proporcionar\xE1 servicios a m\xFAltiples componentes\
+      \ del cliente.\n Los clientes solicitan servicios del servidor y el servidor\
+      \ proporciona servicios relevantes a esos clientes.\n Adem\xE1s, el servidor\
+      \ sigue escuchando las solicitudes de los clientes."
+  utter_pregunta_patrones/maestro_esclavo:
+  - image: https://miro.medium.com/max/1084/1*lsK9QntZl2d5oLojwRGXDg.png
+    text: "Este patr\xF3n consiste en dos partes; maestro y esclavos.\n El componente\
+      \ maestro distribuye el trabajo entre componentes esclavos id\xE9nticos y calcula\
+      \ el resultado  final de los resultados que devuelven los esclavos."
+  utter_pregunta_patrones/pipe_filter:
+  - image: https://miro.medium.com/max/1400/1*qikehZcDhhl_wWsqeI_nvg.png
+    text: "Este patr\xF3n se puede usar para estructurar sistemas que producen y procesan\
+      \ una secuencia de datos.\n Cada paso de procesamiento se incluye dentro de\
+      \ un componente de filtro.\n Los datos que se procesar\xE1n se pasan a trav\xE9\
+      s de las tuber\xEDas.\n Estas tuber\xEDas se pueden utilizar para el almacenamiento\
+      \ en b\xFAfer o con fines de sincronizaci\xF3n."
+  utter_pregunta_patrones/broker:
+  - image: https://miro.medium.com/max/1400/1*1qRQZjLRAd0yY_T9p2OgBw.png
+    text: "Este patr\xF3n se usa para estructurar sistemas distribuidos con componentes\
+      \ desacoplados.\n Estos componentes pueden interactuar entre s\xED mediante\
+      \ invocaciones de servicios remotos.\n Un componente de intermediario es responsable\
+      \ de la coordinaci\xF3n de la comunicaci\xF3n entre los componentes."
+  utter_pregunta_patrones/peer_to_peer:
+  - image: https://miro.medium.com/max/520/1*ROvkckSTw1UncrbQSmUJUQ.png
+    text: "En este patr\xF3n, los componentes individuales se conocen como pares.\n\
+      \ Los pares pueden funcionar tanto como un cliente, solicitando servicios de\
+      \ otros pares, y como un servidor, proporcionando servicios a otros pares.\n\
+      \ Un par puede actuar como un cliente o como un servidor o como ambos, y puede\
+      \ cambiar su rol din\xE1micamente con el tiempo."
+  utter_pregunta_patrones/event_bus:
+  - image: https://miro.medium.com/max/1264/1*DOZ4nVR9zkJm-EnXT3KOGQ.png
+    text: "Este patr\xF3n trata principalmente con eventos y tiene 4 componentes principales:\
+      \ \n fuente de evento, escucha de evento, canal y bus de evento.\n\n Las fuentes\
+      \ publican mensajes en canales particulares en un bus de eventos.\n Los oyentes\
+      \ se suscriben a canales particulares.\n Los oyentes son notificados de los\
+      \ mensajes que se publican en un canal al que se han suscrito anteriormente."
+  utter_pregunta_patrones/mvc:
+  - image: https://miro.medium.com/max/1400/1*OP0CS6O5Sb66jpc-H-IuRQ.png
+    text: "Este patr\xF3n, tambi\xE9n conocido como patr\xF3n MVC, divide una aplicaci\xF3\
+      n interactiva en 3 partes, como:\n Modelo: contiene la funcionalidad y los datos\
+      \ b\xE1sicos,\n Vista: muestra la informaci\xF3n al usuario (se puede definir\
+      \ m\xE1s de una vista),\n Controlador: maneja la entrada del usuario.\n\n Esto\
+      \ se hace para separar las representaciones internas de informaci\xF3n de las\
+      \ formas en que se presenta y acepta la informaci\xF3n del usuario.\n Desacopla\
+      \ los componentes y permite la reutilizaci\xF3n eficiente del c\xF3digo."
+  utter_pregunta_patrones/blackboard:
+  - image: https://miro.medium.com/max/1060/1*ArbMx7A21I47llvwUTiSDg.png
+    text: "Este patr\xF3n es \xFAtil para problemas para los que no se conocen estrategias\
+      \ de soluci\xF3n deterministas.\n El patr\xF3n de pizarra consta de 3 componentes\
+      \ principales:\n Pizarra: una memoria global estructurada que contiene objetos\
+      \ del espacio de soluci\xF3n,\n Fuente de conocimiento: m\xF3dulos especializados\
+      \ con su propia representaci\xF3n,\n Componente de control: selecciona, configura\
+      \ y ejecuta m\xF3dulos.\n\n Todos los componentes tienen acceso a la pizarra.\n\
+      \ Los componentes pueden producir nuevos objetos de datos que se agregan a la\
+      \ pizarra.\n Los componentes buscan tipos particulares de datos en la pizarra,\
+      \ y pueden encontrarlos por coincidencia de patrones con la fuente de conocimiento\
+      \ existente."
+  utter_pregunta_patrones/interpreter:
+  - image: https://miro.medium.com/max/1320/1*DrC3T5R4SsdcQY6aXLCRZA.png
+    text: "Este patr\xF3n se usa para dise\xF1ar un componente que interpreta programas\
+      \ escritos en un lenguaje dedicado.\n Especifica principalmente c\xF3mo evaluar\
+      \ las l\xEDneas de programas, conocidas como oraciones o expresiones escritas\
+      \ en un idioma particular.\n La idea b\xE1sica es tener una clase para cada\
+      \ s\xEDmbolo del idioma."
+  utter_pregunta_concepto/patrones_poo:
+  - text: "Los patrones de dise\xF1o son soluciones habituales a problemas que ocurren\
+      \ con frecuencia en el dise\xF1o de software.\nSon como planos prefabricados\
+      \ que se pueden personalizar para resolver un problema de dise\xF1o recurrente\
+      \ en tu c\xF3digo."
+  utter_pregunta_patrones_poo/abstract_factory:
+  - text: "Abstract Factory es un patr\xF3n de dise\xF1o creacional que nos permite\
+      \ producir familias de objetos relacionados sin especificar sus clases concretas."
+  utter_pregunta_patrones_poo/factory_method:
+  - text: "Factory Method es un patr\xF3n de dise\xF1o creacional que proporciona\
+      \ una interfaz para crear objetos en una superclase, mientras permite a las\
+      \ subclases alterar el tipo de objetos que se crear\xE1n."
+  utter_pregunta_patrones_poo/builder:
+  - text: "Builder es un patr\xF3n de dise\xF1o creacional que nos permite construir\
+      \ objetos complejos paso a paso.\n El patr\xF3n nos permite producir distintos\
+      \ tipos y representaciones de un objeto empleando el mismo c\xF3digo de construcci\xF3\
+      n."
+  utter_pregunta_patrones_poo/prototype:
+  - text: "Prototype es un patr\xF3n de dise\xF1o creacional que nos permite copiar\
+      \ objetos existentes sin que el c\xF3digo dependa de sus clases."
+  utter_pregunta_patrones_poo/singleton:
+  - text: "Singleton es un patr\xF3n de dise\xF1o creacional que nos permite asegurarnos\
+      \ de que una clase tenga una \xFAnica instancia, a la vez que proporciona un\
+      \ punto de acceso global a dicha instancia."
+  utter_pregunta_patrones_poo/adapter:
+  - text: "Adapter es un patr\xF3n de dise\xF1o estructural que permite la colaboraci\xF3\
+      n entre objetos con interfaces incompatibles."
+  utter_pregunta_patrones_poo/bridge:
+  - text: "Bridge es un patr\xF3n de dise\xF1o estructural que te permite dividir\
+      \ una clase grande, o un grupo de clases estrechamente relacionadas, en dos\
+      \ jerarqu\xEDas separadas (abstracci\xF3n e implementaci\xF3n) que pueden desarrollarse\
+      \ independientemente la una de la otra."
+  utter_pregunta_patrones_poo/composite:
+  - text: "Composite es un patr\xF3n de dise\xF1o estructural que te permite componer\
+      \ objetos en estructuras de \xE1rbol y trabajar con esas estructuras como si\
+      \ fueran objetos individuales."
+  utter_pregunta_patrones_poo/decorator:
+  - text: "Decorator es un patr\xF3n de dise\xF1o estructural que te permite a\xF1\
+      adir funcionalidades a objetos colocando estos objetos dentro de objetos encapsuladores\
+      \ especiales que contienen estas funcionalidades."
+  utter_pregunta_patrones_poo/facade:
+  - text: "Facade es un patr\xF3n de dise\xF1o estructural que proporciona una interfaz\
+      \ simplificada a una biblioteca, un framework o cualquier otro grupo complejo\
+      \ de clases."
+  utter_pregunta_patrones_poo/flyweight:
+  - text: "Flyweight es un patr\xF3n de dise\xF1o estructural que te permite mantener\
+      \ m\xE1s objetos dentro de la cantidad disponible de RAM, compartiendo las partes\
+      \ comunes del estado entre varios objetos, en lugar de mantener toda la informaci\xF3\
+      n en cada objeto."
+  utter_pregunta_patrones_poo/proxy:
+  - text: "Proxy es un patr\xF3n de dise\xF1o estructural que te permite proporcionar\
+      \ un sustituto o marcador de posici\xF3n para otro objeto.\n Un proxy controla\
+      \ el acceso al objeto original, permiti\xE9ndote hacer algo antes o despu\xE9\
+      s de que la solicitud llegue al objeto original."
+  utter_pregunta_patrones_poo/chain_of_responsibility:
+  - text: "Chain of Responsibility es un patr\xF3n de dise\xF1o de comportamiento\
+      \ que te permite pasar solicitudes a lo largo\n de una cadena de manejadores.\n\
+      \ Al recibir una solicitud, cada manejador decide si la procesa o si la pasa\
+      \ al siguiente manejador de la cadena."
+  utter_pregunta_patrones_poo/command:
+  - text: "Command es un patr\xF3n de dise\xF1o de comportamiento que convierte una\
+      \ solicitud en un objeto independiente\n que contiene toda la informaci\xF3\
+      n sobre la solicitud.\n Esta transformaci\xF3n te permite parametrizar los m\xE9\
+      todos con diferentes solicitudes, retrasar o poner en cola la ejecuci\xF3n de\
+      \ una solicitud y soportar operaciones que no se pueden realizar."
+  utter_pregunta_patrones_poo/memento:
+  - text: "Memento es un patr\xF3n de dise\xF1o de comportamiento que te permite guardar\
+      \ y restaurar el estado previo de un objeto sin revelar los detalles de su implementaci\xF3\
+      n."
+  utter_pregunta_patrones_poo/iterator:
+  - text: "Iterator es un patr\xF3n de dise\xF1o de comportamiento que te permite\
+      \ recorrer elementos de una colecci\xF3n sin exponer su representaci\xF3n subyacente\
+      \ (lista, pila, \xE1rbol, etc.)."
+  utter_pregunta_patrones_poo/mediator:
+  - text: "Mediator es un patr\xF3n de dise\xF1o de comportamiento que te permite\
+      \ reducir las dependencias ca\xF3ticas entre objetos.\n El patr\xF3n restringe\
+      \ las comunicaciones directas entre los objetos, forz\xE1ndolos a colaborar\
+      \ \xFAnicamente a trav\xE9s de un objeto mediador."
+  utter_pregunta_patrones_poo/observer:
+  - text: "Observer es un patr\xF3n de dise\xF1o de comportamiento que te permite\
+      \ definir un mecanismo de suscripci\xF3n para notificar a varios objetos sobre\
+      \ cualquier evento que le suceda al objeto que est\xE1n observando."
+  utter_pregunta_patrones_poo/state:
+  - text: "State es un patr\xF3n de dise\xF1o de comportamiento que permite a un objeto\
+      \ alterar su comportamiento cuando su estado interno cambia.\n Parece como si\
+      \ el objeto cambiara su clase."
+  utter_pregunta_patrones_poo/strategy:
+  - text: "Strategy es un patr\xF3n de dise\xF1o de comportamiento que te permite\
+      \ definir una familia de algoritmos, colocar cada uno de ellos en una clase\
+      \ separada y hacer sus objetos intercambiables."
+  utter_pregunta_patrones_poo/template_method:
+  - text: "Template Method es un patr\xF3n de dise\xF1o de comportamiento que define\
+      \ el esqueleto de un algoritmo en la  superclase pero permite que las subclases\
+      \ sobrescriban pasos del algoritmo sin cambiar su estructura."
+  utter_pregunta_patrones_poo/visitor:
+  - text: "Visitor es un patr\xF3n de dise\xF1o de comportamiento que te permite separar\
+      \ algoritmos de los objetos sobre los que operan."
+  utter_pregunta_atributos/listado:
+  - text: "Los atributos de calidad son:\n Tolerancia a Fallos, Disponiilidad, Mantenibilidad,\
+      \ Performance, Escalabilidad, Seguridad, Usabilidad, Portabilidad e Interoperabilidad"
+  utter_pregunta_atributos/tolerancia_a_fallos:
+  - text: "La tolerancia a fallos, es la capacidad del sistema o componente para operar\
+      \ seg\xFAn lo previsto en presencia de fallos hardware o software."
+  utter_pregunta_atributos/tolerancia_a_fallos_ejemplo:
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Tolerancia\
+      \ a fallos puede ser:\n El producto tendr\xE1 tolerancia a fallas mediante el\
+      \ uso de t\xE9cnicas de recuperaci\xF3n, transacciones compensatorias y enrutamiento\
+      \ en caso de fallas."
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Tolerancia\
+      \ a fallos puede ser:\n Debe ser posible que se trate de forma independiente\
+      \ una falla de software del sistema"
+  utter_pregunta_atributos/disponibilidad:
+  - text: Capacidad del sistema o componente de estar operativo y accesible para su
+      uso cuando se requiere.
+  utter_pregunta_atributos/disponibilidad_ejemplo:
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Disponibilidad\
+      \ puede ser:\n Es relevante que el sistema este disponible las 24 horas del\
+      \ d\xEDa durante todo el a\xF1o"
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Disponibilidad\
+      \ puede ser:\n El sistema debe estar inactivo un tiempo relativamente corto\
+      \ por a\xF1o."
+  utter_pregunta_atributos/mantenibilidad:
+  - text: "Esta caracter\xEDstica representa la capacidad del producto software para\
+      \ ser modificado efectiva y eficientemente, debido a necesidades evolutivas,\
+      \ correctivas o perfectivas."
+  utter_pregunta_atributos/mantenibilidad_ejemplo:
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Mantenibilidad\
+      \ puede ser:\n Los componentes del sistema deben poder intercambiarse sin afectar\
+      \ el funcionamiento del programa"
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Mantenibilidad\
+      \ puede ser:\n El sistema debe ser f\xE1cil de actualizar"
+  utter_pregunta_atributos/performance:
+  - text: "Esta caracter\xEDstica representa el desempe\xF1o relativo a la cantidad\
+      \ de recursos utilizados bajo determinadas condiciones"
+  utter_pregunta_atributos/performance_ejemplo:
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Performance\
+      \ puede ser:\n Es importante que el sistema traiga resultados de b\xFAsqueda\
+      \ en un tiempo aceptable"
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Performance\
+      \ puede ser:\n El tiempo de espera para que un usuario navegue de una pantalla\
+      \ ser\xE1 inmediato"
+  utter_pregunta_atributos/escalabilidad:
+  - text: Es la capacidad de un sistema para funcionar bien cuando se presentan cambios
+      en la demanda o en la carga del mismo.
+  utter_pregunta_atributos/escalabilidad_ejemplo:
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Escalabilidad\
+      \ puede ser:\n El producto debe ser capaz de soportar y administrar 1000 usuarios\
+      \ simult\xE1neos y remotos"
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Escalabilidad\
+      \ puede ser:\n El sistema de manejo de cuentas debera soportar un n\xFAmero\
+      \ ilimitado de clientes, cuentas y transacciones"
+  utter_pregunta_atributos/seguridad:
+  - text: "Capacidad de protecci\xF3n de la informaci\xF3n y los datos de manera que\
+      \ personas o sistemas no autorizados no puedan leerlos o modificarlos."
+  utter_pregunta_atributos/seguridad_ejemplo:
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Seguridad\
+      \ puede ser:\n Es importante que el sistema traiga autorizaci\xF3n de usuarios\
+      \ y almacenamiento seguro de contrase\xF1as"
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Seguridad\
+      \ puede ser:\n No se introducir\xE1n datos inv\xE1lidos en el sistema"
+  utter_pregunta_atributos/usabilidad:
+  - text: Es la capacidad del producto software para ser entendido, aprendido, usado
+      y resultar atractivo para el usuario, cuando se usa bajo determinadas condiciones.
+  utter_pregunta_atributos/usabilidad_ejemplo:
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Usabilidad\
+      \ puede ser:\n Es importante que el sistema sea intuitivo y de f\xE1cil comprensi\xF3\
+      n"
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Usabilidad\
+      \ puede ser:\n La navegaci\xF3n debe dise\xF1arse para ayudar a los usuarios\
+      \ a comprender d\xF3nde se encuentran, d\xF3nde han estado y ad\xF3nde pueden\
+      \ ir a continuaci\xF3n"
+  utter_pregunta_atributos/portabilidad:
+  - text: "Es la capacidad del producto o componente de ser transferido de forma efectiva\
+      \ y eficiente de un entorno hardware, software, operacional o de utilizaci\xF3\
+      n a otro"
+  utter_pregunta_atributos/portabilidad_ejemplo:
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Portabilidad\
+      \ puede ser:\n El sistema debe funcionar en m\xE1s de una plataforma m\xF3vil\
+      \ (Android, iOS)"
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Portabilidad\
+      \ puede ser:\n El producto debe correr en m\xE1s de un sistema operativo (Windows,\
+      \ Linux, macOS)"
+  utter_pregunta_atributos/interoperabilidad:
+  - text: "Es la capacidad de dos o m\xE1s sistemas o componentes para intercambiar\
+      \ informaci\xF3n y/o llevar a cabo sus funciones requeridas cuando comparten\
+      \ el mismo entorno hardware o software"
+  utter_pregunta_atributos/interoperabilidad_ejemplo:
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Interoperabilidad\
+      \ puede ser:\n El producto debe tener la capacidad de interpretar correctamente\
+      \ los datos que se intercambian"
+  - text: "Por ejemplo, un requerimiento no funcional que se encasilla en Interoperabilidad\
+      \ puede ser:\n El sistema debe poder comunicarse f\xE1cilmente con otros servicios"
+  utter_pregunta_concepto/fdd_clarificacion:
+  - text: Te lo explico con otras palabras... fdd es un metodologia agil para el desarrollo
+      de sistemas que incluye el monitoreo constante de porceso
+  utter_pregunta_concepto/atr_calidad_clarificacion:
+  - text: Y mira, los atributos de calidad son aspectos importates impotantes de la
+      arquitectura de software, indica que tan bien el sistema satisface las necesidades
+      de las partes interesadas
+  utter_pregunta_concepto/hook_clarificacion:
+  - text: "Hooking se utiliza para muchos prop\xF3sitos, incluyendo la depuraci\xF3\
+      n de programas y la ampliaci\xF3n de la funcionalidad"
+  utter_pregunta_concepto/req_func_clarificacion:
+  - text: "Es importante saber que un requisito funcional define una funci\xF3n del\
+      \ sistema de software o sus componentes."
+  utter_pregunta_concepto/req_no_func_clarificacion:
+  - text: "Se trata de requisitos que no se refieren directamente a las funciones\
+      \ espec\xEDficas suministradas por el sistema (caracter\xEDsticas de usuario),\
+      \ sino a las propiedades del sistema: rendimiento, seguridad, disponibilidad."
+  utter_pregunta_concepto/diferencia_req_func_no_func_clarificacion:
+  - text: "En resumen, el requisito funcional es describir el comportamiento del sistema\
+      \ en relaci\xF3n con la funcionalidad del sistema.\n El requisito no funcional\
+      \ elabora una caracter\xEDstica de rendimiento del sistema."
+  utter_pregunta_atributos/tolerancia_a_fallos_clarificacion:
+  - text: "Un dise\xF1o tolerante a fallos es un sistema que est\xE1 capacitado para\
+      \ continuar su funcionamiento cuando\n alg\xFAn componente del sistema falla"
+  utter_pregunta_atributos/disponibilidad_clarificacion:
+  - text: "En pocas palabras, la disponibilidad es la proporci\xF3n de tiempo que\
+      \ un sistema est\xE1 en condiciones de funcionamiento."
+  utter_pregunta_atributos/mantenibilidad_clarificacion:
+  - text: "La mantenibilidad se refiere a la facilidad con que se pueden ejecutar\
+      \ las tareas de gesti\xF3n de mantenimiento\n del sistema"
+  utter_pregunta_atributos/performance_clarificacion:
+  - text: "En pocas palabras, desempe\xF1o con respecto al rendimiento de una computadora,\
+      \ un dispositivo,  un sistema operativo, un programa o una conexi\xF3n a una\
+      \ red"
+  utter_pregunta_atributos/escalabilidad_clarificacion:
+  - text: "Se entiende por escalabilidad a la capacidad de adaptaci\xF3n y respuesta\
+      \ de un sistema"
+  utter_pregunta_atributos/seguridad_clarificacion:
+  - text: "Es la medida sobre la habilidad del sistema para resistir usos no autorizados\
+      \ mientras sigue proveyendo sus servicios a los usuarios leg\xEDtimos."
+  utter_pregunta_atributos/usabilidad_clarificacion:
+  - text: Simplificando, es el grado de facilidad del sistema para ser operado
+  utter_pregunta_atributos/portabilidad_clarificacion:
+  - text: Resumiendo, es el grado en el que los datos tienen atributos que les permiten
+      ser instalados,  reemplazados o eliminados de un sistema a otro
+  utter_pregunta_atributos/interoperabilidad_clarificacion:
+  - text: "En pocas palabras, el atrbutos de calidad interoperabilidad es responsable\
+      \ del funcionamiento y la transmisi\xF3n de datos y su intercambio con otros\
+      \ sistemas externos"
+  utter_pregunta_concepto/scrum_ejemplo:
+  - text: "Un ejemplo del uso de Scrum es Spotify, ya que dieron mucha importancia\
+      \ al rol del Scrum Master y al del Product Owner.\n Gracias a esta metodolog\xED\
+      a, descubrieron y entendieron las necesidades reales de los clientes y realizaron\
+      \ un buen trabajo de equipo coordin\xE1ndose en la empresa."
+  utter_pregunta_concepto/agil_ejemplo:
+  - text: "Existen diferentes opciones como Scrum, Kanban, entre otras;\n todas ellas\
+      \ se gu\xEDan a trav\xE9s de un patr\xF3n establecido por el Manifiesto \xC1\
+      gil"
+  utter_pregunta_concepto/fdd_ejemplo:
+  - text: ''
+  utter_pregunta_concepto/hook_ejemplo:
+  - text: "Hay varios ejemplos, como incluir la interceptaci\xF3n de mensajes de eventos\
+      \ de teclado o de rat\xF3n antes  de que lleguen a una aplicaci\xF3n o interceptar\
+      \ llamadas de sistema operativo para supervisar el comportamiento o modificar\
+      \ la funci\xF3n de una aplicaci\xF3n u otro componente."
+  utter_pregunta_concepto/diferencia_req_func_no_func_ejemplo:
+  - text: "Los requisitos no funcionales a veces se definen en t\xE9rminos de m\xE9\
+      tricas es decir,  algo que se puede medir sobre el sistema para hacerlos m\xE1\
+      s tangibles.\n Los requisitos no funcionales tambi\xE9n pueden describir aspectos\
+      \ del sistema que no se relacionan con su ejecuci\xF3n,  sino con su evoluci\xF3\
+      n a lo largo del tiempo, por ejemplo, mantenibilidad, extensibilidad, documentaci\xF3\
+      n, etc."
+  "utter_pregunta_concepto/dise\xF1o":
+  - text: "Se lo define como el proceso de aplicar ciertas t\xE9cnicas y principios\
+      \ con el prop\xF3sito de definir un dispositivo, un proceso o un Sistema, con\
+      \ suficientes detalles como para permitir su interpretaci\xF3n y realizaci\xF3\
+      n f\xEDsica.\n El Dise\xF1o de Software cuenta con distintas etapas, pero podemos\
+      \ resaltar la etapa del Dise\xF1o Arquitect\xF3nico, que describe la estructura\
+      \ y el comportamiento del Software consigo mismo, con los sistemas que operan\
+      \ junto con el y con los usuarios que lo emplean."
+  "utter_pregunta_concepto/dise\xF1o_ejemplo":
+  - text: "Hay miles de ejemplos, te puedo ayudar a dise\xF1ar! As\xED armamos tu\
+      \ propio dise\xF1o, puede ser el de dise\xF1o de sistemas de operaciones, p\xE1\
+      ginas web, dispositivos m\xF3viles y mas!"
+  "utter_pregunta_concepto/dise\xF1o_clarificacion":
+  - text: "En otras palabras y muy muy breve, es el proceso de definici\xF3n de la\
+      \ arquitectura, m\xF3dulos, interfaces y datos de un sistema para satisfacer\
+      \ unos requisitos previamente especificados."
+actions:
+- action_ask_again
+- action_ask_question
+- action_interview_not_started
