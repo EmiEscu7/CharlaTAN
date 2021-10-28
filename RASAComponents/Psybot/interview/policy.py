@@ -140,7 +140,7 @@ class InterviewPolicy(Policy):
                                prefix + self._interview.next_question()))
         print("------ TAMO AQUI PERRO ANTES DE PREDECIR EL ACTION_PSYBOT_ASK_QUESTION----------")
         return self._prediction(confidence_scores_for(
-            "action_psybot_ask_question", 1.0, domain)
+            "action_ask_question", 1.0, domain)
         )
 
     def process_answer(self, text, intent_name):

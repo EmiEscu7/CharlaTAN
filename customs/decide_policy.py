@@ -16,6 +16,8 @@ from rasa.core.constants import MEMOIZATION_POLICY_PRIORITY
 
 
 # imports propios
+from RASAComponents.Psybot.interview.policy import InterviewPolicy
+from RASAComponents.WizzardProfessor.tour.policy import AssistantPolicy
 from .custom_tracker import CustomTracker
 
 
@@ -31,7 +33,11 @@ class DecidePolicy(Policy):
     ) -> None:
         super().__init__(featurizer, priority, **kwargs)
         self.answered = False
-        self.differents_policies:Dict = self.get_policies()
+        #self.differents_policies:Dict = self.get_policies()
+        self.differents_policies = {
+            "psybot": InterviewPolicy(),
+            "scrum_assistant": AssistantPolicy()
+        }
         self.scrum_assistant = False
 
     def get_policies(self) -> Dict:
@@ -88,8 +94,7 @@ class DecidePolicy(Policy):
         intents = tracker._latest_message_data()["intent_ranking"]
 
         # get type of bot
-        type = custom_tracker.get_latest_event().metadata["type"]
-
+        type = str(custom_tracker.get_latest_event().metadata["type"]).lower()
         print("ESTOS SON LOS INTENTS RECONOZIDOS CON SUS PROB AL INICIO -------->>>>>")
         for intent in intents:
             print(intent["name"] + ":    " + str(intent["confidence"]))

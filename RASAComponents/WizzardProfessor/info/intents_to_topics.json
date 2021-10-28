@@ -1,0 +1,11 @@
+{
+  "proceso_scrum": "proceso_scrum",
+  "product_backlog": "product_backlog",
+  "product_owner": "product_owner",
+  "epica": "epica",
+  "scrum_master": "scrum_master",
+  "sprint_backlog": "sprint_backlog",
+  "disenio_backlog": "disenio_backlog",
+  "user_story": "user_story",
+  "tarea": "tarea"
+}

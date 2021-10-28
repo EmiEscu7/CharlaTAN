@@ -1,0 +1,639 @@
+[
+{
+    "topic_id": "atr_calidad",
+    "type": "simple",
+    "utters": [
+      "utter_pregunta_concepto/atr_calidad"
+    ],
+    "examples": [
+        {
+            "topic_id": "atr_calidad",
+            "example_text": "utter_pregunta_concepto/atr_calidad_clarificacion"
+        }  
+    ],
+    "sub_topics": [
+        {
+            "topic_id": "tolerancia_a_fallos",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_atributos/tolerancia_a_fallos"
+            ],
+            "examples": [
+                {
+                    "topic_id": "tolerancia_a_fallos",
+                    "example_text": "utter_pregunta_atributos/tolerancia_a_fallos_ejemplo"
+                }  
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "disponibilidad",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_atributos/disponibilidad"
+            ],
+            "examples": [
+                {
+                    "topic_id": "disponibilidad",
+                    "example_text": "utter_pregunta_atributos/disponibilidad_ejemplo"
+                }  
+                
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "mantenibilidad",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_atributos/mantenibilidad"
+            ],
+            "examples": [
+                {
+                    "topic_id": "mantenibilidad",
+                    "example_text": "utter_pregunta_atributos/mantenibilidad_ejemplo"
+                }  
+                
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "performance",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_atributos/performance"
+            ],
+            "examples": [
+                    {
+                        "topic_id": "performance",
+                        "example_text": "utter_pregunta_atributos/performance_ejemplo"
+                    }  
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "escalabilidad",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_atributos/escalabilidad"
+            ],
+            "examples": [
+                {
+                    "topic_id": "escalabilidad",
+                    "example_text": "utter_pregunta_atributos/escalabilidad_ejemplo"
+                }   
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "seguridad",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_atributos/seguridad"
+            ],
+            "examples": [
+                {
+                    "topic_id": "seguridad",
+                    "example_text": "utter_pregunta_atributos/seguridad_ejemplo"
+                }  
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "usabilidad",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_atributos/usabilidad"
+            ],
+            "examples": [
+                {
+                    "topic_id": "usabilidad",
+                    "example_text": "utter_pregunta_atributos/usabilidad_ejemplo"
+                }  
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "portabilidad",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_atributos/portabilidad"
+            ],
+            "examples": [
+                {
+                    "topic_id": "portabilidad",
+                    "example_text": "utter_pregunta_atributos/portabilidad_ejemplo"
+                }  
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "interoperabilidad",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_atributos/interoperabilidad"
+            ],
+            "examples": [
+                {
+                    "topic_id": "interoperabilidad",
+                    "example_text": "utter_pregunta_atributos/interoperabilidad_ejemplo"
+                }  
+            ],
+            "sub_topics": [
+            ]
+        }
+    ]
+  },
+  
+  {
+    "topic_id": "patron_arquitectonico",
+    "type": "simple",
+    "utters": [
+        "utter_pregunta_concepto/patron"
+    ],
+    "examples": [
+        {
+            "topic_id": "patron_arquitectonico",
+            "example_text": "utter_pregunta_concepto/patron_clarificacion"
+        } 
+    ],
+    "sub_topics": [
+        {
+            "topic_id": "capas",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/capas"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "cliente_servidor",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/cliente_servidor"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "maestro_esclavo",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/maestro_esclavo"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "pipe_filter",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/pipe_filter"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "broker",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/broker"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "peer_to_peer",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/peer_to_peer"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "event_bus",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/event_bus"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "mvc",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/mvc"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "blackboard",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/blackboard"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "interpreter",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones/interpreter"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        }
+    ]
+   },
+{
+    "topic_id": "patrones_poo",
+    "type": "simple",
+    "utters": [
+        "utter_pregunta_concepto/patrones_poo"
+    ],
+    "examples": [
+    ],
+    "sub_topics": [
+        {
+            "topic_id": "abstract_factory",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/abstract_factory"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "factory_method",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/factory_method"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "builder",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/builder"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "prototype",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/prototype"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "singleton",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/singleton"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "adapter",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/adapter"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "bridge",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/bridge"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "composite",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/composite"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "decorator",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/decorator"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "facade",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/facade"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "flyweight",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/flyweight"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "proxy",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/proxy"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "chain_of_responsibility",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/chain_of_responsibility"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "command",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/command"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "memento",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/memento"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "iterator",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/iterator"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "mediator",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/mediator"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "observer",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/observer"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "state",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/state"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "strategy",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/strategy"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "template_method",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/template_method"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        },
+        {
+            "topic_id": "visitor",
+            "type": "simple",
+            "utters": [
+                "utter_pregunta_patrones_poo/visitor"
+            ],
+            "examples": [
+            ],
+            "sub_topics": [
+            ]
+        }
+    ]
+},
+
+  {
+    "topic_id": "scrum",
+    "type": "simple",
+    "utters": [
+        "utter_pregunta_concepto/scrum"
+    ],
+    "examples": [
+        {
+            "topic_id": "scrum",
+            "example_text": "utter_pregunta_concepto/scrum_ejemplo"
+        }
+    ],
+    "sub_topics": [
+    ]
+},
+  {
+    "topic_id": "fdd",
+    "type": "simple",
+    "utters": [
+        "utter_pregunta_concepto/fdd"
+    ],
+    "examples": [
+        {
+            "topic_id": "fdd",
+            "example_text": "utter_pregunta_concepto/fdd_ejemplo"
+        }
+    ],
+    "sub_topics": [
+    ]
+},
+  {
+    "topic_id": "agil",
+    "type": "simple",
+    "utters": [
+        "utter_pregunta_concepto/agil"
+    ],
+    "examples": [
+        {
+            "topic_id": "agil",
+            "example_text": "utter_pregunta_concepto/agil_ejemplo"
+        }
+    ],
+    "sub_topics": [
+    ]
+},
+  {
+    "topic_id": "hook",
+    "type": "simple",
+    "utters": [
+        "utter_pregunta_concepto/hook"
+    ],
+    "examples": [
+        {
+            "topic_id": "hook",
+            "example_text": "utter_pregunta_concepto/hook_ejemplo"
+        }   
+    ],
+    "sub_topics": [
+    ]
+},
+  {
+    "topic_id": "req_func",
+    "type": "simple",
+    "utters": [
+        "utter_pregunta_concepto/req_func"
+    ],
+    "examples": [
+        {
+            "topic_id": "req_func",
+            "example_text": "utter_pregunta_concepto/req_func_ejemplo"
+        } 
+    ],
+    "sub_topics": [
+    ]
+},
+  {
+    "topic_id": "req_no_func",
+    "type": "simple",
+    "utters": [
+        "utter_pregunta_concepto/req_no_func"
+    ],
+    "examples": [
+        {
+            "topic_id": "req_no_func",
+            "example_text": "utter_pregunta_concepto/req_no_func_ejemplo"
+        } 
+    ],
+    "sub_topics": [
+    ]
+},
+  {
+    "topic_id": "diferencia_req_func_no_func",
+    "type": "simple",
+    "utters": [
+        "utter_pregunta_concepto/diferencia_req_func_no_func"
+    ],
+    "examples": [
+        {
+            "topic_id": "diferencia_req_func_no_func",
+            "example_text": "utter_pregunta_concepto/diferencia_req_func_no_func_ejemplo"
+        }
+    ],
+    "sub_topics": [
+    ]
+}
+]

@@ -1,0 +1,67 @@
+version: "2.0"
+
+stories:
+  # This story exist only to allow rasa to train the core. If no stories are
+  # given, rasa nlu is the only training component.
+  - story: greet
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  # Here put stories that must be used by TourPolicy to calculate intents
+  # weights for a specific dimension level. This stories must simulate a real
+  # conversation between the assistant and the person who is doing the tour, so
+  # intents weights are related to the learning style of that person.
+  # The required format is train_<dimension_name>_<dimension_level_name>.
+  # There must be implemented a tour.conversation.Iterator subclass whose name is
+  # equal to <dimension_level_name>, so intents weights for this story are
+  # mapped to the conversation.
+
+  # Example of a training story. Check that intents and actions exist in your
+  # domain.
+#  - story: train_perception_sensitive
+#    steps:
+#      - intent: affirm
+#      - action: utter_scrum
+#      - intent: affirm
+#      - action: utter_sprint_planning
+#      - intent: not_understand
+#      - action: utter_sprint_planning_2
+#      - intent: affirm
+#      - action: utter_product_backlog
+#      - intent: not_understand
+#      - action: utter_product_backlog_2
+#      - intent: affirm
+#      - action: utter_product_owner
+#      - intent: affirm
+#      - action: utter_epic
+#      - intent: not_understand
+#      - action: utter_epic_2
+#      - intent: affirm
+#      - action: utter_user_story
+#      - intent: affirm
+#      - action: utter_task
+#      - intent: affirm
+#      - action: utter_development_team
+#      - intent: affirm
+#      - action: scrum_board
+#      - intent: not_understand
+#      - action: utter_scrum_board_2
+#      - intent: affirm
+#      - action: utter_task_in_progress
+#      - intent: affirm
+#      - action: utter_task_done
+#      - intent: affirm
+#      - action: utter_development_room
+#      - intent: affirm
+#      - action: utter_daily_meeting
+#      - intent: not_understand
+#      - action: utter_daily_meeting_2
+#      - intent: affirm
+#      - action: utter_sprint_review
+#      - intent: affirm
+#      - action: utter_sprint_retrospective
+#      - intent: affirm
+#      - action: utter_scrum_master
+#      - intent: affirm
+

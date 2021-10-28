@@ -15,7 +15,7 @@ def send_mesagge(msg, sender, port, meta):
                    "Agreeableness": 0.9,
                    "Conscientiousness": 0.9}
 
-    data = {"sender": sender, "message": msg, "metadata": { "type": meta , "personality":personality }}
+    data = {"sender": sender, "message": msg, "metadata": { "type": meta , "personality": personality}}
 
     #envio mediante post el objeto json al servidor de rasa
     x = requests.post(url, json=data) 
@@ -49,11 +49,19 @@ md_s1 = "Psybot"
 """
 md_s2 = "Customizer"
 
+"""
+    INSTANCIO EL BOT 3
+"""
+md_s3 = "wizzardprofessor"
 
 rta = send_mesagge("Haceme la entrevista", "Emiliano", p, md_s1)
 print(md_s1 + ': ' + rta)
+time.sleep(2)
 rta = send_mesagge("He estado trabajando con la tarea {0} ", "Emiliano", p, md_s2)
 print(md_s2 + ': ' + rta)
+"""time.sleep(2)
+rta = send_mesagge("Tenés idea de atributo de calidad", "Emiliano", p, md_s3)
+print(md_s3 + ': ' + rta)"""
 
 
 
