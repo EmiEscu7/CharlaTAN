@@ -16,8 +16,8 @@ from rasa.core.constants import MEMOIZATION_POLICY_PRIORITY
 
 
 # imports propios
-from Psybot.interview.policy import InterviewPolicy
-from WizzardProfessor.tour.policy import AssistantPolicy
+from RASAComponents.Psybot.interview.policy import InterviewPolicy
+from RASAComponents.WizzardProfessor.tour.policy import AssistantPolicy
 from .custom_tracker import CustomTracker
 
 
@@ -33,14 +33,11 @@ class DecidePolicy(Policy):
     ) -> None:
         super().__init__(featurizer, priority, **kwargs)
         self.answered = False
-        #self.differents_policies:Dict = self.get_policies()
-        self.differents_policies = {
-            "psybot": InterviewPolicy(),
-            "scrum_assistant": AssistantPolicy()
-        }
+        self.differents_policies:Dict = self.get_policies()
         self.scrum_assistant = False
 
     def get_policies(self) -> Dict:
+        print(DecidePolicy.DIR_POLICIES_OF_RASA_COMPONENTS)
         policies_read = read_yaml_file(DecidePolicy.DIR_POLICIES_OF_RASA_COMPONENTS)
         policies = policies_read['policies']
         parsed_policies = {}
@@ -52,13 +49,14 @@ class DecidePolicy(Policy):
                     policy_object = constr_func(**policy)
                 except TypeError as e:
                     raise Exception(f"Could not initialize{policy_name}. {e}. In decide_policy.load_policies()")
-                parsed_policies[policy_name.split(".")[1]] = policy_object
+                parsed_policies[policy_name.split(".")[2]] = policy_object
             except (ImportError, AttributeError):
                 raise InvalidPolicyConfig(
                     f"Module for policy '{policy_name}' could not "
                     f"be loaded. Please make sure the "
                     f"name is a valid policy. In decide_policy.load_policies()"
                 )
+        print("PARSED POLICY ---------------------> " + str(parsed_policies))
         return parsed_policies
 
     def train(
@@ -126,7 +124,7 @@ class DecidePolicy(Policy):
 
 
         print("EL TIPO QUE RECONOCIO: " + str(type))
-        print("EL INTENT SELECCIONADO ES ---->>>> " + str(final_intent.replace(str(type)+"_","")))
+        print("EL INTENT SELECCIONADO ES ---->>>> " + str(final_intent))
         print("Esta es la politica seleccionada:" + str(self.differents_policies[str(type)]))
         return self.differents_policies[str(type)].predict_action_probabilities(tracker, domain, interpreter)
 

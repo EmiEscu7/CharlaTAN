@@ -54,14 +54,21 @@ md_s2 = "Customizer"
 """
 md_s3 = "wizzardprofessor"
 
+print("Emiliano: " + "Haceme la entrevista")
 rta = send_mesagge("Haceme la entrevista", "Emiliano", p, md_s1)
 print(md_s1 + ': ' + rta)
+input()
+print()
 time.sleep(2)
-rta = send_mesagge("He estado trabajando con la tarea {0} ", "Emiliano", p, md_s2)
+print("Emiliano: " + "He estado trabajando con la tarea {0}")
+rta = send_mesagge("He estado trabajando con la tarea {0}", "Emiliano", p, md_s2)
 print(md_s2 + ': ' + rta)
-"""time.sleep(2)
+print()
+input()
+time.sleep(2)
+print("Emiliano: " + "Tenés idea de atributo de calidad")
 rta = send_mesagge("Tenés idea de atributo de calidad", "Emiliano", p, md_s3)
-print(md_s3 + ': ' + rta)"""
+print(md_s3 + ': ' + rta)
 
 
 

@@ -26,7 +26,7 @@ nlu:
   examples: "- creo que no\n- diria que no\n- ponele que no\n- yo creo que no\n- me parece que no\n- yo creeria que no\n"
 - intent: psybot_answer_no
   examples: "- no\n- nop\n- nono\n- jamás\n- nunca\n- no no\n- negativo\n- para nada\n- no es asi\n- casi nunca\n- muy pocas veces"
-- regex: wizzardprofessor_topic
+- regex: topic
   examples: "- (^[a-zA-Z ]*$){1,25}\n"
 - intent: wizzardprofessor_explain_me_topic
   examples: "- como funciona el [proceso](topic)?\n- como funciona [product backlog](topic)?\n- que hace el [product owner](topic)?\n- que son las [epicas](topic)?\n- cual es la utilidad del [sprint backlog](topic)?\n"
@@ -70,21 +70,21 @@ nlu:
   examples: "- Que diferencia hay entre [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)?\n- Comparame por favor [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)\n- No entiendo la diferencia entre [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)\n- Cuál es la diferencia entre [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)?\n- No distingo entre [requerimientos funcionales]{\"entity\": \"concepto\", \"value\": \"requerimiento funcional\"} y [requerimiento no funcional](concepto)\n"
 - intent: wizzardprofessor_pregunta_concepto/diseño
   examples: "- Que es el [diseño de sistemas de software] {\"entity\": \"concepto\", \"value\": \"diseño\"}?\n- Que onda, contame de [Diseño]{\"entity\": \"concepto\", \"value\": \"diseño\"}\n- Che, sabes que es [diseño de sofware]{\"entity\": \"concepto\", \"value\": \"diseño\"}?\n- Me explicas que es el [design]{\"entity\": \"concepto\", \"value\": \"diseño\"}? \n- Quiero entender el concepto de [diseño]{\"entity\": \"concepto\", \"value\": \"diseño\"}?\n"
-- synonym: wizzardprofessor_patron_arquitectonico
+- synonym: patron_arquitectonico
   examples: "- patron de diseño arquitectónico\n- patrón de diseño arquitectónico\n- patrones de diseño de arquitectura\n- patrones\n- patrón\n- patron de arquitectura de software\n- patrón de arquitectura de software\n- patrones de arquitectura de software\n- patrones de arquitectura\n- patron de arquitectura\n- patrón de arquitectura\n"
-- synonym: wizzardprofessor_scrum
+- synonym: scrum
   examples: "- metodología Scrum\n- Scrum\n- metodologia Scrum\n"
-- synonym: wizzardprofessor_agil
+- synonym: agil
   examples: "- metodo agil\n- metodologías ágiles\n- metodos agiles\n- método ágil\n- métodos ágiles\n- metodologia agil\n- metodología ágil\n- metodologias agiles\n"
-- synonym: wizzardprofessor_fdd
+- synonym: fdd
   examples: "- Feature-Driven Development\n- FDD\n- Feature-driven development\n- feature drive design\n- Feature Driven Design\n- feature-driven-desing\n"
-- synonym: wizzardprofessor_atributo de calidad
+- synonym: atributo de calidad
   examples: "- atributos de calidad\n- QA\n- Quality Attributes\n- Quality atributtes\n- quality attributes\n"
-- synonym: wizzardprofessor_hook
+- synonym: hook
   examples: "- hooks\n- Hook\n"
-- synonym: wizzardprofessor_requerimiento funcional
+- synonym: requerimiento funcional
   examples: "- requerimiento funcionales\n- requerimientos funcionales\n"
-- synonym: wizzardprofessor_requerimiento no funcional
+- synonym: requerimiento no funcional
   examples: "- requerimientos no funcionales\n"
-- synonym: wizzardprofessor_diseño
+- synonym: diseño
   examples: "- Diseño\n- diseño de sistemas de software\n- diseño de sofware\n"
