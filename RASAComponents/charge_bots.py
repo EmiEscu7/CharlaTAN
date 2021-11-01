@@ -97,16 +97,10 @@ def generate_nlu(folders: Path):
     with open("./data/nlu.yml", "w", encoding="utf-8") as outfile:
         dumper.dump(nlu_new, outfile)
 
-
-
-
-
-
 folders = []
 for (dirpath, dirnames, filenames) in walk('RASAComponents'):
     folders.extend(dirnames)
     break
-print("-----> folders: " + str(folders))
 generate_nlu(folders)
 generate_stories(folders)
 generate_domain(folders)

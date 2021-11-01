@@ -1,5 +1,5 @@
-from tour.conversation.abstract_flow import ConversationFlow
-from tour.visitor.visitor import Visitor
+from RASAComponents.WizzardProfessor.tour.conversation.abstract_flow import ConversationFlow
+from RASAComponents.WizzardProfessor.tour.visitor.visitor import Visitor
 
 AMT_EXAMPLE_NEUTRAL = 2
 

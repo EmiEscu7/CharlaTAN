@@ -1,9 +1,9 @@
 import json
 from typing import Dict
 
-from tour.conversation import abstract_flow, concrete_flow
-from tour.learning_styles_detection import Dimension, DimensionLevel
-from tour.topic import topics
+from .conversation import abstract_flow, concrete_flow
+from .learning_styles_detection import Dimension, DimensionLevel
+from .topic import topics
 
 def create_conversation_flows(path_flow: str
                               ) -> Dict[str, abstract_flow.ConversationFlow]:

@@ -1,6 +1,6 @@
-from tour.topic.topics import Topic
-from tour.conversation.abstract_flow import ConversationFlow
-from tour.visitor.visitor import Visitor
+from RASAComponents.WizzardProfessor.tour.topic.topics import Topic
+from RASAComponents.WizzardProfessor.tour.conversation.abstract_flow import ConversationFlow
+from RASAComponents.WizzardProfessor.tour.visitor.visitor import Visitor
 from random import randint
 
 

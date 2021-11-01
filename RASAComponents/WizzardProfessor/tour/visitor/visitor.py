@@ -1,5 +1,5 @@
 import abc
-from tour.conversation.abstract_flow import ConversationFlow
+from ..conversation.abstract_flow import ConversationFlow
 
 
 class Visitor(metaclass=abc.ABCMeta):

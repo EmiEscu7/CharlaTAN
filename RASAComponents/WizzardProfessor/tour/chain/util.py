@@ -1,4 +1,4 @@
-from tour.chain.criterion import (
+from RASAComponents.WizzardProfessor.tour.chain.criterion import (
     AndCriterion,
     NotCriterion,
     EqualPenultimateEvent,
@@ -7,7 +7,7 @@ from tour.chain.criterion import (
     EqualEntity,
     OrCriterion
 )
-from tour.chain.node import (
+from RASAComponents.WizzardProfessor.tour.chain.node import (
     DefaultNode,
     Node,
     NodeActionListen,

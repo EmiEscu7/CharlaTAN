@@ -1,8 +1,8 @@
 from typing import List
 
-from tour.conversation.abstract_flow import ConversationFlow
-from tour.topic.topics import Topic
-from tour.visitor.visitor import Visitor
+from .abstract_flow import ConversationFlow
+from ..topic.topics import Topic
+from ..visitor.visitor import Visitor
 
 
 class SequentialConversationFlow(ConversationFlow):

@@ -12,8 +12,9 @@ from rasa.shared.core.generator import TrackerWithCachedStates
 from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.nlu.interpreter import NaturalLanguageInterpreter
 
-import question_analysis
-from elements import Question, Interview
+from RASAComponents.Psybot.interview.elements import Question, Interview
+import RASAComponents.Psybot.interview.question_analysis as question_analysis
+
 
 
 def _load_questions(path: str) -> List[Question]:
@@ -95,8 +96,8 @@ class InterviewPolicy(Policy):
     ) -> None:
         super().__init__(featurizer, priority, should_finetune, **kwargs)
 
-        self._interview = Interview(_load_questions(
-            path="interview" + os.path.sep + "questions.json"))
+        self._interview = Interview(_load_questions("RASAComponents/Psybot/interview/questions.json"))
+            #path="interview" + os.path.sep + "questions.json"))
 
         self._functions = question_analysis.get_all_functions()
         self._interview_result = {}

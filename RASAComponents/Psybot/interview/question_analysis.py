@@ -1,6 +1,6 @@
 from typing import Callable, Dict
 
-from interview.elements import Interview
+from RASAComponents.Psybot.interview.elements import Interview
 
 
 def queue_question(interview: Interview, **args):
