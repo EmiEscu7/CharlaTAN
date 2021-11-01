@@ -5,11 +5,8 @@ session_config:
   carry_over_slots_to_new_session: true
 
 intents:
-  # Basics.
   - greet
   - goodbye
-
-  # Interview related
   - want_interview
   - answer_yes
   - answer_maybe_yes

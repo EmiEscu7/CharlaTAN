@@ -1,9 +1,9 @@
 import json
 from typing import Dict
 
-from .conversation import abstract_flow, concrete_flow
-from .learning_styles_detection import Dimension, DimensionLevel
-from .topic import topics
+from RASAComponents.WizzardProfessor.tour.conversation import abstract_flow, concrete_flow
+from RASAComponents.WizzardProfessor.tour.learning_styles_detection import Dimension, DimensionLevel
+from RASAComponents.WizzardProfessor.tour.topic import topics
 
 def create_conversation_flows(path_flow: str
                               ) -> Dict[str, abstract_flow.ConversationFlow]:

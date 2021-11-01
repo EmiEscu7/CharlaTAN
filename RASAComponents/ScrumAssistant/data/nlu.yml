@@ -1,0 +1,427 @@
+version: "2.0"
+
+nlu:
+  - regex: topic
+    examples: |
+      - (^[a-zA-Z ]*$){1,25}
+
+  # Basics
+  # ------
+
+  - intent: greet
+    examples: |
+      - buenas
+      - hello
+      - hi
+      - hola
+      - holis
+      - buen dia
+      - qué tal?
+      - buenos días
+      - buenos dias
+      - buenas tardes
+      - buenas noches
+
+  - intent: goodbye
+    examples: |
+      - adiós
+      - hasta luego
+      - nos vemos luego
+      - hasta pronto
+      - nos vemos más tarde
+      - chau
+      - hasta la próxima
+      - bye
+      - gracias por el tour
+      - gracias adios
+      - gracias 
+
+  - intent: affirm
+    examples: |
+      - sí
+      - si
+      - dale
+      - por supuesto
+      - suena bien
+      - correcto
+      - está bien
+      - entendido
+      - enterado
+      - continua
+      - avanza hacia el siguiente tema
+      - ya llegue
+      - llegue
+      - estoy aca
+      - ok
+      - si entendi
+      - si me parece bien
+      - avanza
+      - continua con la explicación
+      - avanza con lo que sigue
+      - sigamos el recorrido
+      - segui
+
+  - intent: deny
+    examples: |
+      - no
+      - jamás
+      - no lo creo
+      - no creo
+      - no me gusta eso
+      - no me convence
+      - no creo que sea correcto
+      - nada
+
+  - intent: not_understand
+    examples: |
+      - no entendi
+      - no entiendo que es el [proceso scrum](topic)
+      - me podes explicar devuelta
+      - no entiendo
+      - repeti el tema
+      - repetime que era [user story](topic)
+      - no comprendo
+      - explicame eso devuelta
+      - me podes explicar eso devuelta
+      - me volves a explicar?
+      - me podes volver a explicar que es [product backlog](topic)
+      - no entendi ese tema
+      - no entiendo lo que acabas de explicar
+      - necesito que me vuelvas a explicar eso
+      - por favor me das mas detalles de eso
+      - no entiendo que hace el equipo de desarrollo
+      - no entiendo que hay en el tablero
+      - quiero saber mas
+      - me podrias dar mas información sobre el [scrum master](topic)?
+
+  - intent: explain_me_topic
+    examples: |
+      - como funciona el [proceso](topic)?
+      - como funciona [product backlog](topic)?
+      - que hace el [product owner](topic)?
+      - que son las [epicas](topic)?
+      - cual es la utilidad del [sprint backlog](topic)?
+
+  - intent: need_example
+    examples: |
+      - quiero un ejemplo
+      - dame un ejemplo de este tema
+      - me podrias dar un ejemplo
+      - necesito un ejemplo para entenderlo
+      - me darias un ejemplo de [epica](topic)
+      - dame un ejemplo de [tarea](topic)
+      - quisiera un ejemplo del tema [user story](topic)
+
+  # ---Introduction---
+
+#  - intent: scrum_process
+#    examples: |
+#      - como funciona el proceso?
+#      - como es el proceso scrum?
+#      - que se hace en el proceso scrum?
+#      - como aplico scrum?
+#      - como aplicar el proceso scrum?
+#      - como funciona scrum?
+#      - como es el proceso?
+#      - como es el flujo de trabajo?
+#      - me podes explicar el flujo de trabajo?
+#      - como seria el flujo del proceso?
+#      - como es el flujo de scrum?
+#
+#  # ---ProductBacklog---
+#
+#  - intent: product_backlog
+#    examples: |
+#      - que es el product backlog?
+#      - para que sirve el product backlog?
+#      - cual es la utilidad del product backlog?
+#      - para que es el product backlog?
+#      - me podrias dar mas información sobre el product backlog?
+#      - me das mas información sobre el product backlog?
+#      - me das mas detalles sobre el product backlog?
+#      - no entendi bien el product backlog
+#      - no entendi que es el product backlog
+#      - me podes repetir que es el product backlog?
+#
+#  - intent: product_owner
+#    examples: |
+#      - que hace el product owner?
+#      - que tengo que hacer si soy product owner?
+#      - de que se encarga el product owner?
+#      - que hago si soy product owner?
+#      - que tiene que hacer el product owner?
+#      - cual es la función del product owner?
+#      - de que se encarga el product owner?
+#      - que trabajo realiza el product owner?
+#      - que tendria que hacer si soy en el product owner?
+#
+#
+#  - intent: epic
+#    examples: |
+#      - que son las épicas?
+#      - para que son las épicas?
+#      - para que se hacen las épicas?
+#      - para que sirve las épicas?
+#      - las epicas son historias de usuario?
+#
+#  # ---SprintPlanning---
+#
+#  # Office
+#  - intent: scrum_master
+#    examples: |
+#      - que hace el scrum master?
+#      - que tengo que hacer si soy scrum master?
+#      - de que se encarga el scrum master?
+#      - que hago si soy scrum master?
+#      - que tiene que hacer el scrum master?
+#      - cual es la función del scrum master?
+#      - de que se encarga el scrum master?
+#      - que trabajo realiza el scrum master?
+#      - que tendria que hacer si soy en el scrum master?
+#
+#  # Planning room
+#  - intent: sprint_backlog
+#    examples: |
+#      - que es el sprint backlog?
+#      - para que sirve el sprint backlog?
+#      - cual es la utilidad del sprint backlog?
+#      - para que es el sprint backlog?
+#      - me podrias dar mas información sobre el sprint backlog?
+#      - me das mas información sobre el sprint backlog?
+#      - me das mas detalles sobre el sprint backlog?
+#      - no entendi bien el sprint backlog
+#      - no entendi que es el sprint backlog
+#      - me podes repetir que es el sprint backlog?
+#
+#  - intent: backlog_design
+#    examples: |
+#      - como se diseña un backlog?
+#      - como es el proceso para diseñar el backlog?
+#      - como se diseña el product backlog?
+#      - como es el proceso para diseñar el product backlog?
+#      - como es el proceso de diseño del backlog del product?
+#
+#  - intent: user_story
+#    examples: |
+#      - que son las user stories?
+#      - que son las historias de usuario?
+#      - para que son las user stories?
+#      - para que se hacen las user stories?
+#      - para que se hacen las historias de usuario?
+#      - para que sirve las user stories?
+#      - para que sirve las historias de usuario?
+#      - las user stories son epicas?
+#      - las user stories son tareas tecnicas?
+#
+#  - intent: task
+#    examples: |
+#      - que es son las tareas tecnicas?
+#      - que es son las tareas?
+#      - para que es son las tareas?
+#      - para que se hacen las tareas?
+#      - para que sirve las tareas?
+#      - las tareas son historias de usuario?
+#
+#  # ---DevelopmentSprint---
+#
+#  # Development room
+#  - intent: development_team
+#    examples: |
+#      - que hace el desarrollador?
+#      - que hace el programador?
+#      - que tengo que hacer si soy desarrollador?
+#      - que tengo que hacer si soy programador?
+#      - de que se encarga el desarrollador?
+#      - de que se encarga el programador?
+#      - que hago si soy desarrollador?
+#      - que hago si soy programador?
+#      - que tiene que hacer el programador?
+#      - que tiene que hacer el desarrollador?
+#      - que hago si soy estoy en el equipo de dearrollo?
+#      - de que me encargo si soy parte del equipo de desarrollo?
+#      - que hago si estoy en el equipo de desarrollo?
+#
+#  # Meetings room
+#  - intent: daily_meeting
+#    examples: |
+#      - que es la daily meeting?
+#      - que es la daily scrum?
+#      - para que es la daily scrum?
+#      - para que se hace la daily meeting?
+#      - para que se hace la daily scrum?
+#      - para que sirve la daily meeting?
+#      - me das mas información sobre daily meeting?
+#      - me das mas detalles sobre la daily meeting?
+#      - no entendi bien la daily meeting
+#      - no entendi que es la daily meeting
+#      - me podes repetir lo que es la daily meeting?
+#
+#  # Kanban room
+#  - intent: scrum_board
+#    examples: |
+#      - que es el scrum board?
+#      - para que es el scrum board?
+#      - que funcion cumple el scrum board?
+#      - donde puedo visualizar el product backlog?
+#      - donde puedo ver el product backlog?
+#      - donde puedo visualizar el sprint backlog?
+#      - donde puedo ver el sprint backlog?
+#      - donde puedo visualizar el progreso del sprint?
+#      - donde puedo ver el progreso del sprint?
+#      - donde puedo visualizar el progreso de las tareas?
+#      - donde puedo ver el progreso del proyecto?
+#      - donde puedo visualizar el backlog?
+#      - donde puedo ver el backlog?
+#      - donde puedo ver el product backlog o el sprint backlog?
+#      - quiero ver el progreso del backlog
+#      - quiero visualizar el sprint backlog
+#      - quiero visualizar el product backlog
+#      - quiero ver los backlogs
+#
+#  # ---EndSprint---
+#
+#  - intent: sprint_review
+#    examples: |
+#      - que es el sprint review?
+#      - para que es el sprint review?
+#      - para que se hace el sprint review?
+#      - para que sirve el sprint review?
+#      - para que sirve hacer una revisión al final del sprint?
+#      - me das mas información sobre el sprint review?
+#      - me das mas detalles sobre el sprint review?
+#      - no entendi bien el sprint review
+#      - no entendi que es el sprint review
+#      - me podes repetir lo que es el sprint review?
+#
+#  - intent: increment
+#    examples: |
+#      - que es el increment?
+#      - para que sirve el increment?
+#      - cual es la utilidad del increment?
+#      - para que es el increment?
+#      - me podrias dar mas información sobre el increment?
+#      - me das mas información sobre el increment?
+#      - me das mas detalles sobre el increment?
+#      - no entendi bien el increment
+#      - no entendi que es el increment
+#      - me podes repetir lo que es el increment?
+#
+#  - intent: burndown_chart
+#    examples: |
+#      - que es el burndown chart?
+#      - para que sirve el burndown chart?
+#      - cual es la utilidad del burndown chart?
+#      - para que es el burndown chart?
+#      - me podrias dar mas información sobre el burndown chart?
+#      - me das mas información sobre el burndown chart?
+#      - me das mas detalles sobre el burndown chart?
+#      - no entendi bien el burndown chart
+#      - no entendi que es el burndown chart
+#      - me podes repetir lo que es el burndown chart?
+#      - que se puede visualizar en el burndown chart?
+#
+#  - intent: sprint_retrospective
+#    examples: |
+#      - que es el sprint retrospective?
+#      - para que es el sprint retrospective?
+#      - para que se hace el sprint retrospective?
+#      - para que sirve el sprint retrospective?
+#      - para que sirve hacer una retrospectiva al final del sprint?
+#      - me das mas información sobre el sprint retrospective?
+#      - me das mas detalles sobre el sprint retrospective?
+#      - no entendi bien el sprint retrospective
+#      - no entendi que es el sprint retrospective
+#      - me podes repetir lo que es el sprint retrospective?
+#
+#  #---Others---
+#
+#  - intent: que_es_scrum
+#    examples: |
+#      - que es scrum?
+#      - en que consiste scrum?
+#      - que es el proceso scrum?
+#      - como es el proceso scrum?
+#      - en que consiste el proceso scrum?
+#
+#  - intent: roles
+#    examples: |
+#      - cuales son los roles?
+#      - para que son los roles?
+#      - que roles hay?
+#      - que roles intervienen?
+#      - para que sirven los roles?
+#
+#  - intent: scrum_team
+#    examples: |
+#      - que es el scrum team?
+#      - a que te referis con scrum team?
+#      - me podes repetir que es el scrum team?
+#      - no entendi que es el scrum team
+#      - que seria el scrum team?
+#
+#  - intent: teoria_scrum
+#    examples: |
+#      - en que se basa scrum?
+#      - teoria de scrum?
+#      - en que se basa?
+#      - en que esta basado?
+#
+#  - intent: artefactos
+#    examples: |
+#      - que son los artefactos?
+#      - para que sirven los artefactos?
+#      - cual es la funcionalidad de los artefactos?
+#      - cual es la función de los artefactos?
+#      - cuales son los artefactos de scrum?
+#      - cuales son los artefactos?
+#      - para que son los artefactos?
+#      - que se ve en los artefactos?
+#
+#  - intent: es_una_metodologia
+#    examples: |
+#      - scrum no es una metodologia?
+#      - cual es la diferencia entre metodologia y framework?
+#      - es lo mismo framework que metodologia?
+#      - pense que scrum era una metodologia?
+#      - pense que era una metodologia
+#      - no es una metodologia?
+#      - entonces que es una metodologia?
+#      - que es una metodologia?
+#      - porque no es una metodologia?
+#
+#
+#  - intent: eventos
+#    examples: |
+#      - cuales son los eventos?
+#      - que eventos hay en scrum?
+#      - cuales son las ceremonias en scrum?
+#      - que ceremonias hay en scrum?
+#      - que eventos o ceremonias hay?
+#      - para que son los eventos?
+#      - para que son las ceremonias?
+#
+#  - intent: sprint_planning
+#    examples: |
+#      - que es el sprint planning?
+#      - para que es el sprint planning?
+#      - para que se hace el sprint planning?
+#      - para que sirve el sprint planning?
+#      - para que se planifica el sprint?
+#      - me das mas información sobre el sprint planning?
+#      - me das mas detalles sobre el sprint planning?
+#      - no entendi bien el sprint planning
+#      - no entendi que es el sprint planning
+#      - me podes repetir lo que es el sprint planning?
+#
+#  - intent: sprint_grooming
+#    examples: |
+#      - que es el grooming?
+#      - para que es el grooming?
+#      - para que se hace el grooming?
+#      - para que se hace el grooming?
+#      - para que sirve el grooming?
+#      - me das mas información sobre el grooming?
+#      - me das mas detalles sobre el grooming?
+#      - no entendi bien el grooming
+#      - no entendi que es el grooming
+#      - me podes repetir lo que es el grooming?

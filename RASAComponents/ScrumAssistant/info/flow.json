@@ -1,0 +1,217 @@
+[
+  {
+    "topic_id": "start_tour",
+    "type": "simple",
+    "utters": [
+      "utter_start_tour"
+    ],
+    "examples": [
+    ],
+    "sub_topics": [
+    ]
+  },
+  {
+    "topic_id": "scrum",
+    "type": "simple",
+    "utters": [
+      "utter_scrum"
+    ],
+    "questions": [
+      "utter_cross_examine_topic_scrum",
+      "deny"
+    ]
+  },
+  {
+    "topic_id": "move_to_planning_room",
+    "type": "simple",
+    "utters": [
+      "utter_move_to_planning_room"
+    ]
+  },
+  {
+    "topic_id": "sprint_planning",
+    "type": "simple",
+    "utters": [
+      "utter_sprint_planning",
+      "utter_sprint_planning_2"
+    ]
+  },
+  {
+    "topic_id": "product_backlog",
+    "type": "simple",
+    "utters": [
+      "utter_product_backlog",
+      "utter_product_backlog_2"
+    ],
+    "questions": [
+      "utter_cross_examine_topic_product_backlog",
+      "deny"
+    ]
+  },
+  {
+    "topic_id": "product_owner",
+    "type": "simple",
+    "utters": [
+      "utter_product_owner",
+      "utter_product_owner_2"
+    ],
+    "questions": [
+      "utter_cross_examine_topic_product_owner",
+      "affirm"
+    ]
+  },
+  {
+    "topic_id": "epic",
+    "type": "simple",
+    "utters": [
+      "utter_epic",
+      "utter_epic_2"
+    ],
+    "examples": [
+      {
+        "topic_id": "epic_example",
+        "example_text": "utter_epic_example"
+      }
+    ],
+    "questions": [
+      "utter_cross_examine_topic_epic",
+      "affirm"
+    ]
+  },
+  {
+    "topic_id": "user_story",
+    "type": "simple",
+    "utters": [
+      "utter_user_story",
+      "utter_user_story_2"
+    ],
+    "examples": [
+      {
+        "topic_id": "user_story_example",
+        "example_text": "utter_user_story_example"
+      }
+    ]
+  },
+  {
+    "topic_id": "task",
+    "type": "simple",
+    "utters": [
+      "utter_task",
+      "utter_task_2"
+    ],
+    "examples": [
+      {
+        "topic_id": "task_example",
+        "example_text": "utter_task_example"
+      }
+    ]
+  },
+  {
+    "topic_id": "move_to_kanban",
+    "type": "simple",
+    "utters": [
+      "utter_move_to_kanban"
+    ]
+  },
+  {
+    "topic_id": "development_team",
+    "type": "simple",
+    "utters": [
+      "utter_development_team",
+      "utter_development_team_2"
+    ]
+  },
+  {
+    "topic_id": "scrum_board",
+    "type": "simple",
+    "utters": [
+      "utter_scrum_board",
+      "utter_scrum_board_2"
+    ]
+  },
+  {
+    "topic_id": "task_in_progress",
+    "type": "simple",
+    "utters": [
+      "utter_task_in_progress"
+    ]
+  },
+  {
+    "topic_id": "task_done",
+    "type": "simple",
+    "utters": [
+      "utter_task_done"
+    ]
+  },
+  {
+    "topic_id": "interact_with_kanban",
+    "type": "simple",
+    "utters": [
+      "utter_interact_with_kanban"
+    ]
+  },
+  {
+    "topic_id": "move_to_development_room",
+    "type": "simple",
+    "utters": [
+      "utter_move_to_development_room"
+    ]
+  },
+  {
+    "topic_id": "development_room",
+    "type": "simple",
+    "utters": [
+      "utter_development_room"
+    ]
+  },
+  {
+    "topic_id": "move_to_meeting_room",
+    "type": "simple",
+    "utters": [
+      "utter_move_to_meeting_room"
+    ]
+  },
+  {
+    "topic_id": "daily_meeting",
+    "type": "simple",
+    "utters": [
+      "utter_daily_meeting",
+      "utter_daily_meeting_2"
+    ]
+  },
+  {
+    "topic_id": "sprint_review",
+    "type": "simple",
+    "utters": [
+      "utter_sprint_review",
+      "utter_sprint_review_2"
+    ]
+  },
+  {
+    "topic_id": "sprint_retrospective",
+    "type": "simple",
+    "utters": [
+      "utter_sprint_retrospective",
+      "utter_sprint_retrospective_2"
+    ]
+  },
+  {
+    "topic_id": "move_to_office",
+    "type": "simple",
+    "utters": [
+      "utter_move_to_office"
+    ]
+  },
+  {
+    "topic_id": "scrum_master",
+    "type": "simple",
+    "utters": [
+      "utter_scrum_master",
+      "utter_scrum_master_2"
+    ],
+    "questions": [
+      "utter_cross_examine_topic_scrum_master",
+      "affirm"
+    ]
+  }
+]

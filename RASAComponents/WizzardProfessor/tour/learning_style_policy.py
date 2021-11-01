@@ -1,7 +1,7 @@
 import json
 import logging
-from tour.chain.node import Node, DefaultNode, NodeActionListen, NodeAsk, NodeExample, NodeGet, NodeNext, NodeRepeat, NodeReset, NodeResponse
-from tour.chain.criterion import AndCriterion, EqualAction, EqualEntity, EqualIntent, EqualPenultimateIntent, NotCriterion, OrCriterion
+from RASAComponents.WizzardProfessor.tour.chain.node import Node, DefaultNode, NodeActionListen, NodeAsk, NodeExample, NodeGet, NodeNext, NodeRepeat, NodeReset, NodeResponse
+from RASAComponents.WizzardProfessor.tour.chain.criterion import AndCriterion, EqualAction, EqualEntity, EqualIntent, EqualPenultimateIntent, NotCriterion, OrCriterion
 
 from typing import Iterator, Optional, Any, Dict, List, Text
 
@@ -15,9 +15,9 @@ from rasa.core.policies.policy import Policy, PolicyPrediction, confidence_score
 from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.core.generator import TrackerWithCachedStates
 
-from tour.iterator.iterator import Iterator
-from tour.topic.topics import parse_topic
-from tour.iterator.concrete_iterator import GlobalIterator, SequentialIterator, NeutralIterator
+from RASAComponents.WizzardProfessor.tour.iterator.iterator import Iterator
+from RASAComponents.WizzardProfessor.tour.topic.topics import parse_topic
+from RASAComponents.WizzardProfessor.tour.iterator.concrete_iterator import GlobalIterator, SequentialIterator, NeutralIterator
 
 logger = logging.getLogger(__name__)
 
@@ -128,11 +128,14 @@ class LearningStylePolicy(Policy):
         self.story_profiles = story_profiles if story_profiles is not None else {}
         self.usertype = usertype if usertype is not None else {}
         self.learning_style = learning_style if learning_style is not None else DEFAULT_LEARNING_STYLE
-        self.learning_style_iterators["sequential"] = create_iterator(r"info/flow.json", r"info/intents_to_topics.json",
+        self.learning_style_iterators["sequential"] = create_iterator(r"RASAComponents/WizzardProfessor/info/flow.json", 
+                                                                      r"RASAComponents/WizzardProfessor/info/intents_to_topics.json",
                                                                       "sequential")
-        self.learning_style_iterators["global"] = create_iterator(r"info/flow.json", r"info/intents_to_topics.json",
+        self.learning_style_iterators["global"] = create_iterator(r"RASAComponents/WizzardProfessor/info/flow.json", 
+                                                                  r"RASAComponents/WizzardProfessor/info/intents_to_topics.json",
                                                                   "global")
-        self._it = create_iterator(r"info/flow.json", r"info/intents_to_topics.json", "neutral")
+        self._it = create_iterator(r"RASAComponents/WizzardProfessor/info/flow.json", 
+                                   r"RASAComponents/WizzardProfessor/info/intents_to_topics.json", "neutral")
         self._criterion_learning = AndCriterion(NotCriterion(EqualPenultimateIntent("utter_cross_examine")),
                                                 EqualAction("action_listen"))
         # to do script

@@ -1,0 +1,307 @@
+version: "2.0"
+
+intents:
+  # ---Basics---
+  - affirm
+  - deny
+  - greet
+  - goodbye
+  - not_understand
+  - explain_me_topic
+  - need_example
+  - change_current_flow
+
+#  # ---Introduction---
+#  - scrum_process
+#
+#  # ---ProductBacklog---
+#  - product_backlog
+#  - product_owner
+#  - epic
+#
+#  # ---SprintPlanning---
+#  - scrum_master
+#  - sprint_backlog
+#  - backlog_design
+#  - user_story
+#  - task
+#
+#  # ---DevelopmentSprint---
+#  - development_team
+#  - daily_meeting
+#  - scrum_board
+#
+#  # ---EndSprint---
+#  - sprint_review
+#  - increment
+#  - burndown_chart
+#  - sprint_retrospective
+#
+#  # ---Others---
+#  - que_es_scrum
+#  - roles
+#  - scrum_team
+#  - teoria_scrum
+#  - artefactos
+#  - es_una_metodologia
+#  - eventos
+#  - sprint_planning
+#  - sprint_grooming
+
+entities:
+  - tema
+  - topic
+
+slots:
+  tema:
+    type: text
+    initial_value: None
+
+  # TourPolicy sets this slot so action_set_timer can dispatch the correct utter.
+  next_topic:
+    type: text
+    initial_value: None
+
+  # TourPolicy sets this slot so action_set_timer knows if a timer must be set after the utter is given.
+  must_set_timer:
+    type: bool
+    initial_value: False
+
+actions:
+  - action_default_fallback
+  - action_set_timer
+  - action_topic_not_recognized
+
+responses:
+  # Basics
+  # ------
+
+  utter_greet:
+    - text: "¡Hola! Estoy aquí para guiarte en el proceso Scrum. ¿Querés realizar un recorrido?"
+
+  utter_end_tour:
+    - text: "Eso es sería todo el recorrido por las distintas fases del proceso, ante cualquier duda que tengas sobre Scrum ya sabes donde encontrarme."
+
+  utter_goodbye:
+    - text: "Adiós!"
+    - text: "Hasta pronto!"
+
+  utter_start_tour:
+    - text: "Genial! Por favor acompáñame al hall así arrancamos el tour."
+
+  utter_ask_good:
+    - text: "Correcto ahi te va otra"
+
+  utter_ask_bad:
+    - text: "Nono le errraste, es esto en realidad es"
+
+  utter_default:
+    - text: "default"
+
+  utter_sin_ejemplos:
+    - text: "No tengo mas ejemplos de este tema."
+
+  utter_no_examples:
+    - text: "Perdona, no te puedo resolver esa consulta."
+    - text: "No tengo un ejemplo para ese tema."
+    - text: "No tengo un ejemplo."
+
+  utter_sin_question:
+    - text: "No tengo mas preguntas para hacerte."
+
+  utter_ask:
+    - text: "Bueno ahora vamos con unas preguntas de estos temas para ver cuanto sabes"
+
+  # Conversation tour handlers
+  # --------------------------
+
+  utter_cross_examine_jump_global:
+    - text: "Queres que explique desde ese tema y omitamos los temas intermedios o solo te explico ese tema particular"
+
+  utter_cross_examine_jump_sequential:
+    - text: "Queres que te explique todo de nuevo apartir de ese tema o solo te explico de nuevo ese tema particular"
+
+  utter_cross_examine_example:
+    - text: "Queres que te de un ejemplo de este tema o queres que te haga otra explicacion"
+
+
+  # Movement command
+  # ----------------
+
+  utter_move_to_planning_room:
+    - text: "Por favor, acompañame a la sala de planning para continuar con el tour."
+    - text: "Por favor, acompañame a la sala de planning para continuar con el recorrido."
+    - text: "A continuación vamos a ir a la sala de planning, seguime por favor."
+    - text: "Acompañame que vamos a ir a la sala de planning."
+
+  utter_move_to_office:
+    - text: "Por favor, acompañame a la oficina para continuar con el tour."
+    - text: "Por favor, acompañame a la oficina para continuar con el recorrido."
+    - text: "A continuación vamos a ir a oficina, seguime por favor."
+    - text: "Acompañame que vamos a ir a la oficina."
+
+  utter_move_to_development_room:
+    - text: "Por favor, acompañame a la sala development para continuar con el tour."
+    - text: "Por favor, acompañame a la sala development para continuar con el recorrido."
+    - text: "A continuación vamos a ir a la sala development, seguime por favor."
+    - text: "A continuación vamos a ir a la sala development, seguime por favor."
+    - text: "Acompañame que vamos a ir a la sala development."
+
+  utter_move_to_meeting_room:
+    - text: "Una de las responsabilidades del Development Team es realizar las Daily Meetings, vamos a la
+    sala de reuniones que en este momento esta ocurriendo una."
+
+  utter_move_to_kanban:
+    - text: "Por favor, acompañame hasta el Scrum Board."
+    - text: "Seguime hasta el Scrum Board, por favor."
+    - text: "Acompañame que vamos ver el Scrum Board."
+
+  # Explanations
+  # ------------
+
+  utter_scrum:
+    - text: utter_scrum
+
+  utter_sprint_planning_preview:
+    - text: utter_sprint_planning_preview
+
+  utter_sprint_planning:
+    - text: utter_sprint_planning
+
+  utter_sprint_planning_2:
+    - text: utter_sprint_planning_2
+
+  utter_product_backlog_preview:
+    - text: utter_product_backlog_preview
+
+  utter_product_backlog:
+    - text: utter_product_backlog
+
+  utter_product_backlog_2:
+    - text: utter_product_backlog_2
+
+  utter_product_owner_preview:
+    - text: utter_product_owner_preview
+
+  utter_product_owner:
+    - text: utter_product_owner
+
+  utter_product_owner_2:
+    - text: utter_product_owner_2
+
+  utter_epic_preview:
+    - text: utter_epic_preview
+
+  utter_epic:
+    - text: utter_epic
+
+  utter_epic_2:
+    - text: utter_epic_2
+
+  utter_epic_example:
+    - text: utter_epic_example
+
+  utter_user_story_preview:
+    - text: utter_user_story_preview
+
+  utter_user_story:
+    - text: utter_user_story
+
+  utter_user_story_2:
+    - text: utter_user_story_2
+
+  utter_user_story_example:
+    - text: utter_user_story_example
+
+  utter_task_preview:
+    - text: utter_task_preview
+
+  utter_task:
+    - text: utter_task
+
+  utter_task_2:
+    - text: utter_task_2
+
+  utter_task_example:
+    - text: utter_task_example
+
+  utter_development_team_preview:
+    - text: utter_development_team_preview
+
+  utter_development_team:
+    - text: utter_development_team
+
+  utter_development_team_2:
+    - text: utter_development_team_2
+
+  utter_scrum_board_preview:
+    - text: utter_scrum_board_preview
+
+  utter_scrum_board:
+    - text: utter_scrum_board
+
+  utter_scrum_board_2:
+    - text: utter_scrum_board_2
+
+  utter_task_in_progress:
+    - text: utter_task_in_progress
+
+  utter_task_done:
+    - text: utter_task_done
+
+  utter_interact_with_kanban:
+    - text: utter_interact_with_kanban
+
+  utter_development_room:
+    - text: utter_development_room
+
+  utter_daily_meeting_preview:
+    - text: utter_daily_meeting_preview
+
+  utter_daily_meeting:
+    - text: utter_daily_meeting
+
+  utter_sprint_review_preview:
+    - text: utter_sprint_review_preview
+
+  utter_sprint_review:
+    - text: utter_sprint_review
+
+  utter_sprint_review_2:
+    - text: utter_sprint_review_2
+
+  utter_sprint_retrospective_preview:
+    - text: utter_sprint_retrospective_preview
+
+  utter_sprint_retrospective:
+    - text: utter_sprint_retrospective
+
+  utter_sprint_retrospective_2:
+    - text: utter_sprint_retrospective_2
+
+  utter_scrum_master_preview:
+    - text: utter_scrum_master_preview
+
+  utter_scrum_master:
+    - text: utter_scrum_master
+
+  utter_scrum_master_2:
+    - text: utter_scrum_master_2
+
+  # Questions asked to the trainee
+  # ------------------------------
+
+  utter_cross_examine_topic_scrum:
+    - text: "Proceso Scrum es tomar Fernet"
+
+  utter_cross_examine_topic_product_backlog:
+    - text: "Product Backlog es un llavero con tu nombre"
+
+  utter_cross_examine_topic_product_owner:
+    - text: "Product owner es Product owner"
+
+  utter_cross_examine_topic_epic:
+    - text: "Epica es Epica"
+
+  utter_cross_examine_topic_scrum_master:
+    - text: "Scrum Master es Scrum Master"

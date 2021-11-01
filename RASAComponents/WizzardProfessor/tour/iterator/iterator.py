@@ -1,7 +1,7 @@
 import abc
 from typing import Dict, List
 
-from tour.topic.topics import Topic
+from RASAComponents.WizzardProfessor.tour.topic.topics import Topic
 
 
 class Iterator(metaclass=abc.ABCMeta):

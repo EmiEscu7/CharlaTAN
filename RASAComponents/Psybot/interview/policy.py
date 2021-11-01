@@ -13,7 +13,8 @@ from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.nlu.interpreter import NaturalLanguageInterpreter
 
 from RASAComponents.Psybot.interview.elements import Question, Interview
-import RASAComponents.Psybot.interview.question_analysis as question_analysis
+from RASAComponents.Psybot.interview import question_analysis
+
 
 
 
@@ -67,7 +68,7 @@ def _save_interview(
     interviewee
         Name of the interviewee.
     """
-    path = r".\interview\results"
+    path = r"RASAComponents/Psybot/interview/results"
     with open(path + fr"\{interviewee}.json", 'w') as file:
         json.dump(result, file)
 
@@ -97,7 +98,6 @@ class InterviewPolicy(Policy):
         super().__init__(featurizer, priority, should_finetune, **kwargs)
 
         self._interview = Interview(_load_questions("RASAComponents/Psybot/interview/questions.json"))
-            #path="interview" + os.path.sep + "questions.json"))
 
         self._functions = question_analysis.get_all_functions()
         self._interview_result = {}

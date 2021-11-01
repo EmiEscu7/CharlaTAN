@@ -1,7 +1,6 @@
 import json
 
-from tour.event_handling import EventSubscriber
-
+from RASAComponents.ScrumAssistant.tour.event_handling import EventSubscriber
 consumer = EventSubscriber("movimiento")
 
 def callback1(ch, method, properties, body):

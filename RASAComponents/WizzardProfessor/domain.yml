@@ -403,5 +403,51 @@ responses:
   - text: Hay miles de ejemplos, te puedo ayudar a diseñar! Así armamos tu propio diseño, puede ser el de diseño de sistemas de operaciones, páginas web, dispositivos móviles y mas!
   utter_pregunta_concepto/diseño_clarificacion:
   - text: En otras palabras y muy muy breve, es el proceso de definición de la arquitectura, módulos, interfaces y datos de un sistema para satisfacer unos requisitos previamente especificados.
+  ##Utters to fix the bot By: matib
+  utter_start_tour:
+    - text: "Genial! Por favor acompáñame al hall así arrancamos el tour."
+  utter_move_to_planning_room:
+    - text: "Por favor, acompañame a la sala de planning para continuar con el tour."
+    - text: "Por favor, acompañame a la sala de planning para continuar con el recorrido."
+    - text: "A continuación vamos a ir a la sala de planning, seguime por favor."
+    - text: "Acompañame que vamos a ir a la sala de planning."
+  utter_move_to_development_room:
+    - text: "Por favor, acompañame a la sala development para continuar con el tour."
+    - text: "Por favor, acompañame a la sala development para continuar con el recorrido."
+    - text: "A continuación vamos a ir a la sala development, seguime por favor."
+    - text: "A continuación vamos a ir a la sala development, seguime por favor."
+    - text: "Acompañame que vamos a ir a la sala development."
+  utter_move_to_meeting_room:
+    - text: "Una de las responsabilidades del Development Team es realizar las Daily Meetings, vamos a la
+    sala de reuniones que en este momento esta ocurriendo una."
+  utter_daily_meeting:
+    - text: "La Daily Scrum o Daily Meeting es una reunión diaria de 15 minutos. Durante la misma, cada una de las
+    personas del Development Team responden a las siguientes preguntas:
+      \n¿Qué hice ayer para contribuir al Sprint Goal?
+      \n¿Qué voy a hacer hoy para contribuir al Sprint Goal?
+      \n¿Tengo algún impedimento que me impida entregar?
+    \nSu objetivo es evaluar diariamente el progreso y la tendencia del progreso hasta la finalización del Sprint,
+    sincronizando las actividades y creando un plan para las próximas 24 horas.
+    \nSi te parece bien quedate a presenciar la reunión y cuando quieras continuar con el recorrido avísame."
+  utter_move_to_kanban:
+    - text: "Por favor, acompañame hasta el Scrum Board."
+    - text: "Seguime hasta el Scrum Board, por favor."
+    - text: "Acompañame que vamos ver el Scrum Board."
+  utter_interact_with_kanban:
+    - text: "Si queres podes probar a interactuar con el Kanban. Cuando quieras continuar con el tour, volve y hablame."
+  utter_move_to_office:
+    - text: "Por favor, acompañame a la oficina para continuar con el tour."
+    - text: "Por favor, acompañame a la oficina para continuar con el recorrido."
+    - text: "A continuación vamos a ir a oficina, seguime por favor."
+    - text: "Acompañame que vamos a ir a la oficina."
+  utter_cross_examine_example:
+    - text: "Queres que te de un ejemplo de este tema o queres que te haga otra explicacion"
+  utter_ask:
+    - text: "Bueno ahora vamos con unas preguntas de estos temas para ver cuanto sabes"
+  utter_cross_examine_jump:
+    - text: "Queres que te explique a partir de un tema particular?"
+  utter_cross_examine:
+    - text: "Queres que te explique solo ese tema"
+
 forms: {}
 e2e_actions: []

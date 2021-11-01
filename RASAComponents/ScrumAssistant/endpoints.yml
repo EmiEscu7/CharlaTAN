@@ -1,0 +1,14 @@
+# This file contains the different endpoints your bot can use.
+
+# Server which runs your custom actions.
+action_endpoint:
+  url: "http://localhost:5061/webhook"
+
+# Tracker store which is used to store the conversations.
+# By default the conversations are stored in memory.
+tracker_store:
+  type: mongod
+  url: mongodb+srv://LanguageSupport:agiletalk2021@cluster0.clby5.gcp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+  db: ScrumAssistant
+  username: LanguageSupport
+  password: agiletalk2021

@@ -3,7 +3,6 @@ import pandas as pd
 
 from typing import Optional, Any, Dict, List, Text
 
-
 from rasa.shared.core.domain import Domain
 
 from rasa.core.featurizers.tracker_featurizers import (
@@ -19,12 +18,6 @@ from rasa.core.constants import MEMOIZATION_POLICY_PRIORITY
 from rasa.core.policies.policy import confidence_scores_for, PolicyPrediction
 from rasa.shared.nlu.constants import INTENT_NAME_KEY
 
-
-
-
-# temporary constants to support back compatibility
-MAX_HISTORY_NOT_SET = -1
-OLD_DEFAULT_MAX_HISTORY = 5
 
 class PersonalityPolicy(Policy):
 
@@ -153,7 +146,7 @@ class PersonalityPolicy(Policy):
 
     def compare_to_neighbour(self,vector_input:np.ndarray,neighbour:Text) -> list:
         
-        dataframe_examples = pd.read_csv(r"examples_personalities.csv",sep=';')
+        dataframe_examples = pd.read_csv("RASAComponents/Customizer/examples_personalities.csv",sep=';')
         min_vector = dataframe_examples.values[0] #el primero del dataframe
         min_vector_no_string = np.array(np.delete(min_vector,min_vector.size -1))
         min_dist = 0

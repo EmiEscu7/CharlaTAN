@@ -8,6 +8,42 @@ class Criterion(metaclass=abc.ABCMeta):
     def check(self, tracker: DialogueStateTracker) -> bool:
         raise NotImplementedError
 
+class EqualPenultimateIntent(Criterion):
+    """
+    Checks if the penultimate event in the tracker is equal to a String
+    Author: Tomas
+    """
+    def __init__(self, compare: str) -> None:
+        """
+        Constructor.
+        Author: Tomas
+        Parameters
+        ----------
+        compare
+            String that is going to be compared to the penultimate event in the tracker
+        """
+        self._compare = compare
+
+    def check(self, tracker: DialogueStateTracker) -> bool:
+        """
+        Checks if the penultimate event in the tracker is equal to attribute compare set in constructor.
+        Author: Tomas
+        Parameters
+        ----------
+        tracker
+            Rasa tracker.
+        Returns
+        -------
+        Returns true if the penultimate event is equal to the string set in constructor, else returns false.
+        """
+        if len(tracker.as_dialogue().events) > 5:
+            penultimate_intent = str(tracker.as_dialogue().events[-4])
+        else:
+            penultimate_intent = None
+        if penultimate_intent is not None and penultimate_intent.find(self._compare) != -1:
+            return True
+        else:
+            return False
 
 class EqualIntent(Criterion):
 

@@ -11,11 +11,9 @@ from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.nlu.interpreter import NaturalLanguageInterpreter
 
 import RASAComponents.WizzardProfessor.tour.util as util 
-#from .tour import util
 from RASAComponents.WizzardProfessor.tour.chain import util as chain_util, node
-#from .tour.chain import util as chain_util, node
 from RASAComponents.WizzardProfessor.tour.learning_styles_detection import Dimension, LearningStyleDetector
-#from .tour.learning_styles_detection import Dimension, LearningStyleDetector
+
 
 
 class AssistantPolicy(Policy):

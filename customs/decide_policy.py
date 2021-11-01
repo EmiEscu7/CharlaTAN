@@ -52,7 +52,7 @@ class DecidePolicy(Policy):
                     f"be loaded. Please make sure the "
                     f"name is a valid policy. In decide_policy.load_policies()"
                 )
-        print("PARSED POLICY ---------------------> " + str(parsed_policies))
+        print("Succesfully loaded policies ---> " + str(parsed_policies))
         return parsed_policies
 
     def train(
@@ -129,6 +129,7 @@ class DecidePolicy(Policy):
         print("EL TIPO QUE RECONOCIO: " + str(type))
         print("EL INTENT SELECCIONADO ES ---->>>> " + str(final_intent))
         print("Esta es la politica seleccionada:" + str(self.differents_policies[str(type)]))
+        
         return self.differents_policies[str(type)].predict_action_probabilities(tracker, domain, interpreter)
 
 
