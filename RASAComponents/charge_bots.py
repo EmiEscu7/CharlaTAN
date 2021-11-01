@@ -1,5 +1,6 @@
 from os import walk
 import os
+from typing import NoReturn
 import yaml
 from rasa.shared.utils.io import read_yaml_file
 from ruamel import yaml as yaml
@@ -82,10 +83,9 @@ def generate_domain(folders: Path):
 def generate_nlu(folders: Path):
     nlu_new={'version': '2.0','nlu':[]}
 
-    for folder in folders:
+    for folder in folders:  
         path = Path("RASAComponents/" + folder + "/data/nlu.yml")
-        nlu_reading = read_yaml_file(path)
-        
+        nlu_reading = read_yaml_file(path)  
         for line in nlu_reading['nlu']:
             if 'intent' in line:
                 line['intent'] = str(folder).lower()+"_" + line['intent']
@@ -93,15 +93,23 @@ def generate_nlu(folders: Path):
                 line['regex'] = str(folder).lower()+"_" + line['regex']"""
             """if 'synonym' in line:
                 line['synonym'] = line['synonym']"""
-            nlu_new['nlu'].append(line)
+            nlu_new['nlu'].append(line)  
+
     with open("./data/nlu.yml", "w", encoding="utf-8") as outfile:
-        dumper.dump(nlu_new, outfile)
+                dumper.dump(nlu_new, outfile)    
 
 folders = []
 for (dirpath, dirnames, filenames) in walk('RASAComponents'):
     folders.extend(dirnames)
     break
-generate_nlu(folders)
-generate_stories(folders)
-generate_domain(folders)
-print("Generado : NLU - STORIES - DOMAIN")
+
+def run():
+    try:
+        generate_nlu(folders)
+        generate_stories(folders)
+        generate_domain(folders)
+        print("Generado correctamente: NLU - STORIES - DOMAIN")
+    except Exception as e: #Para
+        print(e)
+
+run()
