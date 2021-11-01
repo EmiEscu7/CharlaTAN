@@ -33,7 +33,7 @@ class AskQuestion(Action):
     Author: Bruno.
     """
     def name(self) -> Text:
-        return "action_psybot_ask_question"
+        return "action_ask_question"
 
     def run(
             self,

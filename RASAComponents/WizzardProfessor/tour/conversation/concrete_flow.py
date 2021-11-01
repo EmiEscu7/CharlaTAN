@@ -1,8 +1,8 @@
 from typing import List
 
-from RASAComponents.WizzardProfessor.tour.conversation.abstract_flow import ConversationFlow
-from RASAComponents.WizzardProfessor.tour.topic.topics import Topic
-from RASAComponents.WizzardProfessor.tour.visitor.visitor import Visitor
+from tour.conversation.abstract_flow import ConversationFlow
+from tour.topic.topics import Topic
+from tour.visitor.visitor import Visitor
 
 
 class SequentialConversationFlow(ConversationFlow):
@@ -46,7 +46,7 @@ class SequentialConversationFlow(ConversationFlow):
                 self._to_explain_stack.append(next_to_explain)
 
         if len(self._to_explain_stack) == 0:
-            return "utter_wizzardprofessor_fin_test"
+            return "utter_fin_test"
 
         return self._to_explain_stack[-1].get_explanation()
 
@@ -86,7 +86,7 @@ class GlobalConversationFlow(ConversationFlow):
         if self._to_explain_stack[-1].is_explained:
             self._to_explain_stack.pop()
         if len(self._to_explain_stack) == 0:
-            return "utter_wizzardprofessor_fin_test"
+            return "utter_fin_test"
 
         return self._to_explain_stack[-1].get_explanation()
 
@@ -130,7 +130,7 @@ class NeutralConversationFlow(ConversationFlow):
                 self._to_explain_stack.pop()
 
         if len(self._to_explain_stack) == 0:
-            return "utter_wizzardprofessor_fin_test"
+            return "utter_fin_test"
 
         return self._to_explain_stack[-1].get_explanation()
 

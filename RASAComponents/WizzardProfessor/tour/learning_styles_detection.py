@@ -4,7 +4,7 @@ from rasa.shared.core import events
 from rasa.shared.core.events import Event
 from rasa.shared.core.generator import TrackerWithCachedStates
 
-from RASAComponents.WizzardProfessor.tour.conversation import abstract_flow
+from tour.conversation import abstract_flow
 
 
 def count_intents_from_story(

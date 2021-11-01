@@ -1,5 +1,5 @@
-from RASAComponents.WizzardProfessor.tour.iterator.iterator import Iterator
-from RASAComponents.WizzardProfessor.tour.visitor.visitor import Visitor
+from tour.iterator.iterator import Iterator
+from tour.visitor.visitor import Visitor
 
 AMT_EXAMPLE_NEUTRAL = 2
 

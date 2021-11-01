@@ -110,7 +110,7 @@ class Topic:
             return example["example_text"]
         else:
             self._current_example = 0
-            return "utter_wizzardprofessor_sin_ejemplos"
+            return "utter_sin_ejemplos"
 
     def get_question(self) -> str:
         if self._current_question < len(self._questions):
@@ -119,7 +119,7 @@ class Topic:
             return question
         else:
             self._current_question = 0
-            return "utter_wizzardprofessor_sin_question"
+            return "utter_sin_question"
 
     def next(self) -> Union["Topic", None]:
         """Returns the next topic to explain.

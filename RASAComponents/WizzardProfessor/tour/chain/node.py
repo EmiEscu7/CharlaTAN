@@ -2,12 +2,12 @@ import abc
 
 from rasa.shared.core.trackers import DialogueStateTracker
 
-from RASAComponents.WizzardProfessor.tour import util as tour_util
-from RASAComponents.WizzardProfessor.tour.chain.criterion import Criterion
-from RASAComponents.WizzardProfessor.tour.conversation.abstract_flow import ConversationFlow
-from RASAComponents.WizzardProfessor.tour.visitor.ask_visitor import AskVisitor
-from RASAComponents.WizzardProfessor.tour.visitor.example_visitor import ExampleVisitor
-from RASAComponents.WizzardProfessor.tour.visitor.topic_visitor import TopicVisitor
+from tour import util as tour_util
+from tour.chain.criterion import Criterion
+from tour.conversation.abstract_flow import ConversationFlow
+from tour.visitor.ask_visitor import AskVisitor
+from tour.visitor.example_visitor import ExampleVisitor
+from tour.visitor.topic_visitor import TopicVisitor
 
 
 class Node(metaclass=abc.ABCMeta):
@@ -37,7 +37,7 @@ class DefaultNode(Node):
     def next(self, it: ConversationFlow, tracker: DialogueStateTracker) -> str:
         last_intent_name = tracker.latest_message.intent["name"]
         if "utter_" + last_intent_name not in self._utters:
-            return "utter_wizzardprofessor_default"
+            return "utter_default"
         return "utter_" + last_intent_name
 
 
@@ -155,9 +155,9 @@ class NodeResponse(Node):
         if self._criterion.check(tracker):
             intent_name = tracker.latest_message.intent["name"]
             if intent_name == it.to_explain_stack[-1].get_question():
-                return "utter_wizzardprofessor_ask_good"
+                return "utter_ask_good"
             else:
-                return "utter_wizzardprofessor_ask_bad"
+                return "utter_ask_bad"
         else:
             return self._node.next(it, tracker)
 

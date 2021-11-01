@@ -1,6 +1,7 @@
 import json
 import os
 from typing import Any, List, Dict, Text, Optional
+
 import requests
 from rasa.core.featurizers.tracker_featurizers import TrackerFeaturizer
 from rasa.core.policies import Policy
@@ -10,10 +11,10 @@ from rasa.shared.core.events import SlotSet
 from rasa.shared.core.generator import TrackerWithCachedStates
 from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.nlu.interpreter import NaturalLanguageInterpreter
-from .elements import Question, Interview
-#from Psybot.interview.elements import Question, Interview
-from . import   question_analysis
-#from Psybot.interview import question_analysis
+
+import question_analysis
+from elements import Question, Interview
+
 
 def _load_questions(path: str) -> List[Question]:
     """Loads questions from a json file.
@@ -95,7 +96,8 @@ class InterviewPolicy(Policy):
         super().__init__(featurizer, priority, should_finetune, **kwargs)
 
         self._interview = Interview(_load_questions(
-            path=os.path.dirname(__file__)+os.path.sep+"questions.json"))
+            path="interview" + os.path.sep + "questions.json"))
+
         self._functions = question_analysis.get_all_functions()
         self._interview_result = {}
 
@@ -136,10 +138,9 @@ class InterviewPolicy(Policy):
         prefix
             Text to put before the question to ask.
         """
-        print("------ TAMO AQUI PERRO ANTES DE ACTUALIZAR EL TRACKER EN EL PSYBOT_ASK_QUESTION----------")
         tracker.update(SlotSet("question_to_ask",
                                prefix + self._interview.next_question()))
-        print("------ TAMO AQUI PERRO ANTES DE PREDECIR EL ACTION_PSYBOT_ASK_QUESTION----------")
+
         return self._prediction(confidence_scores_for(
             "action_ask_question", 1.0, domain)
         )
@@ -199,9 +200,7 @@ class InterviewPolicy(Policy):
         """
         # If the last answer is valid for the question, then process it
         # and check if there are more questions to add.
-
         if self._interview.last_asked.valid_answer(intent_name):
-
             self.process_answer(message, intent_name)
 
             if not self._interview.no_more_questions():
@@ -211,7 +210,7 @@ class InterviewPolicy(Policy):
                             tracker.sender_id)
             self._interview.restart()
             return self._prediction(
-                confidence_scores_for("utter_psybot_interview_finished", 1.0, domain))
+                confidence_scores_for("utter_interview_finished", 1.0, domain))
 
         # If the answer for the last question asked isn't valid, then
         # ask the question again.
@@ -230,19 +229,17 @@ class InterviewPolicy(Policy):
 
         Author: Bruno.
         """
-        print("ENTRA AL POLICY DE PSYBOT")
+
         # If the last thing rasa did was listen to user input, then we need to
         # analyze the intent so we can decide the next action to execute.
-        print("LO QUE USA DE COND DEL IF ES ------->>>> " + str(tracker.latest_action_name))
         if tracker.latest_action_name == "action_listen":
-            print("ENTRA AL IF POLICY DE PSYBOT")
             intent_name = tracker.latest_message.intent["name"]
+
             # User wants an interview
-            if (intent_name == "psybot_want_interview"
+            if (intent_name == "want_interview"
                     and not self._interview.in_progress):
                 # The interview must start.
                 self._interview.in_progress = True
-                print("LLAMANDO A LA FUNACION ASK_NEXT_QUESTION")
                 return self._ask_next_question(
                     tracker, domain,
                     prefix="Okay, empecemos con la entrevista.\n"
@@ -255,14 +252,13 @@ class InterviewPolicy(Policy):
 
         # If the last thing rasa did was ask a question, then the next thing to
         # do is listen for a new user input.
-        if tracker.latest_action_name == "utter_psybot_question_template":
+        if tracker.latest_action_name == "utter_question_template":
             return self._prediction(confidence_scores_for(
                 "action_listen", 1.0, domain
             ))
 
         # If there is no match in the conditions stated above, let the other
         # policies predict.
-        print("EL DEFAULT PREDICTIONS ES ---------------->>>>>>>>> " + str(self._default_predictions(domain)))
         return self._prediction(self._default_predictions(domain))
 
     def _metadata(self) -> Dict[Text, Any]:

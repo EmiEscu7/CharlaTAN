@@ -1,7 +1,6 @@
 from typing import Callable, Dict
 
-#from Psybot.interview.elements import Interview
-from .elements import Interview
+from interview.elements import Interview
 
 
 def queue_question(interview: Interview, **args):

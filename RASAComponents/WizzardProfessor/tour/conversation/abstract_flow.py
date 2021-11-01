@@ -1,7 +1,7 @@
 import abc
 from typing import Dict, List
 
-from RASAComponents.WizzardProfessor.tour.topic.topics import Topic
+from tour.topic.topics import Topic
 
 
 class ConversationFlow(metaclass=abc.ABCMeta):

@@ -63,9 +63,10 @@ class PersonalityPolicy(Policy):
     ) -> PolicyPrediction:    
 
         sender_id = tracker.current_state()['sender_id']
-
+        
         personality = self.get_personality(tracker)
         rta = self.generator_message(tracker, personality)
+        
         if(self.answered):
             result = confidence_scores_for('action_listen', 1.0, domain)
             self.answered = False
@@ -152,7 +153,7 @@ class PersonalityPolicy(Policy):
 
     def compare_to_neighbour(self,vector_input:np.ndarray,neighbour:Text) -> list:
         
-        dataframe_examples = pd.read_csv(r"RASAComponents/Customizer/examples_personalities.csv",sep=';')
+        dataframe_examples = pd.read_csv(r"examples_personalities.csv",sep=';')
         min_vector = dataframe_examples.values[0] #el primero del dataframe
         min_vector_no_string = np.array(np.delete(min_vector,min_vector.size -1))
         min_dist = 0

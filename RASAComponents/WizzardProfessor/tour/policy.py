@@ -10,9 +10,9 @@ from rasa.shared.core.generator import TrackerWithCachedStates
 from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.nlu.interpreter import NaturalLanguageInterpreter
 
-from RASAComponents.WizzardProfessor.tour import util
-from RASAComponents.WizzardProfessor.tour.chain import util as chain_util, node
-from RASAComponents.WizzardProfessor.tour.learning_styles_detection import Dimension, LearningStyleDetector
+from tour import util
+from tour.chain import util as chain_util, node
+from tour.learning_styles_detection import Dimension, LearningStyleDetector
 
 
 class AssistantPolicy(Policy):
@@ -63,7 +63,7 @@ class AssistantPolicy(Policy):
 
         # Iterator.
         conversation_flows = util.create_conversation_flows(
-            "RASAComponents" + os.path.sep + "WizzardProfessor" + os.path.sep + "info" + os.path.sep + "flow.json")
+            "info" + os.path.sep + "flow.json")
         self._current_flow = conversation_flows[
             AssistantPolicy.DEFAULT_DIMENSION_LEVEL]
 
