@@ -40,10 +40,11 @@ def send_mesagge(msg, sender, port, meta):
 choose = ''
 bot_dict = { 1: 'Customizer',
              2: 'Psybot',
-             3: 'WizzardProfessor'
+             3: 'WizzardProfessor',
+             4: 'ScrumAssistant'
             }
 while(True):
-    choose = input("1: Customizer, 2: Psybot, 3: WizzardProfessor ")
+    choose = input("1: Customizer, 2: Psybot, 3: WizzardProfessor, 4: ScrumAssistant ")
     choose = bot_dict[int(choose)]
     msg = input(f"Escribe el siguiente mensaje para {choose}: ")
     rta = send_mesagge(msg, "Matias", 5005, choose)
