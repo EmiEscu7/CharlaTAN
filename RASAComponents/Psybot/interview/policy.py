@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 from typing import Any, List, Dict, Text, Optional
 
 import requests
@@ -68,7 +69,7 @@ def _save_interview(
     interviewee
         Name of the interviewee.
     """
-    path = r"RASAComponents/Psybot/interview/results"
+    path = Path("RASAComponents/Psybot/interview/results")
     with open(path + fr"\{interviewee}.json", 'w') as file:
         json.dump(result, file)
 

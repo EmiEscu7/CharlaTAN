@@ -1,10 +1,10 @@
 import json
 from typing import Dict
 
-from tour.event_handling import EventPublisher
-from tour.conversation import abstract_flow, concrete_flow
-from tour.learning_styles_detection import Dimension, DimensionLevel
-from tour.topic import topics
+from RASAComponents.ScrumAssistant.tour.event_handling import EventPublisher
+from RASAComponents.ScrumAssistant.tour.conversation import abstract_flow, concrete_flow
+from RASAComponents.ScrumAssistant.tour.learning_styles_detection import Dimension, DimensionLevel
+from RASAComponents.ScrumAssistant.tour.topic import topics
 
 
 def move_to_location(response):

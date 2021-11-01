@@ -1,6 +1,6 @@
-from tour.topic.topics import Topic
-from tour.iterator.iterator import Iterator
-from tour.visitor.visitor import Visitor
+from RASAComponents.WizzardProfessor.tour.topic.topics import Topic
+from RASAComponents.WizzardProfessor.tour.iterator.iterator import Iterator
+from RASAComponents.WizzardProfessor.tour.visitor.visitor import Visitor
 from random import randint
 
 

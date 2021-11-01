@@ -1,6 +1,6 @@
 import unittest
 
-from interview.policy import normalize
+from RASAComponents.Psybot.interview.policy import normalize
 
 
 class TestNormalize(unittest.TestCase):

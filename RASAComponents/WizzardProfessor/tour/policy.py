@@ -16,7 +16,7 @@ from RASAComponents.WizzardProfessor.tour.learning_styles_detection import Dimen
 
 
 
-class AssistantPolicy(Policy):
+class WizzardAssistantPolicy(Policy):
     """Custom policy that predict the next action to execute in the tour.
 
     Author: Bruno.
@@ -65,7 +65,7 @@ class AssistantPolicy(Policy):
         # Iterator.
         conversation_flows = util.create_conversation_flows("RASAComponents/WizzardProfessor/info/flow.json")
         self._current_flow = conversation_flows[
-            AssistantPolicy.DEFAULT_DIMENSION_LEVEL]
+            WizzardAssistantPolicy.DEFAULT_DIMENSION_LEVEL]
 
         # Chain of responsibility. TODO Create from script.
         self._last_node = node.DefaultNode(criterion=None)
@@ -83,7 +83,7 @@ class AssistantPolicy(Policy):
             dimension = Dimension.from_dict(raw_dimension, conversation_flows)
 
         self._ls_detector = LearningStyleDetector(
-            dimension, AssistantPolicy.DEFAULT_DIMENSION_LEVEL
+            dimension, WizzardAssistantPolicy.DEFAULT_DIMENSION_LEVEL
         )
 
     def train(
@@ -217,4 +217,4 @@ class AssistantPolicy(Policy):
 
     @classmethod
     def _metadata_filename(cls) -> Text:
-        return "assistant_policy.json"
+        return "wizzard_assistant_policy.json"

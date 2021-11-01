@@ -1,6 +1,6 @@
-from tour.conversation.abstract_flow import ConversationFlow
-from tour.topic.topics import Topic
-from tour.visitor.visitor import Visitor
+from RASAComponents.ScrumAssistant.tour.conversation.abstract_flow import ConversationFlow
+from RASAComponents.ScrumAssistant.tour.topic.topics import Topic
+from RASAComponents.ScrumAssistant.tour.visitor.visitor import Visitor
 
 
 class TopicVisitor(Visitor):

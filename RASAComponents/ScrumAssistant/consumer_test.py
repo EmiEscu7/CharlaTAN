@@ -1,7 +1,7 @@
 import json
 from pprint import pprint
 
-from tour.event_handling import EventSubscriber
+from RASAComponents.ScrumAssistant.tour.event_handling import EventSubscriber
 
 consumer = EventSubscriber("log_eventos", host="localhost")
 

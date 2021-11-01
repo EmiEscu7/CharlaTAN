@@ -1,7 +1,7 @@
 import abc
 from typing import Dict, List
 
-from tour.topic.topics import Topic
+from RASAComponents.ScrumAssistant.tour.topic.topics import Topic
 
 
 class ConversationFlow(metaclass=abc.ABCMeta):

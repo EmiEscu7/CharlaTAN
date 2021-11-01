@@ -78,7 +78,7 @@ class PersonalityPolicy(Policy):
         
     @classmethod
     def _metadata_filename(cls) -> Text:
-        return "scrum_master_policy.json"
+        return "customizer_policy.json"
 
     def get_personality(self, tracker:DialogueStateTracker):
         var = tracker.current_state()["latest_message"]

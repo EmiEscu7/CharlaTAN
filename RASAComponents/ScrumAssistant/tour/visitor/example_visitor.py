@@ -1,5 +1,5 @@
-from tour.conversation.abstract_flow import ConversationFlow
-from tour.visitor.visitor import Visitor
+from RASAComponents.ScrumAssistant.tour.conversation.abstract_flow import ConversationFlow
+from RASAComponents.ScrumAssistant.tour.visitor.visitor import Visitor
 
 AMT_EXAMPLE_NEUTRAL = 2
 

@@ -2,12 +2,12 @@ import abc
 
 from rasa.shared.core.trackers import DialogueStateTracker
 
-from tour import util as tour_util
-from tour.chain.criterion import Criterion
-from tour.conversation.abstract_flow import ConversationFlow
-from tour.visitor.ask_visitor import AskVisitor
-from tour.visitor.example_visitor import ExampleVisitor
-from tour.visitor.topic_visitor import TopicVisitor
+from RASAComponents.ScrumAssistant.tour import util as tour_util
+from RASAComponents.ScrumAssistant.tour.chain.criterion import Criterion
+from RASAComponents.ScrumAssistant.tour.conversation.abstract_flow import ConversationFlow
+from RASAComponents.ScrumAssistant.tour.visitor.ask_visitor import AskVisitor
+from RASAComponents.ScrumAssistant.tour.visitor.example_visitor import ExampleVisitor
+from RASAComponents.ScrumAssistant.tour.visitor.topic_visitor import TopicVisitor
 
 
 class Node(metaclass=abc.ABCMeta):

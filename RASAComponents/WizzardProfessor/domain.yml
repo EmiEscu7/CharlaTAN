@@ -13,6 +13,7 @@ intents:
     use_entities: true
 - pregunta_patrones_poo:
     use_entities: true
+- explain_me_topic
 - affirm
 - deny
 - goodbye
@@ -448,6 +449,11 @@ responses:
     - text: "Queres que te explique a partir de un tema particular?"
   utter_cross_examine:
     - text: "Queres que te explique solo ese tema"
-
+  utter_cross_examine_jump_sequential:
+    - text: "Queres que te explique todo de nuevo apartir de ese tema o solo te explico de nuevo ese tema particular"
+  utter_cross_examine_jump_global:
+    - text: "Queres que explique desde ese tema y omitamos los temas intermedios o solo te explico ese tema particular"  
+actions:
+  - action_topic_not_recognized
 forms: {}
 e2e_actions: []

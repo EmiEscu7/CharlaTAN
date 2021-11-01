@@ -1,8 +1,8 @@
 from typing import List
 
-from .abstract_flow import ConversationFlow
-from ..topic.topics import Topic
-from ..visitor.visitor import Visitor
+from RASAComponents.WizzardProfessor.tour.conversation.abstract_flow import ConversationFlow
+from RASAComponents.WizzardProfessor.tour.topic.topics import Topic
+from RASAComponents.WizzardProfessor.tour.visitor.visitor import Visitor
 
 
 class SequentialConversationFlow(ConversationFlow):

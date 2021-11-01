@@ -4,7 +4,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-from tour import event_handling
+from RASAComponents.ScrumAssistant.tour import event_handling
 
 
 class ActionDefaultFallback(Action):
@@ -47,31 +47,3 @@ class TopicNotRecognized(Action):
                                  "preguntando. Por favor volveme a preguntar")
         return []
 
-
-class ActionSetTimer(Action):
-    """Action used to set a flag in 'metadata' field of the json send to the
-    user that is talking to the assistant.
-
-    Author: Dana.
-    """
-
-    def name(self) -> Text:
-        return "action_set_timer"
-
-    def run(
-            self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]
-    ) -> List[Dict[Text, Any]]:
-        utter = tracker.get_slot("next_topic")
-        msg = {
-            "message": random.choice(domain["responses"][utter])['text'],
-            "sender": "user",
-            "metadata": {
-                "timer": tracker.get_slot("must_set_timer")
-            }
-        }
-
-        dispatcher.utter_message(json_message=msg)
-        return []

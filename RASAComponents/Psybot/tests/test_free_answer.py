@@ -1,6 +1,6 @@
 import unittest
 
-from interview.elements import Question
+from RASAComponents.Psybot.interview.elements import Question
 
 
 class TestFreeAnswer(unittest.TestCase):

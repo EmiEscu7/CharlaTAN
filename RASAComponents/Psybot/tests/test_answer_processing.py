@@ -1,7 +1,7 @@
 import unittest
 
-from interview.policy import InterviewPolicy
-from interview.elements import Question, Interview
+from RASAComponents.Psybot.interview.policy import InterviewPolicy
+from RASAComponents.Psybot.interview.elements import Question, Interview
 
 
 class TestQuestionAnalysis(unittest.TestCase):

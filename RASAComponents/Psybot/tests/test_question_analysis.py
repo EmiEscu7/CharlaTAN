@@ -1,7 +1,7 @@
 import unittest
 
-from interview.elements import Question, Interview
-from interview.question_analysis import (
+from RASAComponents.Psybot.interview.elements import Question, Interview
+from RASAComponents.Psybot.interview.question_analysis import (
     queue_question
 )
 

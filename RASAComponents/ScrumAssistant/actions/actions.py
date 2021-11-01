@@ -4,7 +4,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-from tour import event_handling
+from RASAComponents.ScrumAssistant.tour import event_handling
 
 
 class ActionDefaultFallback(Action):

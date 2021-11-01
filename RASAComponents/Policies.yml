@@ -1,4 +1,5 @@
 policies:
   - name: "RASAComponents.Customizer.customs.custom_policy.PersonalityPolicy"
   - name: "RASAComponents.Psybot.interview.policy.InterviewPolicy"
-  - name: "RASAComponents.WizzardProfessor.tour.policy.AssistantPolicy"
+  - name: "RASAComponents.WizzardProfessor.tour.policy.WizzardAssistantPolicy"
+  - name: "RASAComponents.ScrumAssistant.tour.policy.ScrumAssistantPolicy"

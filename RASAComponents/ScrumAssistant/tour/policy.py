@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from typing import Any, List, Dict, Text, Optional
 
 from rasa.core.featurizers.tracker_featurizers import TrackerFeaturizer
@@ -11,12 +12,12 @@ from rasa.shared.core.generator import TrackerWithCachedStates
 from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.nlu.interpreter import NaturalLanguageInterpreter
 
-from tour import util
-from tour.chain import util as chain_util, node
-from tour.learning_styles_detection import Dimension, LearningStyleDetector
+from RASAComponents.ScrumAssistant.tour import util
+from RASAComponents.ScrumAssistant.tour.chain import util as chain_util, node
+from RASAComponents.ScrumAssistant.tour.learning_styles_detection import Dimension, LearningStyleDetector
 
 
-class AssistantPolicy(Policy):
+class ScrumAssistantPolicy(Policy):
     """Custom policy that predict the next action to execute in the tour.
 
     Author: Bruno.
@@ -63,10 +64,9 @@ class AssistantPolicy(Policy):
         super().__init__(featurizer, priority, should_finetune, **kwargs)
 
         # Iterator.
-        conversation_flows = util.create_conversation_flows(
-            "info" + os.path.sep + "flow.json")
+        conversation_flows = util.create_conversation_flows(Path("RASAComponents/ScrumAssistant/info/flow.json"))
         self._current_flow = conversation_flows[
-            AssistantPolicy.DEFAULT_DIMENSION_LEVEL]
+            ScrumAssistantPolicy.DEFAULT_DIMENSION_LEVEL]
 
         # Chain of responsibility. TODO Create from script.
         self._last_node = node.DefaultNode(criterion=None)
@@ -91,7 +91,7 @@ class AssistantPolicy(Policy):
             dimension = Dimension.from_dict(raw_dimension, conversation_flows)
 
         self._ls_detector = LearningStyleDetector(
-            dimension, AssistantPolicy.DEFAULT_DIMENSION_LEVEL
+            dimension, ScrumAssistantPolicy.DEFAULT_DIMENSION_LEVEL
         )
 
     def train(
@@ -200,4 +200,4 @@ class AssistantPolicy(Policy):
 
     @classmethod
     def _metadata_filename(cls) -> Text:
-        return "assistant_policy.json"
+        return "scrum_assistant_policy.json"
