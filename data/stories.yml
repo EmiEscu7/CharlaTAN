@@ -26,5 +26,9 @@ stories:
   - action: utter_presentation
 - story: greet
   steps:
+  - intent: scrumassistant_greet
+  - action: utter_greet
+- story: greet
+  steps:
   - intent: wizzardprofessor_greet
   - action: utter_greet

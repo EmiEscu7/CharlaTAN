@@ -59,6 +59,7 @@ class PersonalityPolicy(Policy):
         
         personality = self.get_personality(tracker)
         rta = self.generator_message(tracker, personality)
+        print("----------> esto es rta dentro de la policy: " + rta)
         
         if(self.answered):
             result = confidence_scores_for('action_listen', 1.0, domain)
@@ -88,7 +89,8 @@ class PersonalityPolicy(Policy):
 
     def generator_message(self, tracker: DialogueStateTracker, personality, sender = None):
         rta = ''
-        intent = tracker.latest_message.intent.get(INTENT_NAME_KEY) 
+        intent = tracker.latest_message.intent["name"]
+        
         if(intent != "out_of_scope"): 
             style_answer = self.get_style_answer(personality)
             rta = 'utter_'

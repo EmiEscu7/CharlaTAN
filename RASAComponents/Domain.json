@@ -1,0 +1,5 @@
+{
+  "psybot": "RASAComponents/Psybot/domain.yml",
+  "customizer": "RASAComponents/Customizer/domain.yml",
+  "wizzardProffessor": "RASAComponents/WizzardProffessor/domain.yml"
+}

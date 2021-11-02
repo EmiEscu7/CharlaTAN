@@ -28,4 +28,4 @@ pipeline:
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies:
-  - name: "customs.custom_policy.PersonalityPolicy"
+  - name: "RASAComponents.Customizer.customs.custom_policy.PersonalityPolicy"

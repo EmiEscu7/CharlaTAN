@@ -28,6 +28,22 @@ nlu:
   examples: "- no\n- nop\n- nono\n- jamás\n- nunca\n- no no\n- negativo\n- para nada\n- no es asi\n- casi nunca\n- muy pocas veces"
 - regex: topic
   examples: "- (^[a-zA-Z ]*$){1,25}\n"
+- intent: scrumassistant_greet
+  examples: "- buenas\n- hello\n- hi\n- hola\n- holis\n- buen dia\n- qué tal?\n- buenos días\n- buenos dias\n- buenas tardes\n- buenas noches\n"
+- intent: scrumassistant_goodbye
+  examples: "- adiós\n- hasta luego\n- nos vemos luego\n- hasta pronto\n- nos vemos más tarde\n- chau\n- hasta la próxima\n- bye\n- gracias por el tour\n- gracias adios\n- gracias \n"
+- intent: scrumassistant_affirm
+  examples: "- sí\n- si\n- dale\n- por supuesto\n- suena bien\n- correcto\n- está bien\n- entendido\n- enterado\n- continua\n- avanza hacia el siguiente tema\n- ya llegue\n- llegue\n- estoy aca\n- ok\n- si entendi\n- si me parece bien\n- avanza\n- continua con la explicación\n- avanza con lo que sigue\n- sigamos el recorrido\n- segui\n"
+- intent: scrumassistant_deny
+  examples: "- no\n- jamás\n- no lo creo\n- no creo\n- no me gusta eso\n- no me convence\n- no creo que sea correcto\n- nada\n"
+- intent: scrumassistant_not_understand
+  examples: "- no entendi\n- no entiendo que es el [proceso scrum](topic)\n- me podes explicar devuelta\n- no entiendo\n- repeti el tema\n- repetime que era [user story](topic)\n- no comprendo\n- explicame eso devuelta\n- me podes explicar eso devuelta\n- me volves a explicar?\n- me podes volver a explicar que es [product backlog](topic)\n- no entendi ese tema\n- no entiendo lo que acabas de explicar\n- necesito que me vuelvas a explicar eso\n- por favor me das mas detalles de eso\n- no entiendo que hace el equipo de desarrollo\n- no entiendo que hay en el tablero\n- quiero saber mas\n- me podrias dar mas información sobre el [scrum master](topic)?\n"
+- intent: scrumassistant_explain_me_topic
+  examples: "- como funciona el [proceso](topic)?\n- como funciona [product backlog](topic)?\n- que hace el [product owner](topic)?\n- que son las [epicas](topic)?\n- cual es la utilidad del [sprint backlog](topic)?\n"
+- intent: scrumassistant_need_example
+  examples: "- quiero un ejemplo\n- dame un ejemplo de este tema\n- me podrias dar un ejemplo\n- necesito un ejemplo para entenderlo\n- me darias un ejemplo de [epica](topic)\n- dame un ejemplo de [tarea](topic)\n- quisiera un ejemplo del tema [user story](topic)\n"
+- regex: topic
+  examples: "- (^[a-zA-Z ]*$){1,25}\n"
 - intent: wizzardprofessor_explain_me_topic
   examples: "- como funciona el [proceso](topic)?\n- como funciona [product backlog](topic)?\n- que hace el [product owner](topic)?\n- que son las [epicas](topic)?\n- cual es la utilidad del [sprint backlog](topic)?\n"
 - intent: wizzardprofessor_need_example

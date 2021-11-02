@@ -109,7 +109,7 @@ def run():
         generate_stories(folders)
         generate_domain(folders)
         print("Generado correctamente: NLU - STORIES - DOMAIN")
-    except Exception as e: #Para
+    except Exception as e: 
         print(e)
 
 run()

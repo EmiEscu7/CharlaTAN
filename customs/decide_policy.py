@@ -1,3 +1,5 @@
+import json
+import os
 from pathlib import Path
 from typing import Optional, Any, Dict, List, Text
 
@@ -18,7 +20,7 @@ from .custom_tracker import CustomTracker
 
 
 class DecidePolicy(Policy):
-    DIR_POLICIES_OF_RASA_COMPONENTS: Path = Path(Path(__file__).parent.parent / "RASAComponents/Policies.yml")
+    DIR_POLICIES_OF_RASA_COMPONENTS: Path = "RASAComponents/Policies.yml"
 
     def __init__(
             self,
@@ -33,7 +35,6 @@ class DecidePolicy(Policy):
         self.scrum_assistant = False
 
     def get_policies(self) -> Dict:
-        print(DecidePolicy.DIR_POLICIES_OF_RASA_COMPONENTS)
         policies_read = read_yaml_file(DecidePolicy.DIR_POLICIES_OF_RASA_COMPONENTS)
         policies = policies_read['policies']
         parsed_policies = {}
@@ -122,15 +123,29 @@ class DecidePolicy(Policy):
                 max_value = intent["confidence"]
                 final_intent = intent["name"]
 
-        tracker.latest_message.intent["name"] = final_intent
+        #tracker.latest_message.intent["name"] = final_intent
         tracker.latest_message.intent["confidence"] = max_value
 
 
         print("EL TIPO QUE RECONOCIO: " + str(type))
         print("EL INTENT SELECCIONADO ES ---->>>> " + str(final_intent))
         print("Esta es la politica seleccionada:" + str(self.differents_policies[str(type)]))
+
+        #get the specific domain from bot that responses
+        specific_domain = self.get_domain(type)
         
-        return self.differents_policies[str(type)].predict_action_probabilities(tracker, domain, interpreter)
+        #clean tracker
+        size_type = type.__len__() + 1
+        tracker.latest_message.intent["name"] = final_intent[size_type:]
+        print("------------> tracker limpiado: " + tracker.latest_message.intent["name"])
+            
+        specific_prediction = self.differents_policies[str(type)].predict_action_probabilities(tracker, specific_domain, interpreter)
+       
+        print("------------> specific prediction: " + str(specific_domain.action_texts))
+        
+        #change intent name
+        tracker.latest_message.intent["name"] = final_intent
+        return specific_prediction
 
 
     def _metadata(self) -> Dict[Text, Any]:
@@ -169,3 +184,10 @@ class DecidePolicy(Policy):
         )
         custom_tracker.update_tracker(tracker)
         return custom_tracker
+
+    def get_domain(self, bot: Text) -> Domain:
+        file = open("RASAComponents/Domain.json", "r")
+        json_file = json.load(file)
+        path = json_file[bot]
+        file.close()
+        return Domain.load(path)
